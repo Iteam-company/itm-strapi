@@ -1,0 +1,37 @@
+{
+  "kind": "singleType",
+  "collectionName": "header_footers",
+  "info": {
+    "singularName": "header-footer",
+    "pluralName": "header-footers",
+    "displayName": "header-footer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "header": {
+      "displayName": "header",
+      "type": "component",
+      "repeatable": true,
+      "component": "header-footer.header"
+    },
+    "headerButton": {
+      "displayName": "header-button",
+      "type": "component",
+      "repeatable": false,
+      "component": "header-footer.header-button"
+    },
+    "footerInfo": {
+      "displayName": "footer-info",
+      "type": "component",
+      "repeatable": true,
+      "component": "header-footer.footer-info"
+    },
+    "footerSubTitle": {
+      "type": "text"
+    }
+  }
+}

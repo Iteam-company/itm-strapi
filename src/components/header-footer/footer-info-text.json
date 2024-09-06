@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_header_footer_footer_info_texts",
+  "info": {
+    "displayName": "footer-info-text",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "linkText": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}

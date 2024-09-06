@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_header_footer_social_medias",
+  "info": {
+    "displayName": "social-media"
+  },
+  "options": {},
+  "attributes": {
+    "href": {
+      "type": "string"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

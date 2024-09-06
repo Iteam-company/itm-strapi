@@ -1,0 +1,46 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_uses",
+  "info": {
+    "singularName": "about-us",
+    "pluralName": "about-uses",
+    "displayName": "About-us",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "about-us.hero"
+    },
+    "meetOurTeamSubTitle": {
+      "type": "text"
+    },
+    "leadershipTeam": {
+      "displayName": "teamCards",
+      "type": "component",
+      "repeatable": false,
+      "component": "about-us.team-cards"
+    },
+    "developmentTeam": {
+      "type": "component",
+      "repeatable": false,
+      "component": "about-us.team-cards"
+    },
+    "bookForm": {
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.book-form"
+    },
+    "comments": {
+      "displayName": "comments",
+      "type": "component",
+      "repeatable": false,
+      "component": "about-us.comments"
+    }
+  }
+}

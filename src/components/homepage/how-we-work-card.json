@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_homepage_how_we_work_cards",
+  "info": {
+    "displayName": "how-we-work-card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "cardTextList": {
+      "displayName": "card-text-list",
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.card-text-list"
+    }
+  }
+}

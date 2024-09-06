@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_header_footer_footer_infos",
+  "info": {
+    "displayName": "footer-info"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "footerInfoText": {
+      "displayName": "footer-info-text",
+      "type": "component",
+      "repeatable": true,
+      "component": "header-footer.footer-info-text"
+    }
+  }
+}

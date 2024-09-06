@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_header_footer_options",
+  "info": {
+    "displayName": "options"
+  },
+  "options": {},
+  "attributes": {
+    "option": {
+      "type": "string"
+    },
+    "href": {
+      "type": "enumeration",
+      "enum": [
+        "/outstaff",
+        "/outsource"
+      ]
+    }
+  }
+}

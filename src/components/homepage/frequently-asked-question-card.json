@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_homepage_frequently_asked_question_cards",
+  "info": {
+    "displayName": "frequently-asked-questions-card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_portfolio_ceos",
+  "info": {
+    "displayName": "ceo",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "position": {
+      "type": "string"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "ava": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

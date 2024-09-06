@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_about_us_team_cards",
+  "info": {
+    "displayName": "teamCards"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "member": {
+      "displayName": "teamMember",
+      "type": "component",
+      "repeatable": true,
+      "component": "about-us.team-member"
+    }
+  }
+}

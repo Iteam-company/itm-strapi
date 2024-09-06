@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_header_footer_header_buttons",
+  "info": {
+    "displayName": "header-button"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

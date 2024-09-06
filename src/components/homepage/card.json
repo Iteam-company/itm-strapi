@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_homepage_cards",
+  "info": {
+    "displayName": "Card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

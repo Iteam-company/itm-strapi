@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_homepage_explore_with_iteam_cards",
+  "info": {
+    "displayName": "explore-with-iteam-card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "subTitle": {
+      "type": "text"
+    },
+    "country": {
+      "type": "string"
+    },
+    "money": {
+      "type": "integer"
+    },
+    "buttonText": {
+      "type": "string"
+    }
+  }
+}

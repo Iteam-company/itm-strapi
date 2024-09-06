@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_homepage_book_forms",
+  "info": {
+    "displayName": "book-form"
+  },
+  "options": {},
+  "attributes": {
+    "subTitle": {
+      "type": "string"
+    },
+    "inputPlaceholder": {
+      "type": "string"
+    },
+    "buttonText": {
+      "type": "string"
+    }
+  }
+}

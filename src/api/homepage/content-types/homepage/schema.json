@@ -1,0 +1,54 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Homepage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "displayName": "Hero",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.hero"
+    },
+    "howWeWorkSubTitle": {
+      "type": "string"
+    },
+    "howWeWorkCard": {
+      "displayName": "how-we-work-card",
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.how-we-work-card"
+    },
+    "ourCoreValues": {
+      "displayName": "our-core-values",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.our-core-values"
+    },
+    "bookForm": {
+      "displayName": "book-form",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.book-form"
+    },
+    "exploreWithIteam": {
+      "displayName": "explore-with-iteam",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.explore-with-iteam"
+    },
+    "frequentlyAskedQuestionsCard": {
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.frequently-asked-question-card"
+    }
+  }
+}

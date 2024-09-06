@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_homepage_explore_with_iteams",
+  "info": {
+    "displayName": "explore-with-iteam"
+  },
+  "options": {},
+  "attributes": {
+    "subTitle": {
+      "type": "string"
+    },
+    "exploreWithIteamCard": {
+      "displayName": "explore-with-iteam-card",
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.explore-with-iteam-card"
+    }
+  }
+}

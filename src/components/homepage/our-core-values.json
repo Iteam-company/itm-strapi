@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_homepage_our_core_values",
+  "info": {
+    "displayName": "our-core-values"
+  },
+  "options": {},
+  "attributes": {
+    "subTitle": {
+      "type": "string"
+    },
+    "ourCoreValuesCard": {
+      "displayName": "our-core-values-card",
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.our-core-values-card"
+    }
+  }
+}

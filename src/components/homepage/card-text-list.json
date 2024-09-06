@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_homepage_card_text_lists",
+  "info": {
+    "displayName": "card-text-list"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    }
+  }
+}

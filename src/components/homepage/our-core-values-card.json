@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_homepage_our_core_values_cards",
+  "info": {
+    "displayName": "our-core-values-card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}
