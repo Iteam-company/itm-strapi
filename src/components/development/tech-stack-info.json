@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_development_tech_stack_infos",
+  "info": {
+    "displayName": "tech-stack-info",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "buttonText": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "text"
+    },
+    "techStack": {
+      "displayName": "tech-stack",
+      "type": "component",
+      "repeatable": true,
+      "component": "development.tech-stack"
+    }
+  }
+}

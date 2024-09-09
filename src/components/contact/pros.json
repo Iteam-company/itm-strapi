@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_contact_pros",
+  "info": {
+    "displayName": "pros"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  }
+}

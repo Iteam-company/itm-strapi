@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_contact_contact_forms",
+  "info": {
+    "displayName": "contact-form"
+  },
+  "options": {},
+  "attributes": {
+    "buttonText": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "text"
+    },
+    "inputNamePlaceholder": {
+      "type": "string"
+    },
+    "inputPhonePlaceholder": {
+      "type": "string"
+    },
+    "inputEmailPlaceholder": {
+      "type": "string"
+    },
+    "inputMessagePlaceholder": {
+      "type": "string"
+    }
+  }
+}
