@@ -6,11 +6,11 @@ import { factories } from "@strapi/strapi";
 
 export default factories.createCoreController(
   "api::about-us.about-us",
-  ({ s }) => ({
+  ({ strapi }) => ({
     async find(ctx) {
       const { query } = ctx;
 
-      return await s.query("api::about-us.about-us").find({
+      return await strapi.query("api::about-us.about-us").findWithCount({
         ...query,
         populate: {
           comments: {
