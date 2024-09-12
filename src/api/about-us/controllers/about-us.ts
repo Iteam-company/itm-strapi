@@ -10,16 +10,9 @@ export default factories.createCoreController(
     async find(ctx) {
       const { query } = ctx;
 
-      return await strapi.query("api::about-us.about-us").findWithCount({
-        ...query,
-        populate: {
-          comments: {
-            populate: {
-              commentInfo: true,
-            },
-          },
-        },
-      });
+      return await strapi
+        .service("api::about-us.about-us")
+        .findWithRelations(query);
     },
   })
 );
