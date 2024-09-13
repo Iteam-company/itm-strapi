@@ -1,18 +1,13 @@
 {
   "collectionName": "components_about_us_comments",
   "info": {
-    "displayName": "comments"
+    "displayName": "comments",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
-    },
-    "commentInfo": {
-      "displayName": "comment-info",
-      "type": "component",
-      "repeatable": true,
-      "component": "about-us.comment-info"
     }
   }
 }

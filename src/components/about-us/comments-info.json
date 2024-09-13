@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_about_us_comments_infos",
+  "info": {
+    "displayName": "CommentsInfo",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "author": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "rate": {
+      "type": "integer"
+    }
+  }
+}

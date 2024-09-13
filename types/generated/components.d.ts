@@ -153,6 +153,29 @@ export interface HomepageBookForm extends Schema.Component {
   };
 }
 
+export interface DevelopmentTechStack extends Schema.Component {
+  collectionName: 'components_development_tech_stacks';
+  info: {
+    displayName: 'tech-stack';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface DevelopmentTechStackInfo extends Schema.Component {
+  collectionName: 'components_development_tech_stack_infos';
+  info: {
+    displayName: 'tech-stack-info';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    subTitle: Attribute.Text;
+    techStack: Attribute.Component<'development.tech-stack', true>;
+  };
+}
+
 export interface HeaderFooterSocialMedia extends Schema.Component {
   collectionName: 'components_header_footer_social_medias';
   info: {
@@ -220,26 +243,89 @@ export interface HeaderFooterFooterInfoText extends Schema.Component {
   };
 }
 
-export interface DevelopmentTechStack extends Schema.Component {
-  collectionName: 'components_development_tech_stacks';
+export interface AboutUsTeamMember extends Schema.Component {
+  collectionName: 'components_about_us_team_members';
   info: {
-    displayName: 'tech-stack';
+    displayName: 'teamMember';
   };
   attributes: {
-    text: Attribute.String;
+    ava: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
-export interface DevelopmentTechStackInfo extends Schema.Component {
-  collectionName: 'components_development_tech_stack_infos';
+export interface AboutUsTeamCards extends Schema.Component {
+  collectionName: 'components_about_us_team_cards';
   info: {
-    displayName: 'tech-stack-info';
+    displayName: 'teamCards';
     description: '';
   };
   attributes: {
-    buttonText: Attribute.String;
+    title: Attribute.String;
+  };
+}
+
+export interface AboutUsHero extends Schema.Component {
+  collectionName: 'components_about_us_heroes';
+  info: {
+    displayName: 'hero';
+  };
+  attributes: {
     subTitle: Attribute.Text;
-    techStack: Attribute.Component<'development.tech-stack', true>;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
+  collectionName: 'components_about_us_development_team_participants';
+  info: {
+    displayName: 'DevelopmentTeamParticipants';
+    icon: '';
+  };
+  attributes: {
+    experience: Attribute.String;
+    rate: Attribute.String;
+    expertise: Attribute.String;
+    name: Attribute.String;
+    role: Attribute.String;
+    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface AboutUsComments extends Schema.Component {
+  collectionName: 'components_about_us_comments';
+  info: {
+    displayName: 'comments';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
+export interface AboutUsCommentsInfo extends Schema.Component {
+  collectionName: 'components_about_us_comments_infos';
+  info: {
+    displayName: 'CommentsInfo';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.Text;
+    author: Attribute.String;
+    link: Attribute.String;
+    rate: Attribute.Integer;
+  };
+}
+
+export interface AboutUsCommentInfo extends Schema.Component {
+  collectionName: 'components_about_us_comment_infos';
+  info: {
+    displayName: 'comment-info';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.Text;
+    author: Attribute.String;
+    link: Attribute.String;
   };
 }
 
@@ -280,62 +366,6 @@ export interface ContactContactForm extends Schema.Component {
   };
 }
 
-export interface AboutUsTeamMember extends Schema.Component {
-  collectionName: 'components_about_us_team_members';
-  info: {
-    displayName: 'teamMember';
-  };
-  attributes: {
-    ava: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-  };
-}
-
-export interface AboutUsTeamCards extends Schema.Component {
-  collectionName: 'components_about_us_team_cards';
-  info: {
-    displayName: 'teamCards';
-  };
-  attributes: {
-    title: Attribute.String;
-    member: Attribute.Component<'about-us.team-member', true>;
-  };
-}
-
-export interface AboutUsHero extends Schema.Component {
-  collectionName: 'components_about_us_heroes';
-  info: {
-    displayName: 'hero';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface AboutUsComments extends Schema.Component {
-  collectionName: 'components_about_us_comments';
-  info: {
-    displayName: 'comments';
-  };
-  attributes: {
-    title: Attribute.String;
-    commentInfo: Attribute.Component<'about-us.comment-info', true>;
-  };
-}
-
-export interface AboutUsCommentInfo extends Schema.Component {
-  collectionName: 'components_about_us_comment_infos';
-  info: {
-    displayName: 'comment-info';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.Text;
-    author: Attribute.String;
-    link: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -352,22 +382,24 @@ declare module '@strapi/types' {
       'homepage.card': HomepageCard;
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.book-form': HomepageBookForm;
+      'development.tech-stack': DevelopmentTechStack;
+      'development.tech-stack-info': DevelopmentTechStackInfo;
       'header-footer.social-media': HeaderFooterSocialMedia;
       'header-footer.options': HeaderFooterOptions;
       'header-footer.header': HeaderFooterHeader;
       'header-footer.header-button': HeaderFooterHeaderButton;
       'header-footer.footer-info': HeaderFooterFooterInfo;
       'header-footer.footer-info-text': HeaderFooterFooterInfoText;
-      'development.tech-stack': DevelopmentTechStack;
-      'development.tech-stack-info': DevelopmentTechStackInfo;
-      'contact.pros': ContactPros;
-      'contact.contact-info': ContactContactInfo;
-      'contact.contact-form': ContactContactForm;
       'about-us.team-member': AboutUsTeamMember;
       'about-us.team-cards': AboutUsTeamCards;
       'about-us.hero': AboutUsHero;
+      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
       'about-us.comments': AboutUsComments;
+      'about-us.comments-info': AboutUsCommentsInfo;
       'about-us.comment-info': AboutUsCommentInfo;
+      'contact.pros': ContactPros;
+      'contact.contact-info': ContactContactInfo;
+      'contact.contact-form': ContactContactForm;
     }
   }
 }

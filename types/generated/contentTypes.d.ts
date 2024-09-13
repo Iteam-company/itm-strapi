@@ -803,9 +803,14 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
     hero: Attribute.Component<'about-us.hero'>;
     meetOurTeamSubTitle: Attribute.Text;
     leadershipTeam: Attribute.Component<'about-us.team-cards'>;
-    developmentTeam: Attribute.Component<'about-us.team-cards'>;
     bookForm: Attribute.Component<'homepage.book-form'>;
-    comments: Attribute.Component<'about-us.comments'>;
+    commentsSectionTitle: Attribute.String;
+    commentsInfo: Attribute.Component<'about-us.comments-info', true>;
+    DevelopmentTeamTitle: Attribute.String;
+    DevelopmentTeamParticipants: Attribute.Component<
+      'about-us.development-team-participants',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

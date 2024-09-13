@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_about_us_development_team_participants",
+  "info": {
+    "displayName": "DevelopmentTeamParticipants",
+    "icon": ""
+  },
+  "options": {},
+  "attributes": {
+    "experience": {
+      "type": "string"
+    },
+    "rate": {
+      "type": "string"
+    },
+    "expertise": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

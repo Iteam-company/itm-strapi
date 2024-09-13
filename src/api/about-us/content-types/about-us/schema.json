@@ -26,21 +26,28 @@
       "repeatable": false,
       "component": "about-us.team-cards"
     },
-    "developmentTeam": {
-      "type": "component",
-      "repeatable": false,
-      "component": "about-us.team-cards"
-    },
     "bookForm": {
       "type": "component",
       "repeatable": false,
       "component": "homepage.book-form"
     },
-    "comments": {
-      "displayName": "comments",
+    "commentsSectionTitle": {
+      "type": "string"
+    },
+    "commentsInfo": {
+      "displayName": "CommentsInfo",
       "type": "component",
-      "repeatable": false,
-      "component": "about-us.comments"
+      "repeatable": true,
+      "component": "about-us.comments-info"
+    },
+    "DevelopmentTeamTitle": {
+      "type": "string"
+    },
+    "DevelopmentTeamParticipants": {
+      "displayName": "DevelopmentTeamParticipants",
+      "type": "component",
+      "repeatable": true,
+      "component": "about-us.development-team-participants"
     }
   }
 }
