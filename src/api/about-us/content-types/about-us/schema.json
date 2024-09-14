@@ -15,39 +15,39 @@
     "hero": {
       "type": "component",
       "repeatable": false,
-      "component": "about-us.hero"
+      "component": "homepage.hero"
     },
-    "meetOurTeamSubTitle": {
-      "type": "text"
+    "MeetOurTeemSubTitle": {
+      "type": "string"
     },
-    "leadershipTeam": {
-      "displayName": "teamCards",
-      "type": "component",
-      "repeatable": false,
-      "component": "about-us.team-cards"
+    "leadershipTitle": {
+      "type": "string"
     },
     "bookForm": {
       "type": "component",
       "repeatable": false,
       "component": "homepage.book-form"
     },
-    "commentsSectionTitle": {
-      "type": "string"
-    },
-    "commentsInfo": {
-      "displayName": "CommentsInfo",
-      "type": "component",
-      "repeatable": true,
-      "component": "about-us.comments-info"
-    },
-    "DevelopmentTeamTitle": {
-      "type": "string"
-    },
-    "DevelopmentTeamParticipants": {
-      "displayName": "DevelopmentTeamParticipants",
+    "leadershipMembers": {
       "type": "component",
       "repeatable": true,
       "component": "about-us.development-team-participants"
+    },
+    "developmentMembers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about-us.development-team-participants"
+    },
+    "commentTitle": {
+      "type": "string"
+    },
+    "developmentTitle": {
+      "type": "string"
+    },
+    "commentInfo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about-us.comments-info"
     }
   }
 }

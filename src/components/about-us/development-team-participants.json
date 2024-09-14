@@ -1,8 +1,9 @@
 {
   "collectionName": "components_about_us_development_team_participants",
   "info": {
-    "displayName": "DevelopmentTeamParticipants",
-    "icon": ""
+    "displayName": "TeamParticipants",
+    "icon": "",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -22,14 +23,15 @@
       "type": "string"
     },
     "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

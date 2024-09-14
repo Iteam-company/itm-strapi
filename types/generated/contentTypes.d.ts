@@ -800,17 +800,21 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    hero: Attribute.Component<'about-us.hero'>;
-    meetOurTeamSubTitle: Attribute.Text;
-    leadershipTeam: Attribute.Component<'about-us.team-cards'>;
+    hero: Attribute.Component<'homepage.hero'>;
+    MeetOurTeemSubTitle: Attribute.String;
+    leadershipTitle: Attribute.String;
     bookForm: Attribute.Component<'homepage.book-form'>;
-    commentsSectionTitle: Attribute.String;
-    commentsInfo: Attribute.Component<'about-us.comments-info', true>;
-    DevelopmentTeamTitle: Attribute.String;
-    DevelopmentTeamParticipants: Attribute.Component<
+    leadershipMembers: Attribute.Component<
       'about-us.development-team-participants',
       true
     >;
+    developmentMembers: Attribute.Component<
+      'about-us.development-team-participants',
+      true
+    >;
+    commentTitle: Attribute.String;
+    developmentTitle: Attribute.String;
+    commentInfo: Attribute.Component<'about-us.comments-info', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

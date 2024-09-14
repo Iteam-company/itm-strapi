@@ -1,12 +1,12 @@
 {
-  "collectionName": "components_about_us_team_cards",
+  "collectionName": "components_test_comment_infos",
   "info": {
-    "displayName": "teamCards",
+    "displayName": "CommentInfo",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "title": {
+    "sometext": {
       "type": "string"
     }
   }

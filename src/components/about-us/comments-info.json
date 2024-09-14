@@ -1,7 +1,7 @@
 {
   "collectionName": "components_about_us_comments_infos",
   "info": {
-    "displayName": "CommentsInfo",
+    "displayName": "Comment-info",
     "description": ""
   },
   "options": {},
@@ -17,6 +17,9 @@
     },
     "rate": {
       "type": "integer"
+    },
+    "linkTitle": {
+      "type": "string"
     }
   }
 }

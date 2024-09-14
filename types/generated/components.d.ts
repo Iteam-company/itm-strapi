@@ -1,5 +1,16 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface TestCommentInfo extends Schema.Component {
+  collectionName: 'components_test_comment_infos';
+  info: {
+    displayName: 'CommentInfo';
+    description: '';
+  };
+  attributes: {
+    sometext: Attribute.String;
+  };
+}
+
 export interface PortfolioHero extends Schema.Component {
   collectionName: 'components_portfolio_heroes';
   info: {
@@ -153,29 +164,6 @@ export interface HomepageBookForm extends Schema.Component {
   };
 }
 
-export interface DevelopmentTechStack extends Schema.Component {
-  collectionName: 'components_development_tech_stacks';
-  info: {
-    displayName: 'tech-stack';
-  };
-  attributes: {
-    text: Attribute.String;
-  };
-}
-
-export interface DevelopmentTechStackInfo extends Schema.Component {
-  collectionName: 'components_development_tech_stack_infos';
-  info: {
-    displayName: 'tech-stack-info';
-    description: '';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    subTitle: Attribute.Text;
-    techStack: Attribute.Component<'development.tech-stack', true>;
-  };
-}
-
 export interface HeaderFooterSocialMedia extends Schema.Component {
   collectionName: 'components_header_footer_social_medias';
   info: {
@@ -243,92 +231,6 @@ export interface HeaderFooterFooterInfoText extends Schema.Component {
   };
 }
 
-export interface AboutUsTeamMember extends Schema.Component {
-  collectionName: 'components_about_us_team_members';
-  info: {
-    displayName: 'teamMember';
-  };
-  attributes: {
-    ava: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-  };
-}
-
-export interface AboutUsTeamCards extends Schema.Component {
-  collectionName: 'components_about_us_team_cards';
-  info: {
-    displayName: 'teamCards';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-  };
-}
-
-export interface AboutUsHero extends Schema.Component {
-  collectionName: 'components_about_us_heroes';
-  info: {
-    displayName: 'hero';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
-  collectionName: 'components_about_us_development_team_participants';
-  info: {
-    displayName: 'DevelopmentTeamParticipants';
-    icon: '';
-  };
-  attributes: {
-    experience: Attribute.String;
-    rate: Attribute.String;
-    expertise: Attribute.String;
-    name: Attribute.String;
-    role: Attribute.String;
-    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-  };
-}
-
-export interface AboutUsComments extends Schema.Component {
-  collectionName: 'components_about_us_comments';
-  info: {
-    displayName: 'comments';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-  };
-}
-
-export interface AboutUsCommentsInfo extends Schema.Component {
-  collectionName: 'components_about_us_comments_infos';
-  info: {
-    displayName: 'CommentsInfo';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.Text;
-    author: Attribute.String;
-    link: Attribute.String;
-    rate: Attribute.Integer;
-  };
-}
-
-export interface AboutUsCommentInfo extends Schema.Component {
-  collectionName: 'components_about_us_comment_infos';
-  info: {
-    displayName: 'comment-info';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.Text;
-    author: Attribute.String;
-    link: Attribute.String;
-  };
-}
-
 export interface ContactPros extends Schema.Component {
   collectionName: 'components_contact_pros';
   info: {
@@ -366,9 +268,76 @@ export interface ContactContactForm extends Schema.Component {
   };
 }
 
+export interface DevelopmentTechStack extends Schema.Component {
+  collectionName: 'components_development_tech_stacks';
+  info: {
+    displayName: 'tech-stack';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface DevelopmentTechStackInfo extends Schema.Component {
+  collectionName: 'components_development_tech_stack_infos';
+  info: {
+    displayName: 'tech-stack-info';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    subTitle: Attribute.Text;
+    techStack: Attribute.Component<'development.tech-stack', true>;
+  };
+}
+
+export interface AboutUsHero extends Schema.Component {
+  collectionName: 'components_about_us_heroes';
+  info: {
+    displayName: 'hero';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
+  collectionName: 'components_about_us_development_team_participants';
+  info: {
+    displayName: 'TeamParticipants';
+    icon: '';
+    description: '';
+  };
+  attributes: {
+    experience: Attribute.String;
+    rate: Attribute.String;
+    expertise: Attribute.String;
+    name: Attribute.String;
+    role: Attribute.String;
+    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface AboutUsCommentsInfo extends Schema.Component {
+  collectionName: 'components_about_us_comments_infos';
+  info: {
+    displayName: 'Comment-info';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.Text;
+    author: Attribute.String;
+    link: Attribute.String;
+    rate: Attribute.Integer;
+    linkTitle: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'test.comment-info': TestCommentInfo;
       'portfolio.hero': PortfolioHero;
       'portfolio.ceo': PortfolioCeo;
       'homepage.our-core-values': HomepageOurCoreValues;
@@ -382,24 +351,20 @@ declare module '@strapi/types' {
       'homepage.card': HomepageCard;
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.book-form': HomepageBookForm;
-      'development.tech-stack': DevelopmentTechStack;
-      'development.tech-stack-info': DevelopmentTechStackInfo;
       'header-footer.social-media': HeaderFooterSocialMedia;
       'header-footer.options': HeaderFooterOptions;
       'header-footer.header': HeaderFooterHeader;
       'header-footer.header-button': HeaderFooterHeaderButton;
       'header-footer.footer-info': HeaderFooterFooterInfo;
       'header-footer.footer-info-text': HeaderFooterFooterInfoText;
-      'about-us.team-member': AboutUsTeamMember;
-      'about-us.team-cards': AboutUsTeamCards;
-      'about-us.hero': AboutUsHero;
-      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
-      'about-us.comments': AboutUsComments;
-      'about-us.comments-info': AboutUsCommentsInfo;
-      'about-us.comment-info': AboutUsCommentInfo;
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
+      'development.tech-stack': DevelopmentTechStack;
+      'development.tech-stack-info': DevelopmentTechStackInfo;
+      'about-us.hero': AboutUsHero;
+      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
+      'about-us.comments-info': AboutUsCommentsInfo;
     }
   }
 }
