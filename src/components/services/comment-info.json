@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_services_comment_infos",
+  "info": {
+    "displayName": "CommentInfo"
+  },
+  "options": {},
+  "attributes": {
+    "test": {
+      "type": "json"
+    }
+  }
+}

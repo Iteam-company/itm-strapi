@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "firstProsList": {
-      "displayName": "FirstProsList",
-      "type": "component",
-      "repeatable": true,
-      "component": "services.first-pros-list"
-    },
     "folders": {
       "displayName": "Folder",
       "type": "component",
@@ -34,10 +28,10 @@
       "repeatable": true,
       "component": "portfolio.ceo"
     },
-    "secondProsList": {
+    "hero": {
       "type": "component",
-      "repeatable": true,
-      "component": "services.first-pros-list"
+      "repeatable": false,
+      "component": "about-us.hero"
     }
   }
 }

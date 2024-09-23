@@ -1017,11 +1017,10 @@ export interface ApiServiceService extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    firstProsList: Attribute.Component<'services.first-pros-list', true>;
     folders: Attribute.Component<'services.folder', true>;
     bookForms: Attribute.Component<'homepage.book-form'>;
     quoteAuthorsInfo: Attribute.Component<'portfolio.ceo', true>;
-    secondProsList: Attribute.Component<'services.first-pros-list', true>;
+    hero: Attribute.Component<'about-us.hero'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

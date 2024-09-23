@@ -20,6 +20,12 @@
     },
     "promoNumber": {
       "type": "string"
+    },
+    "prosList": {
+      "displayName": "prosList",
+      "type": "component",
+      "repeatable": true,
+      "component": "services.pros-list"
     }
   }
 }
