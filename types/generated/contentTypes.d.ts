@@ -1005,6 +1005,41 @@ export interface ApiPortfolioPortfolio extends Schema.SingleType {
   };
 }
 
+export interface ApiServiceService extends Schema.SingleType {
+  collectionName: 'services';
+  info: {
+    singularName: 'service';
+    pluralName: 'services';
+    displayName: 'Services';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstProsList: Attribute.Component<'services.first-pros-list', true>;
+    folders: Attribute.Component<'services.folder', true>;
+    bookForms: Attribute.Component<'homepage.book-form'>;
+    quoteAuthorsInfo: Attribute.Component<'portfolio.ceo', true>;
+    secondProsList: Attribute.Component<'services.first-pros-list', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1029,6 +1064,7 @@ declare module '@strapi/types' {
       'api::header-footer.header-footer': ApiHeaderFooterHeaderFooter;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
+      'api::service.service': ApiServiceService;
     }
   }
 }

@@ -1,5 +1,29 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ServicesFolder extends Schema.Component {
+  collectionName: 'components_services_folders';
+  info: {
+    displayName: 'Folder';
+    description: '';
+  };
+  attributes: {
+    subtitle: Attribute.String & Attribute.Required;
+    buttonTitle: Attribute.String & Attribute.Required;
+    promoTitle: Attribute.String;
+    promoNumber: Attribute.String;
+  };
+}
+
+export interface ServicesFirstProsList extends Schema.Component {
+  collectionName: 'components_services_first_pros_lists';
+  info: {
+    displayName: 'FirstProsList';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
 export interface TestCommentInfo extends Schema.Component {
   collectionName: 'components_test_comment_infos';
   info: {
@@ -8,31 +32,6 @@ export interface TestCommentInfo extends Schema.Component {
   };
   attributes: {
     sometext: Attribute.String;
-  };
-}
-
-export interface PortfolioHero extends Schema.Component {
-  collectionName: 'components_portfolio_heroes';
-  info: {
-    displayName: 'hero';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface PortfolioCeo extends Schema.Component {
-  collectionName: 'components_portfolio_ceos';
-  info: {
-    displayName: 'ceo';
-    description: '';
-  };
-  attributes: {
-    position: Attribute.String;
-    fullName: Attribute.String;
-    text: Attribute.Text;
-    ava: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -164,6 +163,53 @@ export interface HomepageBookForm extends Schema.Component {
   };
 }
 
+export interface PortfolioHero extends Schema.Component {
+  collectionName: 'components_portfolio_heroes';
+  info: {
+    displayName: 'hero';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface PortfolioCeo extends Schema.Component {
+  collectionName: 'components_portfolio_ceos';
+  info: {
+    displayName: 'ceo';
+    description: '';
+  };
+  attributes: {
+    position: Attribute.String;
+    fullName: Attribute.String;
+    imageUrl: Attribute.Text;
+  };
+}
+
+export interface DevelopmentTechStack extends Schema.Component {
+  collectionName: 'components_development_tech_stacks';
+  info: {
+    displayName: 'tech-stack';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface DevelopmentTechStackInfo extends Schema.Component {
+  collectionName: 'components_development_tech_stack_infos';
+  info: {
+    displayName: 'tech-stack-info';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    subTitle: Attribute.Text;
+    techStack: Attribute.Component<'development.tech-stack', true>;
+  };
+}
+
 export interface HeaderFooterSocialMedia extends Schema.Component {
   collectionName: 'components_header_footer_social_medias';
   info: {
@@ -268,29 +314,6 @@ export interface ContactContactForm extends Schema.Component {
   };
 }
 
-export interface DevelopmentTechStack extends Schema.Component {
-  collectionName: 'components_development_tech_stacks';
-  info: {
-    displayName: 'tech-stack';
-  };
-  attributes: {
-    text: Attribute.String;
-  };
-}
-
-export interface DevelopmentTechStackInfo extends Schema.Component {
-  collectionName: 'components_development_tech_stack_infos';
-  info: {
-    displayName: 'tech-stack-info';
-    description: '';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    subTitle: Attribute.Text;
-    techStack: Attribute.Component<'development.tech-stack', true>;
-  };
-}
-
 export interface AboutUsHero extends Schema.Component {
   collectionName: 'components_about_us_heroes';
   info: {
@@ -337,9 +360,9 @@ export interface AboutUsCommentsInfo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'services.folder': ServicesFolder;
+      'services.first-pros-list': ServicesFirstProsList;
       'test.comment-info': TestCommentInfo;
-      'portfolio.hero': PortfolioHero;
-      'portfolio.ceo': PortfolioCeo;
       'homepage.our-core-values': HomepageOurCoreValues;
       'homepage.our-core-values-card': HomepageOurCoreValuesCard;
       'homepage.how-we-work': HomepageHowWeWork;
@@ -351,6 +374,10 @@ declare module '@strapi/types' {
       'homepage.card': HomepageCard;
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.book-form': HomepageBookForm;
+      'portfolio.hero': PortfolioHero;
+      'portfolio.ceo': PortfolioCeo;
+      'development.tech-stack': DevelopmentTechStack;
+      'development.tech-stack-info': DevelopmentTechStackInfo;
       'header-footer.social-media': HeaderFooterSocialMedia;
       'header-footer.options': HeaderFooterOptions;
       'header-footer.header': HeaderFooterHeader;
@@ -360,8 +387,6 @@ declare module '@strapi/types' {
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
-      'development.tech-stack': DevelopmentTechStack;
-      'development.tech-stack-info': DevelopmentTechStackInfo;
       'about-us.hero': AboutUsHero;
       'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
       'about-us.comments-info': AboutUsCommentsInfo;

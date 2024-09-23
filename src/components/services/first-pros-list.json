@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_services_first_pros_lists",
+  "info": {
+    "displayName": "FirstProsList"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "singleType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Services",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstProsList": {
+      "displayName": "FirstProsList",
+      "type": "component",
+      "repeatable": true,
+      "component": "services.first-pros-list"
+    },
+    "folders": {
+      "displayName": "Folder",
+      "type": "component",
+      "repeatable": true,
+      "component": "services.folder"
+    },
+    "bookForms": {
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.book-form"
+    },
+    "quoteAuthorsInfo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "portfolio.ceo"
+    },
+    "secondProsList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "services.first-pros-list"
+    }
+  }
+}

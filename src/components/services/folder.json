@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_services_folders",
+  "info": {
+    "displayName": "Folder",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "subtitle": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "buttonTitle": {
+      "type": "string",
+      "required": true
+    },
+    "promoTitle": {
+      "type": "string"
+    },
+    "promoNumber": {
+      "type": "string"
+    }
+  }
+}
