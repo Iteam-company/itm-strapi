@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_services_pros_lists",
+  "info": {
+    "displayName": "prosList"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    }
+  }
+}

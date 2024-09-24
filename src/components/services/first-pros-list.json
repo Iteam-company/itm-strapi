@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_services_first_pros_lists",
+  "info": {
+    "displayName": "FirstProsList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "title": {
+      "displayName": "CommentInfo",
+      "type": "component",
+      "repeatable": true,
+      "component": "services.comment-info"
+    }
+  }
+}

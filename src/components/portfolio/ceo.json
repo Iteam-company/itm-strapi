@@ -12,18 +12,11 @@
     "fullName": {
       "type": "string"
     },
-    "text": {
+    "imageUrl": {
       "type": "text"
     },
-    "ava": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+    "quote": {
+      "type": "text"
     }
   }
 }

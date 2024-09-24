@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_services_quotes",
+  "info": {
+    "displayName": "quote"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "json"
+    }
+  }
+}
