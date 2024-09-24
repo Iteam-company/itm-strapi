@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_homepage_core_values",
+  "info": {
+    "displayName": "coreValues"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

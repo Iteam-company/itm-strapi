@@ -49,6 +49,18 @@
       "type": "component",
       "repeatable": true,
       "component": "homepage.frequently-asked-question-card"
+    },
+    "coreSection": {
+      "displayName": "coreSection",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.core-section"
+    },
+    "faq": {
+      "displayName": "faq",
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.faq"
     }
   }
 }

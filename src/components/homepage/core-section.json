@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_homepage_core_sections",
+  "info": {
+    "displayName": "coreSection"
+  },
+  "options": {},
+  "attributes": {
+    "subtitle": {
+      "type": "text"
+    },
+    "coreValues": {
+      "displayName": "coreValues",
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.core-values"
+    }
+  }
+}
