@@ -27,11 +27,11 @@
       "repeatable": true,
       "component": "services.pros-list"
     },
-    "images": {
-      "displayName": "images",
+    "foldersImage": {
+      "displayName": "FoldersImage",
       "type": "component",
       "repeatable": true,
-      "component": "services.images"
+      "component": "services.folders-image"
     }
   }
 }

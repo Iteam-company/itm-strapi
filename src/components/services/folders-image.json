@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_services_folders_images",
+  "info": {
+    "displayName": "FoldersImage"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "text"
+    }
+  }
+}
