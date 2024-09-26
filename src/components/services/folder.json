@@ -26,6 +26,12 @@
       "type": "component",
       "repeatable": true,
       "component": "services.pros-list"
+    },
+    "images": {
+      "displayName": "images",
+      "type": "component",
+      "repeatable": true,
+      "component": "services.images"
     }
   }
 }
