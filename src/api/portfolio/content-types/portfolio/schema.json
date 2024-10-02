@@ -23,6 +23,11 @@
       "type": "component",
       "repeatable": false,
       "component": "portfolio.ceo"
+    },
+    "slider": {
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.slider"
     }
   }
 }

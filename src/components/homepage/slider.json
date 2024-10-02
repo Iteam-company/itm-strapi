@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_homepage_sliders",
+  "info": {
+    "displayName": "Slider"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "location": {
+      "type": "string"
+    },
+    "budget": {
+      "type": "integer"
+    },
+    "technologies": {
+      "displayName": "tech",
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.tech"
+    },
+    "href": {
+      "type": "text"
+    }
+  }
+}

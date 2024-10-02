@@ -957,6 +957,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     >;
     coreSection: Attribute.Component<'homepage.core-section'>;
     faq: Attribute.Component<'homepage.faq', true>;
+    slider: Attribute.Component<'homepage.slider', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -989,6 +990,7 @@ export interface ApiPortfolioPortfolio extends Schema.SingleType {
   attributes: {
     hero: Attribute.Component<'portfolio.hero'>;
     ceo: Attribute.Component<'portfolio.ceo'>;
+    slider: Attribute.Component<'homepage.slider', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
