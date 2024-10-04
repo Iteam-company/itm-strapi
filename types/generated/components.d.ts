@@ -31,6 +31,20 @@ export interface ServicesProsList extends Schema.Component {
   };
 }
 
+export interface ServicesProjectCases extends Schema.Component {
+  collectionName: 'components_services_project_cases';
+  info: {
+    displayName: 'projectCases';
+  };
+  attributes: {
+    projectId: Attribute.String;
+    imageLink: Attribute.Text;
+    title: Attribute.String;
+    description: Attribute.String;
+    caseFlag: Attribute.String;
+  };
+}
+
 export interface ServicesImages extends Schema.Component {
   collectionName: 'components_services_images';
   info: {
@@ -302,29 +316,6 @@ export interface HomepageBookForm extends Schema.Component {
   };
 }
 
-export interface DevelopmentTechStack extends Schema.Component {
-  collectionName: 'components_development_tech_stacks';
-  info: {
-    displayName: 'tech-stack';
-  };
-  attributes: {
-    text: Attribute.String;
-  };
-}
-
-export interface DevelopmentTechStackInfo extends Schema.Component {
-  collectionName: 'components_development_tech_stack_infos';
-  info: {
-    displayName: 'tech-stack-info';
-    description: '';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    subTitle: Attribute.Text;
-    techStack: Attribute.Component<'development.tech-stack', true>;
-  };
-}
-
 export interface HeaderFooterSocialMedia extends Schema.Component {
   collectionName: 'components_header_footer_social_medias';
   info: {
@@ -389,6 +380,29 @@ export interface HeaderFooterFooterInfoText extends Schema.Component {
   attributes: {
     linkText: Attribute.String;
     href: Attribute.String;
+  };
+}
+
+export interface DevelopmentTechStack extends Schema.Component {
+  collectionName: 'components_development_tech_stacks';
+  info: {
+    displayName: 'tech-stack';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface DevelopmentTechStackInfo extends Schema.Component {
+  collectionName: 'components_development_tech_stack_infos';
+  info: {
+    displayName: 'tech-stack-info';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    subTitle: Attribute.Text;
+    techStack: Attribute.Component<'development.tech-stack', true>;
   };
 }
 
@@ -479,6 +493,7 @@ declare module '@strapi/types' {
       'test.comment-info': TestCommentInfo;
       'services.quote': ServicesQuote;
       'services.pros-list': ServicesProsList;
+      'services.project-cases': ServicesProjectCases;
       'services.images': ServicesImages;
       'services.folders-image': ServicesFoldersImage;
       'services.folder': ServicesFolder;
@@ -502,14 +517,14 @@ declare module '@strapi/types' {
       'homepage.card': HomepageCard;
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.book-form': HomepageBookForm;
-      'development.tech-stack': DevelopmentTechStack;
-      'development.tech-stack-info': DevelopmentTechStackInfo;
       'header-footer.social-media': HeaderFooterSocialMedia;
       'header-footer.options': HeaderFooterOptions;
       'header-footer.header': HeaderFooterHeader;
       'header-footer.header-button': HeaderFooterHeaderButton;
       'header-footer.footer-info': HeaderFooterFooterInfo;
       'header-footer.footer-info-text': HeaderFooterFooterInfoText;
+      'development.tech-stack': DevelopmentTechStack;
+      'development.tech-stack-info': DevelopmentTechStackInfo;
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;

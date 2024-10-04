@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_services_project_cases",
+  "info": {
+    "displayName": "projectCases"
+  },
+  "options": {},
+  "attributes": {
+    "projectId": {
+      "type": "string"
+    },
+    "imageLink": {
+      "type": "text"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "caseFlag": {
+      "type": "string"
+    }
+  }
+}

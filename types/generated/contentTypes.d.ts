@@ -1063,6 +1063,7 @@ export interface ApiServiceService extends Schema.SingleType {
     bookForms: Attribute.Component<'homepage.book-form'>;
     quoteAuthorsInfo: Attribute.Component<'portfolio.ceo', true>;
     hero: Attribute.Component<'about-us.hero'>;
+    projectCases: Attribute.Component<'services.project-cases', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
