@@ -1026,6 +1026,9 @@ export interface ApiProjectProject extends Schema.CollectionType {
     project_details: Attribute.JSON & Attribute.Required;
     subTitle: Attribute.Text;
     title: Attribute.Text;
+    appLink: Attribute.Text;
+    imageLink: Attribute.Text;
+    heroText: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

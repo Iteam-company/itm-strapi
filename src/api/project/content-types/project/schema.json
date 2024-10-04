@@ -30,6 +30,15 @@
     },
     "title": {
       "type": "text"
+    },
+    "appLink": {
+      "type": "text"
+    },
+    "imageLink": {
+      "type": "text"
+    },
+    "heroText": {
+      "type": "string"
     }
   }
 }
