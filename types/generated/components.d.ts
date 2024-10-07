@@ -152,7 +152,8 @@ export interface HomepageSlider extends Schema.Component {
     location: Attribute.String;
     budget: Attribute.Integer;
     technologies: Attribute.Component<'homepage.tech', true>;
-    projectId: Attribute.Text;
+    appLink: Attribute.Text;
+    projectId: Attribute.String;
   };
 }
 

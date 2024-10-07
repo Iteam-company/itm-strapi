@@ -27,8 +27,11 @@
       "repeatable": true,
       "component": "homepage.tech"
     },
-    "projectId": {
+    "appLink": {
       "type": "text"
+    },
+    "projectId": {
+      "type": "string"
     }
   }
 }
