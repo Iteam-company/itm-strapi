@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_services_advantage_circles",
+  "info": {
+    "displayName": "advantage-circles"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "hiddenText": {
+      "type": "string"
+    }
+  }
+}

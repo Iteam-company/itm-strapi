@@ -56,12 +56,6 @@
       "repeatable": false,
       "component": "homepage.core-section"
     },
-    "faq": {
-      "displayName": "faq",
-      "type": "component",
-      "repeatable": true,
-      "component": "homepage.faq"
-    },
     "slider": {
       "displayName": "Slider",
       "type": "component",

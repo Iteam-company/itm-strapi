@@ -104,6 +104,17 @@ export interface ServicesCommentInfo extends Schema.Component {
   };
 }
 
+export interface ServicesAdvantageCircles extends Schema.Component {
+  collectionName: 'components_services_advantage_circles';
+  info: {
+    displayName: 'advantage-circles';
+  };
+  attributes: {
+    title: Attribute.String;
+    hiddenText: Attribute.String;
+  };
+}
+
 export interface PortfolioHero extends Schema.Component {
   collectionName: 'components_portfolio_heroes';
   info: {
@@ -126,6 +137,29 @@ export interface PortfolioCeo extends Schema.Component {
     fullName: Attribute.String;
     imageUrl: Attribute.Text;
     quote: Attribute.Text;
+  };
+}
+
+export interface DevelopmentTechStack extends Schema.Component {
+  collectionName: 'components_development_tech_stacks';
+  info: {
+    displayName: 'tech-stack';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface DevelopmentTechStackInfo extends Schema.Component {
+  collectionName: 'components_development_tech_stack_infos';
+  info: {
+    displayName: 'tech-stack-info';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    subTitle: Attribute.Text;
+    techStack: Attribute.Component<'development.tech-stack', true>;
   };
 }
 
@@ -318,6 +352,43 @@ export interface HomepageBookForm extends Schema.Component {
   };
 }
 
+export interface ContactPros extends Schema.Component {
+  collectionName: 'components_contact_pros';
+  info: {
+    displayName: 'pros';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface ContactContactInfo extends Schema.Component {
+  collectionName: 'components_contact_contact_infos';
+  info: {
+    displayName: 'contact-info';
+  };
+  attributes: {
+    phoneNumber: Attribute.String;
+    email: Attribute.Email;
+    address: Attribute.String;
+  };
+}
+
+export interface ContactContactForm extends Schema.Component {
+  collectionName: 'components_contact_contact_forms';
+  info: {
+    displayName: 'contact-form';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    subTitle: Attribute.Text;
+    inputNamePlaceholder: Attribute.String;
+    inputPhonePlaceholder: Attribute.String;
+    inputEmailPlaceholder: Attribute.String;
+    inputMessagePlaceholder: Attribute.String;
+  };
+}
+
 export interface HeaderFooterSocialMedia extends Schema.Component {
   collectionName: 'components_header_footer_social_medias';
   info: {
@@ -385,66 +456,6 @@ export interface HeaderFooterFooterInfoText extends Schema.Component {
   };
 }
 
-export interface DevelopmentTechStack extends Schema.Component {
-  collectionName: 'components_development_tech_stacks';
-  info: {
-    displayName: 'tech-stack';
-  };
-  attributes: {
-    text: Attribute.String;
-  };
-}
-
-export interface DevelopmentTechStackInfo extends Schema.Component {
-  collectionName: 'components_development_tech_stack_infos';
-  info: {
-    displayName: 'tech-stack-info';
-    description: '';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    subTitle: Attribute.Text;
-    techStack: Attribute.Component<'development.tech-stack', true>;
-  };
-}
-
-export interface ContactPros extends Schema.Component {
-  collectionName: 'components_contact_pros';
-  info: {
-    displayName: 'pros';
-  };
-  attributes: {
-    text: Attribute.String;
-  };
-}
-
-export interface ContactContactInfo extends Schema.Component {
-  collectionName: 'components_contact_contact_infos';
-  info: {
-    displayName: 'contact-info';
-  };
-  attributes: {
-    phoneNumber: Attribute.String;
-    email: Attribute.Email;
-    address: Attribute.String;
-  };
-}
-
-export interface ContactContactForm extends Schema.Component {
-  collectionName: 'components_contact_contact_forms';
-  info: {
-    displayName: 'contact-form';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    subTitle: Attribute.Text;
-    inputNamePlaceholder: Attribute.String;
-    inputPhonePlaceholder: Attribute.String;
-    inputEmailPlaceholder: Attribute.String;
-    inputMessagePlaceholder: Attribute.String;
-  };
-}
-
 export interface AboutUsHero extends Schema.Component {
   collectionName: 'components_about_us_heroes';
   info: {
@@ -501,8 +512,11 @@ declare module '@strapi/types' {
       'services.folder': ServicesFolder;
       'services.first-pros-list': ServicesFirstProsList;
       'services.comment-info': ServicesCommentInfo;
+      'services.advantage-circles': ServicesAdvantageCircles;
       'portfolio.hero': PortfolioHero;
       'portfolio.ceo': PortfolioCeo;
+      'development.tech-stack': DevelopmentTechStack;
+      'development.tech-stack-info': DevelopmentTechStackInfo;
       'homepage.tech': HomepageTech;
       'homepage.slider': HomepageSlider;
       'homepage.our-core-values': HomepageOurCoreValues;
@@ -519,17 +533,15 @@ declare module '@strapi/types' {
       'homepage.card': HomepageCard;
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.book-form': HomepageBookForm;
+      'contact.pros': ContactPros;
+      'contact.contact-info': ContactContactInfo;
+      'contact.contact-form': ContactContactForm;
       'header-footer.social-media': HeaderFooterSocialMedia;
       'header-footer.options': HeaderFooterOptions;
       'header-footer.header': HeaderFooterHeader;
       'header-footer.header-button': HeaderFooterHeaderButton;
       'header-footer.footer-info': HeaderFooterFooterInfo;
       'header-footer.footer-info-text': HeaderFooterFooterInfoText;
-      'development.tech-stack': DevelopmentTechStack;
-      'development.tech-stack-info': DevelopmentTechStackInfo;
-      'contact.pros': ContactPros;
-      'contact.contact-info': ContactContactInfo;
-      'contact.contact-form': ContactContactForm;
       'about-us.hero': AboutUsHero;
       'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
       'about-us.comments-info': AboutUsCommentsInfo;

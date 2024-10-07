@@ -38,6 +38,12 @@
       "type": "component",
       "repeatable": true,
       "component": "services.project-cases"
+    },
+    "advantageCircles": {
+      "displayName": "advantage-circles",
+      "type": "component",
+      "repeatable": true,
+      "component": "services.advantage-circles"
     }
   }
 }
