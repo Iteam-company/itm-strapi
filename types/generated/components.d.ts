@@ -144,6 +144,7 @@ export interface HomepageSlider extends Schema.Component {
   collectionName: 'components_homepage_sliders';
   info: {
     displayName: 'Slider';
+    description: '';
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
@@ -151,7 +152,7 @@ export interface HomepageSlider extends Schema.Component {
     location: Attribute.String;
     budget: Attribute.Integer;
     technologies: Attribute.Component<'homepage.tech', true>;
-    href: Attribute.Text;
+    projectId: Attribute.Text;
   };
 }
 
