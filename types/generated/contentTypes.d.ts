@@ -815,6 +815,7 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
     commentTitle: Attribute.String;
     developmentTitle: Attribute.String;
     commentInfo: Attribute.Component<'about-us.comments-info', true>;
+    commentInfo2: Attribute.Component<'about-us.comments-info', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
