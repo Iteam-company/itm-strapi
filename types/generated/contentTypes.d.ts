@@ -1029,6 +1029,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     appLink: Attribute.Text;
     imageLink: Attribute.Text;
     heroText: Attribute.String;
+    year: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

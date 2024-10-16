@@ -39,6 +39,9 @@
     },
     "heroText": {
       "type": "string"
+    },
+    "year": {
+      "type": "integer"
     }
   }
 }
