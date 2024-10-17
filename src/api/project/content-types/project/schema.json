@@ -41,7 +41,7 @@
       "type": "string"
     },
     "year": {
-      "type": "integer"
+      "type": "string"
     }
   }
 }

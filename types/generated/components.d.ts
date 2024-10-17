@@ -140,29 +140,6 @@ export interface ServicesAdvantageCircles extends Schema.Component {
   };
 }
 
-export interface DevelopmentTechStack extends Schema.Component {
-  collectionName: 'components_development_tech_stacks';
-  info: {
-    displayName: 'tech-stack';
-  };
-  attributes: {
-    text: Attribute.String;
-  };
-}
-
-export interface DevelopmentTechStackInfo extends Schema.Component {
-  collectionName: 'components_development_tech_stack_infos';
-  info: {
-    displayName: 'tech-stack-info';
-    description: '';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    subTitle: Attribute.Text;
-    techStack: Attribute.Component<'development.tech-stack', true>;
-  };
-}
-
 export interface HomepageTech extends Schema.Component {
   collectionName: 'components_homepage_teches';
   info: {
@@ -419,6 +396,29 @@ export interface HeaderFooterFooterInfoText extends Schema.Component {
   };
 }
 
+export interface DevelopmentTechStack extends Schema.Component {
+  collectionName: 'components_development_tech_stacks';
+  info: {
+    displayName: 'tech-stack';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface DevelopmentTechStackInfo extends Schema.Component {
+  collectionName: 'components_development_tech_stack_infos';
+  info: {
+    displayName: 'tech-stack-info';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    subTitle: Attribute.Text;
+    techStack: Attribute.Component<'development.tech-stack', true>;
+  };
+}
+
 export interface ContactPros extends Schema.Component {
   collectionName: 'components_contact_pros';
   info: {
@@ -515,8 +515,6 @@ declare module '@strapi/types' {
       'services.first-pros-list': ServicesFirstProsList;
       'services.comment-info': ServicesCommentInfo;
       'services.advantage-circles': ServicesAdvantageCircles;
-      'development.tech-stack': DevelopmentTechStack;
-      'development.tech-stack-info': DevelopmentTechStackInfo;
       'homepage.tech': HomepageTech;
       'homepage.slider': HomepageSlider;
       'homepage.our-core-values': HomepageOurCoreValues;
@@ -539,6 +537,8 @@ declare module '@strapi/types' {
       'header-footer.header-button': HeaderFooterHeaderButton;
       'header-footer.footer-info': HeaderFooterFooterInfo;
       'header-footer.footer-info-text': HeaderFooterFooterInfoText;
+      'development.tech-stack': DevelopmentTechStack;
+      'development.tech-stack-info': DevelopmentTechStackInfo;
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
