@@ -948,7 +948,6 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
   attributes: {
     hero: Attribute.Component<'homepage.hero'>;
     howWeWorkSubTitle: Attribute.String;
-    howWeWorkCard: Attribute.Component<'homepage.how-we-work-card', true>;
     ourCoreValues: Attribute.Component<'homepage.our-core-values'>;
     bookForm: Attribute.Component<'homepage.book-form'>;
     exploreWithIteam: Attribute.Component<'homepage.explore-with-iteam'>;
@@ -958,6 +957,10 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     >;
     coreSection: Attribute.Component<'homepage.core-section'>;
     slider: Attribute.Component<'homepage.slider', true>;
+    howWeWorkComponent: Attribute.Component<
+      'homepage.how-we-work-component',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

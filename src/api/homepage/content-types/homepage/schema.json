@@ -21,12 +21,6 @@
     "howWeWorkSubTitle": {
       "type": "string"
     },
-    "howWeWorkCard": {
-      "displayName": "how-we-work-card",
-      "type": "component",
-      "repeatable": true,
-      "component": "homepage.how-we-work-card"
-    },
     "ourCoreValues": {
       "displayName": "our-core-values",
       "type": "component",
@@ -61,6 +55,12 @@
       "type": "component",
       "repeatable": true,
       "component": "homepage.slider"
+    },
+    "howWeWorkComponent": {
+      "displayName": "howWeWorkComponent",
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.how-we-work-component"
     }
   }
 }

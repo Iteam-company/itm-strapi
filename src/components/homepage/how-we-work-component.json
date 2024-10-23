@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_homepage_how_we_work_components",
+  "info": {
+    "displayName": "howWeWorkComponent"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
