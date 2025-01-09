@@ -11,31 +11,6 @@ export interface TestCommentInfo extends Schema.Component {
   };
 }
 
-export interface PortfolioHero extends Schema.Component {
-  collectionName: 'components_portfolio_heroes';
-  info: {
-    displayName: 'hero';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface PortfolioCeo extends Schema.Component {
-  collectionName: 'components_portfolio_ceos';
-  info: {
-    displayName: 'ceo';
-    description: '';
-  };
-  attributes: {
-    position: Attribute.String;
-    fullName: Attribute.String;
-    imageUrl: Attribute.Text;
-    quote: Attribute.Text;
-  };
-}
-
 export interface ServicesQuote extends Schema.Component {
   collectionName: 'components_services_quotes';
   info: {
@@ -140,26 +115,28 @@ export interface ServicesAdvantageCircles extends Schema.Component {
   };
 }
 
-export interface DevelopmentTechStack extends Schema.Component {
-  collectionName: 'components_development_tech_stacks';
+export interface PortfolioHero extends Schema.Component {
+  collectionName: 'components_portfolio_heroes';
   info: {
-    displayName: 'tech-stack';
+    displayName: 'hero';
   };
   attributes: {
-    text: Attribute.String;
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
   };
 }
 
-export interface DevelopmentTechStackInfo extends Schema.Component {
-  collectionName: 'components_development_tech_stack_infos';
+export interface PortfolioCeo extends Schema.Component {
+  collectionName: 'components_portfolio_ceos';
   info: {
-    displayName: 'tech-stack-info';
+    displayName: 'ceo';
     description: '';
   };
   attributes: {
-    buttonText: Attribute.String;
-    subTitle: Attribute.Text;
-    techStack: Attribute.Component<'development.tech-stack', true>;
+    position: Attribute.String;
+    fullName: Attribute.String;
+    imageUrl: Attribute.Text;
+    quote: Attribute.Text;
   };
 }
 
@@ -430,6 +407,29 @@ export interface HeaderFooterFooterInfoText extends Schema.Component {
   };
 }
 
+export interface DevelopmentTechStack extends Schema.Component {
+  collectionName: 'components_development_tech_stacks';
+  info: {
+    displayName: 'tech-stack';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface DevelopmentTechStackInfo extends Schema.Component {
+  collectionName: 'components_development_tech_stack_infos';
+  info: {
+    displayName: 'tech-stack-info';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    subTitle: Attribute.Text;
+    techStack: Attribute.Component<'development.tech-stack', true>;
+  };
+}
+
 export interface ContactPros extends Schema.Component {
   collectionName: 'components_contact_pros';
   info: {
@@ -516,8 +516,6 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'test.comment-info': TestCommentInfo;
-      'portfolio.hero': PortfolioHero;
-      'portfolio.ceo': PortfolioCeo;
       'services.quote': ServicesQuote;
       'services.pros-list': ServicesProsList;
       'services.project-cases': ServicesProjectCases;
@@ -527,8 +525,8 @@ declare module '@strapi/types' {
       'services.first-pros-list': ServicesFirstProsList;
       'services.comment-info': ServicesCommentInfo;
       'services.advantage-circles': ServicesAdvantageCircles;
-      'development.tech-stack': DevelopmentTechStack;
-      'development.tech-stack-info': DevelopmentTechStackInfo;
+      'portfolio.hero': PortfolioHero;
+      'portfolio.ceo': PortfolioCeo;
       'homepage.tech': HomepageTech;
       'homepage.slider': HomepageSlider;
       'homepage.our-core-values': HomepageOurCoreValues;
@@ -552,6 +550,8 @@ declare module '@strapi/types' {
       'header-footer.header-button': HeaderFooterHeaderButton;
       'header-footer.footer-info': HeaderFooterFooterInfo;
       'header-footer.footer-info-text': HeaderFooterFooterInfoText;
+      'development.tech-stack': DevelopmentTechStack;
+      'development.tech-stack-info': DevelopmentTechStackInfo;
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
