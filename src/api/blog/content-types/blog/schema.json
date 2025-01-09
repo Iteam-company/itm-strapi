@@ -4,7 +4,8 @@
   "info": {
     "singularName": "blog",
     "pluralName": "blogs",
-    "displayName": "Blog"
+    "displayName": "Blog",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,14 +15,24 @@
     "Article": {
       "type": "blocks"
     },
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "PreviewDesription": {
+    "previewDesription": {
       "type": "text"
     },
-    "Category": {
+    "category": {
       "type": "string"
+    },
+    "previewImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

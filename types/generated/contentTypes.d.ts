@@ -840,15 +840,17 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     singularName: 'blog';
     pluralName: 'blogs';
     displayName: 'Blog';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     Article: Attribute.Blocks;
-    Title: Attribute.String;
-    PreviewDesription: Attribute.Text;
-    Category: Attribute.String;
+    title: Attribute.String;
+    previewDesription: Attribute.Text;
+    category: Attribute.String;
+    previewImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
