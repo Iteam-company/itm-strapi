@@ -383,31 +383,6 @@ export interface HeaderFooterFooterInfoText extends Schema.Component {
   };
 }
 
-export interface PortfolioHero extends Schema.Component {
-  collectionName: 'components_portfolio_heroes';
-  info: {
-    displayName: 'hero';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface PortfolioCeo extends Schema.Component {
-  collectionName: 'components_portfolio_ceos';
-  info: {
-    displayName: 'ceo';
-    description: '';
-  };
-  attributes: {
-    position: Attribute.String;
-    fullName: Attribute.String;
-    imageUrl: Attribute.Text;
-    quote: Attribute.Text;
-  };
-}
-
 export interface ContactPros extends Schema.Component {
   collectionName: 'components_contact_pros';
   info: {
@@ -442,6 +417,31 @@ export interface ContactContactForm extends Schema.Component {
     inputPhonePlaceholder: Attribute.String;
     inputEmailPlaceholder: Attribute.String;
     inputMessagePlaceholder: Attribute.String;
+  };
+}
+
+export interface PortfolioHero extends Schema.Component {
+  collectionName: 'components_portfolio_heroes';
+  info: {
+    displayName: 'hero';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface PortfolioCeo extends Schema.Component {
+  collectionName: 'components_portfolio_ceos';
+  info: {
+    displayName: 'ceo';
+    description: '';
+  };
+  attributes: {
+    position: Attribute.String;
+    fullName: Attribute.String;
+    imageUrl: Attribute.Text;
+    quote: Attribute.Text;
   };
 }
 
@@ -549,11 +549,11 @@ declare module '@strapi/types' {
       'header-footer.header-button': HeaderFooterHeaderButton;
       'header-footer.footer-info': HeaderFooterFooterInfo;
       'header-footer.footer-info-text': HeaderFooterFooterInfoText;
-      'portfolio.hero': PortfolioHero;
-      'portfolio.ceo': PortfolioCeo;
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
+      'portfolio.hero': PortfolioHero;
+      'portfolio.ceo': PortfolioCeo;
       'about-us.hero': AboutUsHero;
       'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
       'about-us.comments-info': AboutUsCommentsInfo;
