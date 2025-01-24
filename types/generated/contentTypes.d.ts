@@ -834,6 +834,40 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
   };
 }
 
+export interface ApiArticleGenerationArticleGeneration
+  extends Schema.SingleType {
+  collectionName: 'article_generations';
+  info: {
+    singularName: 'article-generation';
+    pluralName: 'article-generations';
+    displayName: 'ArticleGeneration';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    referenceCategory: Attribute.Component<'test.reference-category', true>;
+    bannedCetagory: Attribute.Component<'test.banned-category', true>;
+    exisitigTitles: Attribute.Component<'test.exisitng-titles', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article-generation.article-generation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article-generation.article-generation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBlogBlog extends Schema.CollectionType {
   collectionName: 'blogs';
   info: {
@@ -1133,6 +1167,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::about-us.about-us': ApiAboutUsAboutUs;
+      'api::article-generation.article-generation': ApiArticleGenerationArticleGeneration;
       'api::blog.blog': ApiBlogBlog;
       'api::contact.contact': ApiContactContact;
       'api::development.development': ApiDevelopmentDevelopment;

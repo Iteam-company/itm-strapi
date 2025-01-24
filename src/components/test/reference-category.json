@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_test_reference_categories",
+  "info": {
+    "displayName": "ReferenceCategory"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

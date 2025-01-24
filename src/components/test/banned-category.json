@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_test_banned_categories",
+  "info": {
+    "displayName": "BannedCategory"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

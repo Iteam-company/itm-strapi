@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_test_exisitng_titles",
+  "info": {
+    "displayName": "ExisitngTitles"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
