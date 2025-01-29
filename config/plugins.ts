@@ -21,30 +21,11 @@ export default ({ env }) => ({
         params: {
           folder: "strapi-assets",
           resource_type: "auto",
-          transformation: {
-            format: {
-              thumbnail: {
-                width: 150,
-                height: 150,
-                crop: "fill",
-              },
-              small: {
-                width: 320,
-                height: 320,
-                crop: "fill",
-              },
-              large: {
-                width: 1000,
-                height: 1000,
-                crop: "fill",
-              },
-            },
-          },
         },
       },
       actionOptions: {
         upload: {},
-        uploadStream: {},
+        uploadStream: { folder: "strapi-assets" },
         delete: {},
       },
     },
