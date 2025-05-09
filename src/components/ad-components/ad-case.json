@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_ad_components_ad_cases",
+  "info": {
+    "displayName": "ad-case",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "location": {
+      "type": "string"
+    },
+    "buttonLink": {
+      "type": "string"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "budget": {
+      "type": "integer"
+    },
+    "icons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.tech"
+    }
+  }
+}

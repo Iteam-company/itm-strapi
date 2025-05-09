@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ads",
+  "info": {
+    "singularName": "ad",
+    "pluralName": "ads",
+    "displayName": "Ad",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "components": {
+      "type": "dynamiczone",
+      "components": [
+        "ad-components.ad-hero",
+        "ad-components.ad-grid-block",
+        "ad-components.ad-case",
+        "ad-components.invitation",
+        "ad-components.ad-code",
+        "portfolio.ceo"
+      ]
+    }
+  }
+}

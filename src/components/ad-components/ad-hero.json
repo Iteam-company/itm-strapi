@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_ad_components_ad_heroes",
+  "info": {
+    "displayName": "ad-hero",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "buttonLink": {
+      "type": "string"
+    },
+    "buttonText": {
+      "type": "string"
+    }
+  }
+}

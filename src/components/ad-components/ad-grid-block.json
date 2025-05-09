@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_ad_components_ad_grid_blocks",
+  "info": {
+    "displayName": "ad-grid-block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "elements": {
+      "displayName": "ad-grid-element",
+      "type": "component",
+      "repeatable": true,
+      "component": "ad-components.ad-grid-element"
+    }
+  }
+}

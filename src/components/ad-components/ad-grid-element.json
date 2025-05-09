@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_ad_components_ad_grid_elements",
+  "info": {
+    "displayName": "ad-grid-element"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    }
+  }
+}

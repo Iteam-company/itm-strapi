@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_ad_components_invitations",
+  "info": {
+    "displayName": "invitation",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "buttonLink": {
+      "type": "string"
+    },
+    "buttonText": {
+      "type": "string"
+    }
+  }
+}

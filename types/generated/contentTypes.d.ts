@@ -834,6 +834,38 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
   };
 }
 
+export interface ApiAdAd extends Schema.CollectionType {
+  collectionName: 'ads';
+  info: {
+    singularName: 'ad';
+    pluralName: 'ads';
+    displayName: 'Ad';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    components: Attribute.DynamicZone<
+      [
+        'ad-components.ad-hero',
+        'ad-components.ad-grid-block',
+        'ad-components.ad-case',
+        'ad-components.invitation',
+        'ad-components.ad-code',
+        'portfolio.ceo'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::ad.ad', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::ad.ad', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiArticleGenerationArticleGeneration
   extends Schema.SingleType {
   collectionName: 'article_generations';
@@ -1167,6 +1199,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::about-us.about-us': ApiAboutUsAboutUs;
+      'api::ad.ad': ApiAdAd;
       'api::article-generation.article-generation': ApiArticleGenerationArticleGeneration;
       'api::blog.blog': ApiBlogBlog;
       'api::contact.contact': ApiContactContact;

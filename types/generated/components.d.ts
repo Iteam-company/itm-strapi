@@ -498,6 +498,106 @@ export interface ContactContactForm extends Schema.Component {
   };
 }
 
+export interface AdComponentsInvitation extends Schema.Component {
+  collectionName: 'components_ad_components_invitations';
+  info: {
+    displayName: 'invitation';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    text: Attribute.String;
+    buttonLink: Attribute.String;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface AdComponentsAdHero extends Schema.Component {
+  collectionName: 'components_ad_components_ad_heroes';
+  info: {
+    displayName: 'ad-hero';
+    description: '';
+  };
+  attributes: {
+    image: Attribute.String;
+    title: Attribute.String;
+    text: Attribute.String;
+    buttonLink: Attribute.String;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface AdComponentsAdGridElement extends Schema.Component {
+  collectionName: 'components_ad_components_ad_grid_elements';
+  info: {
+    displayName: 'ad-grid-element';
+  };
+  attributes: {
+    title: Attribute.String;
+    icon: Attribute.String;
+    text: Attribute.String;
+  };
+}
+
+export interface AdComponentsAdGridBlock extends Schema.Component {
+  collectionName: 'components_ad_components_ad_grid_blocks';
+  info: {
+    displayName: 'ad-grid-block';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    elements: Attribute.Component<'ad-components.ad-grid-element', true>;
+  };
+}
+
+export interface AdComponentsAdCode extends Schema.Component {
+  collectionName: 'components_ad_components_ad_codes';
+  info: {
+    displayName: 'ad-code';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    text: Attribute.String;
+    buttonText: Attribute.String;
+    buttonLink: Attribute.String;
+    code: Attribute.RichText;
+    icons: Attribute.Component<'ad-components.ad-code-icon', true>;
+  };
+}
+
+export interface AdComponentsAdCodeIcon extends Schema.Component {
+  collectionName: 'components_ad_components_ad_code_icons';
+  info: {
+    displayName: 'ad-code-icon';
+  };
+  attributes: {
+    iconName: Attribute.String;
+    label: Attribute.String;
+    name: Attribute.String;
+    src: Attribute.String;
+  };
+}
+
+export interface AdComponentsAdCase extends Schema.Component {
+  collectionName: 'components_ad_components_ad_cases';
+  info: {
+    displayName: 'ad-case';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    location: Attribute.String;
+    buttonLink: Attribute.String;
+    buttonText: Attribute.String;
+    image: Attribute.String;
+    budget: Attribute.Integer;
+    icons: Attribute.Component<'homepage.tech', true>;
+  };
+}
+
 export interface AboutUsHero extends Schema.Component {
   collectionName: 'components_about_us_heroes';
   info: {
@@ -589,6 +689,13 @@ declare module '@strapi/types' {
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
+      'ad-components.invitation': AdComponentsInvitation;
+      'ad-components.ad-hero': AdComponentsAdHero;
+      'ad-components.ad-grid-element': AdComponentsAdGridElement;
+      'ad-components.ad-grid-block': AdComponentsAdGridBlock;
+      'ad-components.ad-code': AdComponentsAdCode;
+      'ad-components.ad-code-icon': AdComponentsAdCodeIcon;
+      'ad-components.ad-case': AdComponentsAdCase;
       'about-us.hero': AboutUsHero;
       'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
       'about-us.comments-info': AboutUsCommentsInfo;

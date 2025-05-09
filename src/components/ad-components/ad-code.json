@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_ad_components_ad_codes",
+  "info": {
+    "displayName": "ad-code",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "buttonLink": {
+      "type": "string"
+    },
+    "code": {
+      "type": "richtext"
+    },
+    "icons": {
+      "displayName": "ad-code-icon",
+      "type": "component",
+      "repeatable": true,
+      "component": "ad-components.ad-code-icon"
+    }
+  }
+}
