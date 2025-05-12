@@ -498,6 +498,19 @@ export interface ContactContactForm extends Schema.Component {
   };
 }
 
+export interface AdComponentsSeo extends Schema.Component {
+  collectionName: 'components_ad_components_seos';
+  info: {
+    displayName: 'seo';
+  };
+  attributes: {
+    title: Attribute.String;
+    category: Attribute.Text;
+    previewDescription: Attribute.Text;
+    previewImage: Attribute.String;
+  };
+}
+
 export interface AdComponentsInvitation extends Schema.Component {
   collectionName: 'components_ad_components_invitations';
   info: {
@@ -531,11 +544,12 @@ export interface AdComponentsAdGridElement extends Schema.Component {
   collectionName: 'components_ad_components_ad_grid_elements';
   info: {
     displayName: 'ad-grid-element';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
-    icon: Attribute.String;
     text: Attribute.String;
+    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -689,6 +703,7 @@ declare module '@strapi/types' {
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
+      'ad-components.seo': AdComponentsSeo;
       'ad-components.invitation': AdComponentsInvitation;
       'ad-components.ad-hero': AdComponentsAdHero;
       'ad-components.ad-grid-element': AdComponentsAdGridElement;

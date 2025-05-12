@@ -22,6 +22,16 @@
         "ad-components.ad-code",
         "portfolio.ceo"
       ]
+    },
+    "Seo": {
+      "displayName": "seo",
+      "type": "component",
+      "repeatable": false,
+      "component": "ad-components.seo"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

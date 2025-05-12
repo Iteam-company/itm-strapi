@@ -856,6 +856,8 @@ export interface ApiAdAd extends Schema.CollectionType {
         'portfolio.ceo'
       ]
     >;
+    Seo: Attribute.Component<'ad-components.seo'>;
+    active: Attribute.Boolean & Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
