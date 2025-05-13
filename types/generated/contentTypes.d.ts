@@ -930,6 +930,38 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
 }
 
+export interface ApiCasePdfCasePdf extends Schema.SingleType {
+  collectionName: 'case_pdfs';
+  info: {
+    singularName: 'case-pdf';
+    pluralName: 'case-pdfs';
+    displayName: 'Case-pdf';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    file: Attribute.Media<'files'>;
+    title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::case-pdf.case-pdf',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::case-pdf.case-pdf',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiContactContact extends Schema.SingleType {
   collectionName: 'contacts';
   info: {
@@ -1205,6 +1237,7 @@ declare module '@strapi/types' {
       'api::ad.ad': ApiAdAd;
       'api::article-generation.article-generation': ApiArticleGenerationArticleGeneration;
       'api::blog.blog': ApiBlogBlog;
+      'api::case-pdf.case-pdf': ApiCasePdfCasePdf;
       'api::contact.contact': ApiContactContact;
       'api::development.development': ApiDevelopmentDevelopment;
       'api::header-footer.header-footer': ApiHeaderFooterHeaderFooter;

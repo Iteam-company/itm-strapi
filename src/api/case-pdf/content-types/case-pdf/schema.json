@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "case_pdfs",
+  "info": {
+    "singularName": "case-pdf",
+    "pluralName": "case-pdfs",
+    "displayName": "Case-pdf",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}
