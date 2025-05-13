@@ -565,6 +565,16 @@ export interface AdComponentsAdGridBlock extends Schema.Component {
   };
 }
 
+export interface AdComponentsAdComments extends Schema.Component {
+  collectionName: 'components_ad_components_ad_comments';
+  info: {
+    displayName: 'ad-comments';
+  };
+  attributes: {
+    comments: Attribute.Component<'about-us.comments-info', true>;
+  };
+}
+
 export interface AdComponentsAdCode extends Schema.Component {
   collectionName: 'components_ad_components_ad_codes';
   info: {
@@ -708,6 +718,7 @@ declare module '@strapi/types' {
       'ad-components.ad-hero': AdComponentsAdHero;
       'ad-components.ad-grid-element': AdComponentsAdGridElement;
       'ad-components.ad-grid-block': AdComponentsAdGridBlock;
+      'ad-components.ad-comments': AdComponentsAdComments;
       'ad-components.ad-code': AdComponentsAdCode;
       'ad-components.ad-code-icon': AdComponentsAdCodeIcon;
       'ad-components.ad-case': AdComponentsAdCase;

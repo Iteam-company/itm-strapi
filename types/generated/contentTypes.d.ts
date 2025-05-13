@@ -853,7 +853,8 @@ export interface ApiAdAd extends Schema.CollectionType {
         'ad-components.ad-case',
         'ad-components.invitation',
         'ad-components.ad-code',
-        'portfolio.ceo'
+        'portfolio.ceo',
+        'ad-components.ad-comments'
       ]
     >;
     Seo: Attribute.Component<'ad-components.seo'>;

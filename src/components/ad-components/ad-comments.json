@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_ad_components_ad_comments",
+  "info": {
+    "displayName": "ad-comments"
+  },
+  "options": {},
+  "attributes": {
+    "comments": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about-us.comments-info"
+    }
+  }
+}
