@@ -10,7 +10,7 @@
       "type": "string"
     },
     "text": {
-      "type": "string"
+      "type": "text"
     },
     "buttonText": {
       "type": "string"
@@ -26,6 +26,10 @@
       "type": "component",
       "repeatable": true,
       "component": "ad-components.ad-code-icon"
+    },
+    "isCodeLong": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

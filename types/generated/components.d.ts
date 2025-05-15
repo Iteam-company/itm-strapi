@@ -583,11 +583,12 @@ export interface AdComponentsAdCode extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
-    text: Attribute.String;
+    text: Attribute.Text;
     buttonText: Attribute.String;
     buttonLink: Attribute.String;
     code: Attribute.RichText;
     icons: Attribute.Component<'ad-components.ad-code-icon', true>;
+    isCodeLong: Attribute.Boolean & Attribute.DefaultTo<false>;
   };
 }
 
