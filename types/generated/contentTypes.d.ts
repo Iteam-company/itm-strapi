@@ -859,6 +859,7 @@ export interface ApiAdAd extends Schema.CollectionType {
     >;
     Seo: Attribute.Component<'ad-components.seo'>;
     active: Attribute.Boolean & Attribute.DefaultTo<true>;
+    uid: Attribute.UID;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
