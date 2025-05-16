@@ -522,6 +522,21 @@ export interface AdComponentsInvitation extends Schema.Component {
     text: Attribute.String;
     buttonLink: Attribute.String;
     buttonText: Attribute.String;
+    downloadFile: Attribute.Component<'ad-components.download-file'>;
+  };
+}
+
+export interface AdComponentsDownloadFile extends Schema.Component {
+  collectionName: 'components_ad_components_download_files';
+  info: {
+    displayName: 'download-file';
+    description: '';
+  };
+  attributes: {
+    file: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    buttonName: Attribute.String;
+    title: Attribute.String;
+    fileName: Attribute.String;
   };
 }
 
@@ -716,6 +731,7 @@ declare module '@strapi/types' {
       'contact.contact-form': ContactContactForm;
       'ad-components.seo': AdComponentsSeo;
       'ad-components.invitation': AdComponentsInvitation;
+      'ad-components.download-file': AdComponentsDownloadFile;
       'ad-components.ad-hero': AdComponentsAdHero;
       'ad-components.ad-grid-element': AdComponentsAdGridElement;
       'ad-components.ad-grid-block': AdComponentsAdGridBlock;

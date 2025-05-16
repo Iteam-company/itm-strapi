@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_ad_components_download_files",
+  "info": {
+    "displayName": "download-file",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "file": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "buttonName": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "fileName": {
+      "type": "string"
+    }
+  }
+}

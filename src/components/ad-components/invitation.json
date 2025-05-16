@@ -17,6 +17,12 @@
     },
     "buttonText": {
       "type": "string"
+    },
+    "downloadFile": {
+      "displayName": "download-file",
+      "type": "component",
+      "repeatable": false,
+      "component": "ad-components.download-file"
     }
   }
 }
