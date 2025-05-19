@@ -4,7 +4,8 @@
   "info": {
     "singularName": "email-submission",
     "pluralName": "email-submissions",
-    "displayName": "EmailSubmission"
+    "displayName": "EmailSubmission",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,9 +14,6 @@
   "attributes": {
     "email": {
       "type": "email"
-    },
-    "date": {
-      "type": "datetime"
     }
   }
 }

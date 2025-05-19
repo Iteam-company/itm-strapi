@@ -170,73 +170,6 @@ export interface PortfolioCeo extends Schema.Component {
   };
 }
 
-export interface HeaderFooterSocialMedia extends Schema.Component {
-  collectionName: 'components_header_footer_social_medias';
-  info: {
-    displayName: 'social-media';
-  };
-  attributes: {
-    href: Attribute.String;
-    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-  };
-}
-
-export interface HeaderFooterOptions extends Schema.Component {
-  collectionName: 'components_header_footer_options';
-  info: {
-    displayName: 'options';
-  };
-  attributes: {
-    option: Attribute.String;
-    href: Attribute.Enumeration<['/outstaff', '/outsource']>;
-  };
-}
-
-export interface HeaderFooterHeader extends Schema.Component {
-  collectionName: 'components_header_footer_headers';
-  info: {
-    displayName: 'header';
-  };
-  attributes: {
-    title: Attribute.String;
-    options: Attribute.Component<'header-footer.options', true>;
-    href: Attribute.String;
-  };
-}
-
-export interface HeaderFooterHeaderButton extends Schema.Component {
-  collectionName: 'components_header_footer_header_buttons';
-  info: {
-    displayName: 'header-button';
-  };
-  attributes: {
-    title: Attribute.String;
-  };
-}
-
-export interface HeaderFooterFooterInfo extends Schema.Component {
-  collectionName: 'components_header_footer_footer_infos';
-  info: {
-    displayName: 'footer-info';
-  };
-  attributes: {
-    title: Attribute.String;
-    footerInfoText: Attribute.Component<'header-footer.footer-info-text', true>;
-  };
-}
-
-export interface HeaderFooterFooterInfoText extends Schema.Component {
-  collectionName: 'components_header_footer_footer_info_texts';
-  info: {
-    displayName: 'footer-info-text';
-    description: '';
-  };
-  attributes: {
-    linkText: Attribute.String;
-    href: Attribute.String;
-  };
-}
-
 export interface HomepageTech extends Schema.Component {
   collectionName: 'components_homepage_teches';
   info: {
@@ -435,6 +368,73 @@ export interface HomepageBookForm extends Schema.Component {
     subTitle: Attribute.String;
     inputPlaceholder: Attribute.String;
     buttonText: Attribute.String;
+  };
+}
+
+export interface HeaderFooterSocialMedia extends Schema.Component {
+  collectionName: 'components_header_footer_social_medias';
+  info: {
+    displayName: 'social-media';
+  };
+  attributes: {
+    href: Attribute.String;
+    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface HeaderFooterOptions extends Schema.Component {
+  collectionName: 'components_header_footer_options';
+  info: {
+    displayName: 'options';
+  };
+  attributes: {
+    option: Attribute.String;
+    href: Attribute.Enumeration<['/outstaff', '/outsource']>;
+  };
+}
+
+export interface HeaderFooterHeader extends Schema.Component {
+  collectionName: 'components_header_footer_headers';
+  info: {
+    displayName: 'header';
+  };
+  attributes: {
+    title: Attribute.String;
+    options: Attribute.Component<'header-footer.options', true>;
+    href: Attribute.String;
+  };
+}
+
+export interface HeaderFooterHeaderButton extends Schema.Component {
+  collectionName: 'components_header_footer_header_buttons';
+  info: {
+    displayName: 'header-button';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
+export interface HeaderFooterFooterInfo extends Schema.Component {
+  collectionName: 'components_header_footer_footer_infos';
+  info: {
+    displayName: 'footer-info';
+  };
+  attributes: {
+    title: Attribute.String;
+    footerInfoText: Attribute.Component<'header-footer.footer-info-text', true>;
+  };
+}
+
+export interface HeaderFooterFooterInfoText extends Schema.Component {
+  collectionName: 'components_header_footer_footer_info_texts';
+  info: {
+    displayName: 'footer-info-text';
+    description: '';
+  };
+  attributes: {
+    linkText: Attribute.String;
+    href: Attribute.String;
   };
 }
 
@@ -701,12 +701,6 @@ declare module '@strapi/types' {
       'services.advantage-circles': ServicesAdvantageCircles;
       'portfolio.hero': PortfolioHero;
       'portfolio.ceo': PortfolioCeo;
-      'header-footer.social-media': HeaderFooterSocialMedia;
-      'header-footer.options': HeaderFooterOptions;
-      'header-footer.header': HeaderFooterHeader;
-      'header-footer.header-button': HeaderFooterHeaderButton;
-      'header-footer.footer-info': HeaderFooterFooterInfo;
-      'header-footer.footer-info-text': HeaderFooterFooterInfoText;
       'homepage.tech': HomepageTech;
       'homepage.slider': HomepageSlider;
       'homepage.our-core-values': HomepageOurCoreValues;
@@ -724,6 +718,12 @@ declare module '@strapi/types' {
       'homepage.card': HomepageCard;
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.book-form': HomepageBookForm;
+      'header-footer.social-media': HeaderFooterSocialMedia;
+      'header-footer.options': HeaderFooterOptions;
+      'header-footer.header': HeaderFooterHeader;
+      'header-footer.header-button': HeaderFooterHeaderButton;
+      'header-footer.footer-info': HeaderFooterFooterInfo;
+      'header-footer.footer-info-text': HeaderFooterFooterInfoText;
       'development.tech-stack': DevelopmentTechStack;
       'development.tech-stack-info': DevelopmentTechStackInfo;
       'contact.pros': ContactPros;

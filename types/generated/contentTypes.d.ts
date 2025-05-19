@@ -1036,13 +1036,13 @@ export interface ApiEmailSubmissionEmailSubmission
     singularName: 'email-submission';
     pluralName: 'email-submissions';
     displayName: 'EmailSubmission';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     email: Attribute.Email;
-    date: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
