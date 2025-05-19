@@ -1043,6 +1043,7 @@ export interface ApiEmailSubmissionEmailSubmission
   };
   attributes: {
     email: Attribute.Email;
+    source: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
