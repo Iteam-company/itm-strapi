@@ -1029,6 +1029,38 @@ export interface ApiDevelopmentDevelopment extends Schema.SingleType {
   };
 }
 
+export interface ApiEmailSubmissionEmailSubmission
+  extends Schema.CollectionType {
+  collectionName: 'email_submissions';
+  info: {
+    singularName: 'email-submission';
+    pluralName: 'email-submissions';
+    displayName: 'EmailSubmission';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email: Attribute.Email;
+    date: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::email-submission.email-submission',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::email-submission.email-submission',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHeaderFooterHeaderFooter extends Schema.SingleType {
   collectionName: 'header_footers';
   info: {
@@ -1241,6 +1273,7 @@ declare module '@strapi/types' {
       'api::case-pdf.case-pdf': ApiCasePdfCasePdf;
       'api::contact.contact': ApiContactContact;
       'api::development.development': ApiDevelopmentDevelopment;
+      'api::email-submission.email-submission': ApiEmailSubmissionEmailSubmission;
       'api::header-footer.header-footer': ApiHeaderFooterHeaderFooter;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;

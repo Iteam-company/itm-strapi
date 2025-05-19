@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "email_submissions",
+  "info": {
+    "singularName": "email-submission",
+    "pluralName": "email-submissions",
+    "displayName": "EmailSubmission"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "date": {
+      "type": "datetime"
+    }
+  }
+}
