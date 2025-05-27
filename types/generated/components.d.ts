@@ -547,7 +547,8 @@ export interface AdComponentsAdHero extends Schema.Component {
     description: '';
   };
   attributes: {
-    image: Attribute.String;
+    image: Attribute.String &
+      Attribute.DefaultTo<'https://i.ibb.co/b8F1tfW/image.png'>;
     title: Attribute.String;
     text: Attribute.String;
     buttonLink: Attribute.String;
@@ -564,7 +565,7 @@ export interface AdComponentsAdGridElement extends Schema.Component {
   attributes: {
     title: Attribute.String;
     text: Attribute.String;
-    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    icon: Attribute.String;
   };
 }
 
