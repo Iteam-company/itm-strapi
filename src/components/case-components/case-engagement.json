@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_case_components_case_engagements",
+  "info": {
+    "displayName": "case-engagement",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "elements": {
+      "displayName": "case-engagement-element",
+      "type": "component",
+      "repeatable": false,
+      "component": "case-components.case-engagement-element"
+    }
+  }
+}

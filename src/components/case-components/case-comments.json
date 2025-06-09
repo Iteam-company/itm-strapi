@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_case_components_case_comments",
+  "info": {
+    "displayName": "case-comments",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "comments": {
+      "displayName": "case-single-comment",
+      "type": "component",
+      "repeatable": true,
+      "component": "case-components.case-single-comment"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_case_components_case_case_elements",
+  "info": {
+    "displayName": "case-case-element",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "budget": {
+      "type": "integer"
+    },
+    "icons": {
+      "type": "json"
+    }
+  }
+}

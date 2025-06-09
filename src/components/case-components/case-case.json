@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_case_components_case_cases",
+  "info": {
+    "displayName": "case-case",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "paragraphs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "case-components.elements"
+    },
+    "image": {
+      "type": "string"
+    },
+    "cases": {
+      "displayName": "case-case-element",
+      "type": "component",
+      "repeatable": true,
+      "component": "case-components.case-case-element"
+    }
+  }
+}

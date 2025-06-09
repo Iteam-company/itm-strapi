@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_case_components_case_grid_elements",
+  "info": {
+    "displayName": "case-grid-element",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    }
+  }
+}

@@ -931,6 +931,46 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
 }
 
+export interface ApiCaseCase extends Schema.CollectionType {
+  collectionName: 'cases';
+  info: {
+    singularName: 'case';
+    pluralName: 'cases';
+    displayName: 'case';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    components: Attribute.DynamicZone<
+      [
+        'case-components.case-hero',
+        'case-components.case-grid',
+        'case-components.case-list',
+        'case-components.case-scroller',
+        'case-components.case-expertise',
+        'case-components.case-faq',
+        'case-components.case-case',
+        'development.tech-stack-info',
+        'case-components.case-engagement',
+        'case-components.case-comments',
+        'case-components.case-contact'
+      ]
+    >;
+    seo: Attribute.Component<'case-components.seo'>;
+    active: Attribute.Boolean;
+    uid: Attribute.UID;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::case.case', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::case.case', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCasePdfCasePdf extends Schema.SingleType {
   collectionName: 'case_pdfs';
   info: {
@@ -1271,6 +1311,7 @@ declare module '@strapi/types' {
       'api::ad.ad': ApiAdAd;
       'api::article-generation.article-generation': ApiArticleGenerationArticleGeneration;
       'api::blog.blog': ApiBlogBlog;
+      'api::case.case': ApiCaseCase;
       'api::case-pdf.case-pdf': ApiCasePdfCasePdf;
       'api::contact.contact': ApiContactContact;
       'api::development.development': ApiDevelopmentDevelopment;

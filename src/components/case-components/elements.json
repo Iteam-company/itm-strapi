@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_case_components_elements",
+  "info": {
+    "displayName": "elements",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "data": {
+      "type": "text"
+    }
+  }
+}

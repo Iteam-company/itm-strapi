@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_case_components_case_single_comments",
+  "info": {
+    "displayName": "case-single-comment",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "linkTitle": {
+      "type": "string"
+    },
+    "rate": {
+      "default": 5,
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_case_components_case_contacts",
+  "info": {
+    "displayName": "case-contact",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "subtitle": {
+      "type": "string"
+    },
+    "buttonTitle": {
+      "type": "string"
+    }
+  }
+}

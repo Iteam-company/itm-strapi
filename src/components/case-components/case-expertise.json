@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_case_components_case_expertises",
+  "info": {
+    "displayName": "case-expertise",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "case-components.elements"
+    }
+  }
+}

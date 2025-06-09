@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_case_components_seos",
+  "info": {
+    "displayName": "seo",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "category": {
+      "type": "text"
+    },
+    "previewDescription": {
+      "type": "text"
+    },
+    "previewImage": {
+      "type": "string"
+    }
+  }
+}

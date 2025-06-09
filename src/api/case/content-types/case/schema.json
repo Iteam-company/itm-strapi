@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cases",
+  "info": {
+    "singularName": "case",
+    "pluralName": "cases",
+    "displayName": "case",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "components": {
+      "type": "dynamiczone",
+      "components": [
+        "case-components.case-hero",
+        "case-components.case-grid",
+        "case-components.case-list",
+        "case-components.case-scroller",
+        "case-components.case-expertise",
+        "case-components.case-faq",
+        "case-components.case-case",
+        "development.tech-stack-info",
+        "case-components.case-engagement",
+        "case-components.case-comments",
+        "case-components.case-contact"
+      ]
+    },
+    "seo": {
+      "displayName": "seo",
+      "type": "component",
+      "repeatable": false,
+      "component": "case-components.seo"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "uid": {
+      "type": "uid"
+    }
+  }
+}

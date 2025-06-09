@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_case_components_case_engagement_elements",
+  "info": {
+    "displayName": "case-engagement-element",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "listElements": {
+      "type": "json"
+    }
+  }
+}

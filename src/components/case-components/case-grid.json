@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_case_components_case_grids",
+  "info": {
+    "displayName": "case-grid",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "elements": {
+      "displayName": "case-grid-element",
+      "type": "component",
+      "repeatable": true,
+      "component": "case-components.case-grid-element"
+    }
+  }
+}

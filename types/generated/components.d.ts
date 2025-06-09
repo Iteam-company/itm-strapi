@@ -498,6 +498,228 @@ export interface ContactContactForm extends Schema.Component {
   };
 }
 
+export interface CaseComponentsSeo extends Schema.Component {
+  collectionName: 'components_case_components_seos';
+  info: {
+    displayName: 'seo';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    category: Attribute.Text;
+    previewDescription: Attribute.Text;
+    previewImage: Attribute.String;
+  };
+}
+
+export interface CaseComponentsElements extends Schema.Component {
+  collectionName: 'components_case_components_elements';
+  info: {
+    displayName: 'elements';
+    description: '';
+  };
+  attributes: {
+    data: Attribute.Text;
+  };
+}
+
+export interface CaseComponentsCaseSingleComment extends Schema.Component {
+  collectionName: 'components_case_components_case_single_comments';
+  info: {
+    displayName: 'case-single-comment';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.String;
+    author: Attribute.String;
+    link: Attribute.String;
+    linkTitle: Attribute.String;
+    rate: Attribute.Integer & Attribute.DefaultTo<5>;
+  };
+}
+
+export interface CaseComponentsCaseScroller extends Schema.Component {
+  collectionName: 'components_case_components_case_scrollers';
+  info: {
+    displayName: 'case-scroller';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    elements: Attribute.Component<'case-components.elements', true>;
+  };
+}
+
+export interface CaseComponentsCaseList extends Schema.Component {
+  collectionName: 'components_case_components_case_lists';
+  info: {
+    displayName: 'case-list';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    topText: Attribute.String;
+    bottomText: Attribute.String;
+    button: Attribute.Component<'case-components.button'>;
+    elements: Attribute.Component<'case-components.elements', true>;
+  };
+}
+
+export interface CaseComponentsCaseHero extends Schema.Component {
+  collectionName: 'components_case_components_case_heroes';
+  info: {
+    displayName: 'case-hero';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    text: Attribute.Text;
+    image: Attribute.String;
+    button: Attribute.Component<'case-components.button'>;
+  };
+}
+
+export interface CaseComponentsCaseGrid extends Schema.Component {
+  collectionName: 'components_case_components_case_grids';
+  info: {
+    displayName: 'case-grid';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    elements: Attribute.Component<'case-components.case-grid-element', true>;
+  };
+}
+
+export interface CaseComponentsCaseGridElement extends Schema.Component {
+  collectionName: 'components_case_components_case_grid_elements';
+  info: {
+    displayName: 'case-grid-element';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    text: Attribute.String;
+    icon: Attribute.String;
+  };
+}
+
+export interface CaseComponentsCaseFaq extends Schema.Component {
+  collectionName: 'components_case_components_case_faqs';
+  info: {
+    displayName: 'case-faq';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    faq: Attribute.Component<'homepage.faq', true>;
+  };
+}
+
+export interface CaseComponentsCaseExpertise extends Schema.Component {
+  collectionName: 'components_case_components_case_expertises';
+  info: {
+    displayName: 'case-expertise';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    text: Attribute.Text;
+    tags: Attribute.Component<'case-components.elements', true>;
+  };
+}
+
+export interface CaseComponentsCaseEngagement extends Schema.Component {
+  collectionName: 'components_case_components_case_engagements';
+  info: {
+    displayName: 'case-engagement';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    elements: Attribute.Component<'case-components.case-engagement-element'>;
+  };
+}
+
+export interface CaseComponentsCaseEngagementElement extends Schema.Component {
+  collectionName: 'components_case_components_case_engagement_elements';
+  info: {
+    displayName: 'case-engagement-element';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    text: Attribute.String;
+    listElements: Attribute.JSON;
+  };
+}
+
+export interface CaseComponentsCaseContact extends Schema.Component {
+  collectionName: 'components_case_components_case_contacts';
+  info: {
+    displayName: 'case-contact';
+    description: '';
+  };
+  attributes: {
+    subtitle: Attribute.String;
+    buttonTitle: Attribute.String;
+  };
+}
+
+export interface CaseComponentsCaseComments extends Schema.Component {
+  collectionName: 'components_case_components_case_comments';
+  info: {
+    displayName: 'case-comments';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    comments: Attribute.Component<'case-components.case-single-comment', true>;
+  };
+}
+
+export interface CaseComponentsCaseCase extends Schema.Component {
+  collectionName: 'components_case_components_case_cases';
+  info: {
+    displayName: 'case-case';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    paragraphs: Attribute.Component<'case-components.elements', true>;
+    image: Attribute.String;
+    cases: Attribute.Component<'case-components.case-case-element', true>;
+  };
+}
+
+export interface CaseComponentsCaseCaseElement extends Schema.Component {
+  collectionName: 'components_case_components_case_case_elements';
+  info: {
+    displayName: 'case-case-element';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.String;
+    location: Attribute.String;
+    budget: Attribute.Integer;
+    icons: Attribute.JSON;
+  };
+}
+
+export interface CaseComponentsButton extends Schema.Component {
+  collectionName: 'components_case_components_buttons';
+  info: {
+    displayName: 'button';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
 export interface AdComponentsSeo extends Schema.Component {
   collectionName: 'components_ad_components_seos';
   info: {
@@ -729,6 +951,23 @@ declare module '@strapi/types' {
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
+      'case-components.seo': CaseComponentsSeo;
+      'case-components.elements': CaseComponentsElements;
+      'case-components.case-single-comment': CaseComponentsCaseSingleComment;
+      'case-components.case-scroller': CaseComponentsCaseScroller;
+      'case-components.case-list': CaseComponentsCaseList;
+      'case-components.case-hero': CaseComponentsCaseHero;
+      'case-components.case-grid': CaseComponentsCaseGrid;
+      'case-components.case-grid-element': CaseComponentsCaseGridElement;
+      'case-components.case-faq': CaseComponentsCaseFaq;
+      'case-components.case-expertise': CaseComponentsCaseExpertise;
+      'case-components.case-engagement': CaseComponentsCaseEngagement;
+      'case-components.case-engagement-element': CaseComponentsCaseEngagementElement;
+      'case-components.case-contact': CaseComponentsCaseContact;
+      'case-components.case-comments': CaseComponentsCaseComments;
+      'case-components.case-case': CaseComponentsCaseCase;
+      'case-components.case-case-element': CaseComponentsCaseCaseElement;
+      'case-components.button': CaseComponentsButton;
       'ad-components.seo': AdComponentsSeo;
       'ad-components.invitation': AdComponentsInvitation;
       'ad-components.download-file': AdComponentsDownloadFile;

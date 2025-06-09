@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_case_components_case_heroes",
+  "info": {
+    "displayName": "case-hero",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "image": {
+      "type": "string"
+    },
+    "button": {
+      "displayName": "button",
+      "type": "component",
+      "repeatable": false,
+      "component": "case-components.button"
+    }
+  }
+}

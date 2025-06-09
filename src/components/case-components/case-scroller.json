@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_case_components_case_scrollers",
+  "info": {
+    "displayName": "case-scroller",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "elements": {
+      "type": "component",
+      "repeatable": true,
+      "component": "case-components.elements"
+    }
+  }
+}

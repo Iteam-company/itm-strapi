@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_case_components_case_faqs",
+  "info": {
+    "displayName": "case-faq",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "faq": {
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.faq"
+    }
+  }
+}
