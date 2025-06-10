@@ -12,7 +12,7 @@
     "elements": {
       "displayName": "case-engagement-element",
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "case-components.case-engagement-element"
     }
   }
