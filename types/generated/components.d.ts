@@ -1,46 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface TestReferenceCategory extends Schema.Component {
-  collectionName: 'components_test_reference_categories';
-  info: {
-    displayName: 'ReferenceCategory';
-  };
-  attributes: {
-    name: Attribute.String;
-  };
-}
-
-export interface TestExisitngTitles extends Schema.Component {
-  collectionName: 'components_test_exisitng_titles';
-  info: {
-    displayName: 'ExisitngTitles';
-  };
-  attributes: {
-    name: Attribute.String;
-  };
-}
-
-export interface TestCommentInfo extends Schema.Component {
-  collectionName: 'components_test_comment_infos';
-  info: {
-    displayName: 'CommentInfo';
-    description: '';
-  };
-  attributes: {
-    sometext: Attribute.String;
-  };
-}
-
-export interface TestBannedCategory extends Schema.Component {
-  collectionName: 'components_test_banned_categories';
-  info: {
-    displayName: 'BannedCategory';
-  };
-  attributes: {
-    name: Attribute.String;
-  };
-}
-
 export interface ServicesQuote extends Schema.Component {
   collectionName: 'components_services_quotes';
   info: {
@@ -167,6 +126,47 @@ export interface PortfolioCeo extends Schema.Component {
     fullName: Attribute.String;
     imageUrl: Attribute.Text;
     quote: Attribute.Text;
+  };
+}
+
+export interface TestReferenceCategory extends Schema.Component {
+  collectionName: 'components_test_reference_categories';
+  info: {
+    displayName: 'ReferenceCategory';
+  };
+  attributes: {
+    name: Attribute.String;
+  };
+}
+
+export interface TestExisitngTitles extends Schema.Component {
+  collectionName: 'components_test_exisitng_titles';
+  info: {
+    displayName: 'ExisitngTitles';
+  };
+  attributes: {
+    name: Attribute.String;
+  };
+}
+
+export interface TestCommentInfo extends Schema.Component {
+  collectionName: 'components_test_comment_infos';
+  info: {
+    displayName: 'CommentInfo';
+    description: '';
+  };
+  attributes: {
+    sometext: Attribute.String;
+  };
+}
+
+export interface TestBannedCategory extends Schema.Component {
+  collectionName: 'components_test_banned_categories';
+  info: {
+    displayName: 'BannedCategory';
+  };
+  attributes: {
+    name: Attribute.String;
   };
 }
 
@@ -692,7 +692,7 @@ export interface CaseComponentsCaseCase extends Schema.Component {
     paragraphs: Attribute.Component<'case-components.elements', true>;
     image: Attribute.String;
     cases: Attribute.Component<'case-components.case-case-element', true>;
-    button: Attribute.Component<'case-components.button', true>;
+    button: Attribute.Component<'case-components.button'>;
   };
 }
 
@@ -913,10 +913,6 @@ export interface AboutUsCommentsInfo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'test.reference-category': TestReferenceCategory;
-      'test.exisitng-titles': TestExisitngTitles;
-      'test.comment-info': TestCommentInfo;
-      'test.banned-category': TestBannedCategory;
       'services.quote': ServicesQuote;
       'services.pros-list': ServicesProsList;
       'services.project-cases': ServicesProjectCases;
@@ -928,6 +924,10 @@ declare module '@strapi/types' {
       'services.advantage-circles': ServicesAdvantageCircles;
       'portfolio.hero': PortfolioHero;
       'portfolio.ceo': PortfolioCeo;
+      'test.reference-category': TestReferenceCategory;
+      'test.exisitng-titles': TestExisitngTitles;
+      'test.comment-info': TestCommentInfo;
+      'test.banned-category': TestBannedCategory;
       'homepage.tech': HomepageTech;
       'homepage.slider': HomepageSlider;
       'homepage.our-core-values': HomepageOurCoreValues;
