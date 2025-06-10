@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_case_components_case_faq_els",
+  "info": {
+    "displayName": "case-faq-el",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}

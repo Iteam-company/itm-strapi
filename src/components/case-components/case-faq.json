@@ -10,9 +10,10 @@
       "type": "string"
     },
     "faq": {
+      "displayName": "case-faq-el",
       "type": "component",
-      "repeatable": true,
-      "component": "homepage.faq"
+      "repeatable": false,
+      "component": "case-components.case-faq-el"
     }
   }
 }

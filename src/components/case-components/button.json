@@ -11,6 +11,32 @@
     },
     "link": {
       "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "navigate",
+        "download",
+        "calendly"
+      ],
+      "required": true
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fileName": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }
