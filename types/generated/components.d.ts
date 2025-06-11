@@ -612,7 +612,7 @@ export interface CaseComponentsCaseFaq extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
-    faq: Attribute.Component<'case-components.case-faq-el'>;
+    faq: Attribute.Component<'case-components.case-faq-el', true>;
   };
 }
 
