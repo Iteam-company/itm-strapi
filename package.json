@@ -24,6 +24,12 @@
     "strapi-plugin-populate-deep": "^3.0.1",
     "styled-components": "5.3.3"
   },
+  "resolutions": {
+		"@types/minimatch": "5.1.2"
+	},
+  "overrides": {
+		"@types/minimatch": "5.1.2"
+	},
   "author": {
     "name": "A Strapi developer"
   },
