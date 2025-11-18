@@ -42,6 +42,9 @@
     },
     "year": {
       "type": "string"
+    },
+    "uid": {
+      "type": "uid"
     }
   }
 }

@@ -1235,6 +1235,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     imageLink: Attribute.Text;
     heroText: Attribute.String;
     year: Attribute.String;
+    uid: Attribute.UID;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
