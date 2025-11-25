@@ -371,29 +371,6 @@ export interface HomepageBookForm extends Schema.Component {
   };
 }
 
-export interface DevelopmentTechStack extends Schema.Component {
-  collectionName: 'components_development_tech_stacks';
-  info: {
-    displayName: 'tech-stack';
-  };
-  attributes: {
-    text: Attribute.String;
-  };
-}
-
-export interface DevelopmentTechStackInfo extends Schema.Component {
-  collectionName: 'components_development_tech_stack_infos';
-  info: {
-    displayName: 'tech-stack-info';
-    description: '';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    subTitle: Attribute.Text;
-    techStack: Attribute.Component<'development.tech-stack', true>;
-  };
-}
-
 export interface HeaderFooterSocialMedia extends Schema.Component {
   collectionName: 'components_header_footer_social_medias';
   info: {
@@ -458,6 +435,29 @@ export interface HeaderFooterFooterInfoText extends Schema.Component {
   attributes: {
     linkText: Attribute.String;
     href: Attribute.String;
+  };
+}
+
+export interface DevelopmentTechStack extends Schema.Component {
+  collectionName: 'components_development_tech_stacks';
+  info: {
+    displayName: 'tech-stack';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface DevelopmentTechStackInfo extends Schema.Component {
+  collectionName: 'components_development_tech_stack_infos';
+  info: {
+    displayName: 'tech-stack-info';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    subTitle: Attribute.Text;
+    techStack: Attribute.Component<'development.tech-stack', true>;
   };
 }
 
@@ -742,147 +742,6 @@ export interface CaseComponentsButton extends Schema.Component {
   };
 }
 
-export interface AdComponentsSeo extends Schema.Component {
-  collectionName: 'components_ad_components_seos';
-  info: {
-    displayName: 'seo';
-  };
-  attributes: {
-    title: Attribute.String;
-    category: Attribute.Text;
-    previewDescription: Attribute.Text;
-    previewImage: Attribute.String;
-  };
-}
-
-export interface AdComponentsInvitation extends Schema.Component {
-  collectionName: 'components_ad_components_invitations';
-  info: {
-    displayName: 'invitation';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    text: Attribute.String;
-    buttonLink: Attribute.String;
-    buttonText: Attribute.String;
-    downloadFile: Attribute.Component<'ad-components.download-file'>;
-  };
-}
-
-export interface AdComponentsDownloadFile extends Schema.Component {
-  collectionName: 'components_ad_components_download_files';
-  info: {
-    displayName: 'download-file';
-    description: '';
-  };
-  attributes: {
-    file: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    buttonName: Attribute.String;
-    title: Attribute.String;
-    fileName: Attribute.String;
-  };
-}
-
-export interface AdComponentsAdHero extends Schema.Component {
-  collectionName: 'components_ad_components_ad_heroes';
-  info: {
-    displayName: 'ad-hero';
-    description: '';
-  };
-  attributes: {
-    image: Attribute.String &
-      Attribute.DefaultTo<'https://i.ibb.co/b8F1tfW/image.png'>;
-    title: Attribute.String;
-    text: Attribute.String;
-    buttonLink: Attribute.String;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface AdComponentsAdGridElement extends Schema.Component {
-  collectionName: 'components_ad_components_ad_grid_elements';
-  info: {
-    displayName: 'ad-grid-element';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    text: Attribute.String;
-    icon: Attribute.String;
-  };
-}
-
-export interface AdComponentsAdGridBlock extends Schema.Component {
-  collectionName: 'components_ad_components_ad_grid_blocks';
-  info: {
-    displayName: 'ad-grid-block';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    elements: Attribute.Component<'ad-components.ad-grid-element', true>;
-  };
-}
-
-export interface AdComponentsAdComments extends Schema.Component {
-  collectionName: 'components_ad_components_ad_comments';
-  info: {
-    displayName: 'ad-comments';
-  };
-  attributes: {
-    comments: Attribute.Component<'about-us.comments-info', true>;
-  };
-}
-
-export interface AdComponentsAdCode extends Schema.Component {
-  collectionName: 'components_ad_components_ad_codes';
-  info: {
-    displayName: 'ad-code';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    text: Attribute.Text;
-    buttonText: Attribute.String;
-    buttonLink: Attribute.String;
-    code: Attribute.RichText;
-    icons: Attribute.Component<'ad-components.ad-code-icon', true>;
-    isCodeLong: Attribute.Boolean & Attribute.DefaultTo<false>;
-  };
-}
-
-export interface AdComponentsAdCodeIcon extends Schema.Component {
-  collectionName: 'components_ad_components_ad_code_icons';
-  info: {
-    displayName: 'ad-code-icon';
-  };
-  attributes: {
-    iconName: Attribute.String;
-    label: Attribute.String;
-    name: Attribute.String;
-    src: Attribute.String;
-  };
-}
-
-export interface AdComponentsAdCase extends Schema.Component {
-  collectionName: 'components_ad_components_ad_cases';
-  info: {
-    displayName: 'ad-case';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    location: Attribute.String;
-    buttonLink: Attribute.String;
-    buttonText: Attribute.String;
-    image: Attribute.String;
-    budget: Attribute.Integer;
-    icons: Attribute.Component<'homepage.tech', true>;
-  };
-}
-
 export interface AboutUsHero extends Schema.Component {
   collectionName: 'components_about_us_heroes';
   info: {
@@ -963,14 +822,14 @@ declare module '@strapi/types' {
       'homepage.card': HomepageCard;
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.book-form': HomepageBookForm;
-      'development.tech-stack': DevelopmentTechStack;
-      'development.tech-stack-info': DevelopmentTechStackInfo;
       'header-footer.social-media': HeaderFooterSocialMedia;
       'header-footer.options': HeaderFooterOptions;
       'header-footer.header': HeaderFooterHeader;
       'header-footer.header-button': HeaderFooterHeaderButton;
       'header-footer.footer-info': HeaderFooterFooterInfo;
       'header-footer.footer-info-text': HeaderFooterFooterInfoText;
+      'development.tech-stack': DevelopmentTechStack;
+      'development.tech-stack-info': DevelopmentTechStackInfo;
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
@@ -992,16 +851,6 @@ declare module '@strapi/types' {
       'case-components.case-case': CaseComponentsCaseCase;
       'case-components.case-case-element': CaseComponentsCaseCaseElement;
       'case-components.button': CaseComponentsButton;
-      'ad-components.seo': AdComponentsSeo;
-      'ad-components.invitation': AdComponentsInvitation;
-      'ad-components.download-file': AdComponentsDownloadFile;
-      'ad-components.ad-hero': AdComponentsAdHero;
-      'ad-components.ad-grid-element': AdComponentsAdGridElement;
-      'ad-components.ad-grid-block': AdComponentsAdGridBlock;
-      'ad-components.ad-comments': AdComponentsAdComments;
-      'ad-components.ad-code': AdComponentsAdCode;
-      'ad-components.ad-code-icon': AdComponentsAdCodeIcon;
-      'ad-components.ad-case': AdComponentsAdCase;
       'about-us.hero': AboutUsHero;
       'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
       'about-us.comments-info': AboutUsCommentsInfo;
