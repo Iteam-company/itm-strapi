@@ -1236,6 +1236,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     heroText: Attribute.String;
     year: Attribute.String;
     uid: Attribute.UID;
+    seo: Attribute.Component<'case-components.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

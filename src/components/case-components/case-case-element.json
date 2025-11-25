@@ -23,6 +23,9 @@
     },
     "icons": {
       "type": "json"
+    },
+    "link": {
+      "type": "string"
     }
   }
 }

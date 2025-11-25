@@ -45,6 +45,11 @@
     },
     "uid": {
       "type": "uid"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "case-components.seo"
     }
   }
 }
