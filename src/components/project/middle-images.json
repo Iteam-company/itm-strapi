@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_project_middle_images",
+  "info": {
+    "displayName": "middleImages"
+  },
+  "options": {},
+  "attributes": {
+    "bigFirst": {
+      "type": "string"
+    },
+    "bigSecond": {
+      "type": "string"
+    },
+    "small": {
+      "type": "string"
+    },
+    "alt": {
+      "type": "string"
+    }
+  }
+}

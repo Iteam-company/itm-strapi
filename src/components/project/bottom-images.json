@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_project_bottom_images",
+  "info": {
+    "displayName": "bottomImages"
+  },
+  "options": {},
+  "attributes": {
+    "laptop": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "alt": {
+      "type": "string"
+    }
+  }
+}

@@ -50,6 +50,18 @@
       "type": "component",
       "repeatable": false,
       "component": "case-components.seo"
+    },
+    "middleImages": {
+      "displayName": "middleImages",
+      "type": "component",
+      "repeatable": false,
+      "component": "project.middle-images"
+    },
+    "bottomImages": {
+      "displayName": "bottomImages",
+      "type": "component",
+      "repeatable": false,
+      "component": "project.bottom-images"
     }
   }
 }

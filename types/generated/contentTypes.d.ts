@@ -1201,6 +1201,8 @@ export interface ApiProjectProject extends Schema.CollectionType {
     year: Attribute.String;
     uid: Attribute.UID;
     seo: Attribute.Component<'case-components.seo'>;
+    middleImages: Attribute.Component<'project.middle-images'>;
+    bottomImages: Attribute.Component<'project.bottom-images'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
