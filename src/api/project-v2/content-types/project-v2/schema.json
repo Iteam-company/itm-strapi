@@ -97,6 +97,16 @@
     },
     "uid": {
       "type": "uid"
+    },
+    "heroMedia": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

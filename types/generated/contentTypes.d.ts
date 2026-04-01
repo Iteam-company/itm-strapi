@@ -1260,6 +1260,7 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
       'images' | 'files' | 'videos' | 'audios'
     >;
     uid: Attribute.UID;
+    heroMedia: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

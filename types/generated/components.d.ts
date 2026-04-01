@@ -41,28 +41,74 @@ export interface TestBannedCategory extends Schema.Component {
   };
 }
 
-export interface PortfolioHero extends Schema.Component {
-  collectionName: 'components_portfolio_heroes';
+export interface ProjectTheCallengeCards extends Schema.Component {
+  collectionName: 'components_project_the_callenge_cards';
   info: {
-    displayName: 'hero';
+    displayName: 'TheCallengeCards';
   };
   attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.Text;
+    index: Attribute.Integer;
   };
 }
 
-export interface PortfolioCeo extends Schema.Component {
-  collectionName: 'components_portfolio_ceos';
+export interface ProjectProductExpirienceFeatures extends Schema.Component {
+  collectionName: 'components_project_product_expirience_features';
   info: {
-    displayName: 'ceo';
+    displayName: 'ProductExpirienceFeatures';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+  };
+}
+
+export interface ProjectMiddleImages extends Schema.Component {
+  collectionName: 'components_project_middle_images';
+  info: {
+    displayName: 'middleImages';
+  };
+  attributes: {
+    bigFirst: Attribute.String;
+    bigSecond: Attribute.String;
+    small: Attribute.String;
+    alt: Attribute.String;
+  };
+}
+
+export interface ProjectHeroSecondaryAction extends Schema.Component {
+  collectionName: 'components_project_hero_secondary_actions';
+  info: {
+    displayName: 'heroSecondaryAction';
     description: '';
   };
   attributes: {
-    position: Attribute.String;
-    fullName: Attribute.String;
-    imageUrl: Attribute.Text;
-    quote: Attribute.Text;
+    label: Attribute.String;
+    href: Attribute.Text;
+  };
+}
+
+export interface ProjectHeroBtns extends Schema.Component {
+  collectionName: 'components_project_hero_btns';
+  info: {
+    displayName: 'heroBtns';
+  };
+  attributes: {
+    label: Attribute.String;
+    href: Attribute.String;
+  };
+}
+
+export interface ProjectBottomImages extends Schema.Component {
+  collectionName: 'components_project_bottom_images';
+  info: {
+    displayName: 'bottomImages';
+  };
+  attributes: {
+    laptop: Attribute.String;
+    phone: Attribute.String;
+    alt: Attribute.String;
   };
 }
 
@@ -167,6 +213,31 @@ export interface ServicesAdvantageCircles extends Schema.Component {
   attributes: {
     title: Attribute.String;
     hiddenText: Attribute.String;
+  };
+}
+
+export interface PortfolioHero extends Schema.Component {
+  collectionName: 'components_portfolio_heroes';
+  info: {
+    displayName: 'hero';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface PortfolioCeo extends Schema.Component {
+  collectionName: 'components_portfolio_ceos';
+  info: {
+    displayName: 'ceo';
+    description: '';
+  };
+  attributes: {
+    position: Attribute.String;
+    fullName: Attribute.String;
+    imageUrl: Attribute.Text;
+    quote: Attribute.Text;
   };
 }
 
@@ -368,77 +439,6 @@ export interface HomepageBookForm extends Schema.Component {
     subTitle: Attribute.String;
     inputPlaceholder: Attribute.String;
     buttonText: Attribute.String;
-  };
-}
-
-export interface ProjectTheCallengeCards extends Schema.Component {
-  collectionName: 'components_project_the_callenge_cards';
-  info: {
-    displayName: 'TheCallengeCards';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    index: Attribute.Integer;
-  };
-}
-
-export interface ProjectProductExpirienceFeatures extends Schema.Component {
-  collectionName: 'components_project_product_expirience_features';
-  info: {
-    displayName: 'ProductExpirienceFeatures';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-  };
-}
-
-export interface ProjectMiddleImages extends Schema.Component {
-  collectionName: 'components_project_middle_images';
-  info: {
-    displayName: 'middleImages';
-  };
-  attributes: {
-    bigFirst: Attribute.String;
-    bigSecond: Attribute.String;
-    small: Attribute.String;
-    alt: Attribute.String;
-  };
-}
-
-export interface ProjectHeroSecondaryAction extends Schema.Component {
-  collectionName: 'components_project_hero_secondary_actions';
-  info: {
-    displayName: 'heroSecondaryAction';
-    description: '';
-  };
-  attributes: {
-    label: Attribute.String;
-    href: Attribute.Text;
-  };
-}
-
-export interface ProjectHeroBtns extends Schema.Component {
-  collectionName: 'components_project_hero_btns';
-  info: {
-    displayName: 'heroBtns';
-  };
-  attributes: {
-    label: Attribute.String;
-    href: Attribute.String;
-  };
-}
-
-export interface ProjectBottomImages extends Schema.Component {
-  collectionName: 'components_project_bottom_images';
-  info: {
-    displayName: 'bottomImages';
-  };
-  attributes: {
-    laptop: Attribute.String;
-    phone: Attribute.String;
-    alt: Attribute.String;
   };
 }
 
@@ -865,8 +865,12 @@ declare module '@strapi/types' {
       'test.exisitng-titles': TestExisitngTitles;
       'test.comment-info': TestCommentInfo;
       'test.banned-category': TestBannedCategory;
-      'portfolio.hero': PortfolioHero;
-      'portfolio.ceo': PortfolioCeo;
+      'project.the-callenge-cards': ProjectTheCallengeCards;
+      'project.product-expirience-features': ProjectProductExpirienceFeatures;
+      'project.middle-images': ProjectMiddleImages;
+      'project.hero-secondary-action': ProjectHeroSecondaryAction;
+      'project.hero-btns': ProjectHeroBtns;
+      'project.bottom-images': ProjectBottomImages;
       'services.quote': ServicesQuote;
       'services.pros-list': ServicesProsList;
       'services.project-cases': ServicesProjectCases;
@@ -876,6 +880,8 @@ declare module '@strapi/types' {
       'services.first-pros-list': ServicesFirstProsList;
       'services.comment-info': ServicesCommentInfo;
       'services.advantage-circles': ServicesAdvantageCircles;
+      'portfolio.hero': PortfolioHero;
+      'portfolio.ceo': PortfolioCeo;
       'homepage.tech': HomepageTech;
       'homepage.slider': HomepageSlider;
       'homepage.our-core-values': HomepageOurCoreValues;
@@ -893,12 +899,6 @@ declare module '@strapi/types' {
       'homepage.card': HomepageCard;
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.book-form': HomepageBookForm;
-      'project.the-callenge-cards': ProjectTheCallengeCards;
-      'project.product-expirience-features': ProjectProductExpirienceFeatures;
-      'project.middle-images': ProjectMiddleImages;
-      'project.hero-secondary-action': ProjectHeroSecondaryAction;
-      'project.hero-btns': ProjectHeroBtns;
-      'project.bottom-images': ProjectBottomImages;
       'header-footer.social-media': HeaderFooterSocialMedia;
       'header-footer.options': HeaderFooterOptions;
       'header-footer.header': HeaderFooterHeader;
