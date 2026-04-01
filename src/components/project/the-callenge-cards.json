@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_project_the_callenge_cards",
+  "info": {
+    "displayName": "TheCallengeCards"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "index": {
+      "type": "integer"
+    }
+  }
+}

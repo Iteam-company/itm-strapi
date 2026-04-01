@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_project_hero_secondary_actions",
+  "info": {
+    "displayName": "heroSecondaryAction",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "text"
+    }
+  }
+}

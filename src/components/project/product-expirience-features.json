@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_project_product_expirience_features",
+  "info": {
+    "displayName": "ProductExpirienceFeatures"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_project_hero_btns",
+  "info": {
+    "displayName": "heroBtns"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}

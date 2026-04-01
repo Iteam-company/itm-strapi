@@ -1221,6 +1221,59 @@ export interface ApiProjectProject extends Schema.CollectionType {
   };
 }
 
+export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
+  collectionName: 'project_v2s';
+  info: {
+    singularName: 'project-v2';
+    pluralName: 'project-v2s';
+    displayName: 'ProjectV2';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heroAccentTitle: Attribute.String;
+    heroTitle: Attribute.String;
+    heroDescription: Attribute.String;
+    heroPrimaryAction: Attribute.Component<'project.hero-btns'>;
+    overviewTitle: Attribute.String;
+    overviewAccentTitle: Attribute.String;
+    overviewDescriptionOne: Attribute.Text;
+    overviewDescriptionTwo: Attribute.Text;
+    overviewDescriptionThree: Attribute.String;
+    theChallengeTitle: Attribute.String;
+    theChallengeAccentTitle: Attribute.String;
+    theChallengeDescription: Attribute.Text;
+    theChallengeCards: Attribute.Component<'project.the-callenge-cards', true>;
+    productExpirienceTitle: Attribute.String;
+    productExpirienceAccentTitle: Attribute.String;
+    productExpirienceDescription: Attribute.Text;
+    productExpiriencePlatformLabel: Attribute.String;
+    productExpirienceDashboardTitle: Attribute.String;
+    productExpirienceFeatures: Attribute.Component<
+      'project.product-expirience-features',
+      true
+    >;
+    heroSecondaryAction: Attribute.Component<'project.hero-secondary-action'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project-v2.project-v2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project-v2.project-v2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiServiceService extends Schema.SingleType {
   collectionName: 'services';
   info: {
@@ -1287,6 +1340,7 @@ declare module '@strapi/types' {
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::project.project': ApiProjectProject;
+      'api::project-v2.project-v2': ApiProjectV2ProjectV2;
       'api::service.service': ApiServiceService;
     }
   }

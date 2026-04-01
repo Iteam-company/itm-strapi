@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_v2s",
+  "info": {
+    "singularName": "project-v2",
+    "pluralName": "project-v2s",
+    "displayName": "ProjectV2",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroAccentTitle": {
+      "type": "string"
+    },
+    "heroTitle": {
+      "type": "string"
+    },
+    "heroDescription": {
+      "type": "string"
+    },
+    "heroPrimaryAction": {
+      "displayName": "heroBtns",
+      "type": "component",
+      "repeatable": false,
+      "component": "project.hero-btns"
+    },
+    "overviewTitle": {
+      "type": "string"
+    },
+    "overviewAccentTitle": {
+      "type": "string"
+    },
+    "overviewDescriptionOne": {
+      "type": "text"
+    },
+    "overviewDescriptionTwo": {
+      "type": "text"
+    },
+    "overviewDescriptionThree": {
+      "type": "string"
+    },
+    "theChallengeTitle": {
+      "type": "string"
+    },
+    "theChallengeAccentTitle": {
+      "type": "string"
+    },
+    "theChallengeDescription": {
+      "type": "text"
+    },
+    "theChallengeCards": {
+      "displayName": "TheCallengeCards",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.the-callenge-cards"
+    },
+    "productExpirienceTitle": {
+      "type": "string"
+    },
+    "productExpirienceAccentTitle": {
+      "type": "string"
+    },
+    "productExpirienceDescription": {
+      "type": "text"
+    },
+    "productExpiriencePlatformLabel": {
+      "type": "string"
+    },
+    "productExpirienceDashboardTitle": {
+      "type": "string"
+    },
+    "productExpirienceFeatures": {
+      "displayName": "ProductExpirienceFeatures",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.product-expirience-features"
+    },
+    "heroSecondaryAction": {
+      "displayName": "heroSecondaryAction",
+      "type": "component",
+      "repeatable": false,
+      "component": "project.hero-secondary-action"
+    }
+  }
+}
