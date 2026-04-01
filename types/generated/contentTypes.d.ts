@@ -1246,16 +1246,20 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
     theChallengeAccentTitle: Attribute.String;
     theChallengeDescription: Attribute.Text;
     theChallengeCards: Attribute.Component<'project.the-callenge-cards', true>;
-    productExpirienceTitle: Attribute.String;
-    productExpirienceAccentTitle: Attribute.String;
-    productExpirienceDescription: Attribute.Text;
-    productExpiriencePlatformLabel: Attribute.String;
-    productExpirienceDashboardTitle: Attribute.String;
-    productExpirienceFeatures: Attribute.Component<
+    productExperienceTitle: Attribute.String;
+    productExperienceAccentTitle: Attribute.String;
+    productExperienceDescription: Attribute.Text;
+    productExperiencePlatformLabel: Attribute.String;
+    productExperienceDashboardTitle: Attribute.String;
+    productExperienceFeatures: Attribute.Component<
       'project.product-expirience-features',
       true
     >;
     heroSecondaryAction: Attribute.Component<'project.hero-secondary-action'>;
+    ProductExperienceMedia: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    uid: Attribute.UID;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

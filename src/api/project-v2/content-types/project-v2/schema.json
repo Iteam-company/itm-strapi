@@ -57,22 +57,22 @@
       "repeatable": true,
       "component": "project.the-callenge-cards"
     },
-    "productExpirienceTitle": {
+    "productExperienceTitle": {
       "type": "string"
     },
-    "productExpirienceAccentTitle": {
+    "productExperienceAccentTitle": {
       "type": "string"
     },
-    "productExpirienceDescription": {
+    "productExperienceDescription": {
       "type": "text"
     },
-    "productExpiriencePlatformLabel": {
+    "productExperiencePlatformLabel": {
       "type": "string"
     },
-    "productExpirienceDashboardTitle": {
+    "productExperienceDashboardTitle": {
       "type": "string"
     },
-    "productExpirienceFeatures": {
+    "productExperienceFeatures": {
       "displayName": "ProductExpirienceFeatures",
       "type": "component",
       "repeatable": true,
@@ -83,6 +83,20 @@
       "type": "component",
       "repeatable": false,
       "component": "project.hero-secondary-action"
+    },
+    "ProductExperienceMedia": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "uid": {
+      "type": "uid"
     }
   }
 }
