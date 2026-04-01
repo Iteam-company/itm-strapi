@@ -99,14 +99,30 @@
       "type": "uid"
     },
     "heroMedia": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "CoreFeaturesTitle": {
+      "type": "string"
+    },
+    "CoreFeaturesAccentTitle": {
+      "type": "text"
+    },
+    "CoreFeaturesDescription": {
+      "type": "text"
+    },
+    "CoreFeaturesCards": {
+      "displayName": "CoreFeaturesCard",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.core-features-card"
     }
   }
 }

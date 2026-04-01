@@ -1261,6 +1261,10 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
     >;
     uid: Attribute.UID;
     heroMedia: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    CoreFeaturesTitle: Attribute.String;
+    CoreFeaturesAccentTitle: Attribute.Text;
+    CoreFeaturesDescription: Attribute.Text;
+    CoreFeaturesCards: Attribute.Component<'project.core-features-card', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

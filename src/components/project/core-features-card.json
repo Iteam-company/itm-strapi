@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_project_core_features_cards",
+  "info": {
+    "displayName": "CoreFeaturesCard"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "tags": {
+      "displayName": "tags",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.tags"
+    }
+  }
+}
