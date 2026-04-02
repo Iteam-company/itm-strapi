@@ -123,6 +123,36 @@
       "type": "component",
       "repeatable": true,
       "component": "project.core-features-card"
+    },
+    "OurApproachTitle": {
+      "type": "string"
+    },
+    "OurApproachAccentTitle": {
+      "type": "text"
+    },
+    "OurApproachDescription": {
+      "type": "text"
+    },
+    "OurApproachCards": {
+      "displayName": "OurApproachCards",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.our-approach-cards"
+    },
+    "DevelopmentTimelineTitle": {
+      "type": "string"
+    },
+    "DevelopmentTimelineAccentTitle": {
+      "type": "string"
+    },
+    "DevelopmentTimelineDescription": {
+      "type": "text"
+    },
+    "DevelopmentTimelineCards": {
+      "displayName": "DevelopmentTimelineCards",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.development-timeline-cards"
     }
   }
 }

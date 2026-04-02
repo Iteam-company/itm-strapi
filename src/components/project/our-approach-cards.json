@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_project_our_approach_cards",
+  "info": {
+    "displayName": "OurApproachCards"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "deliverables": {
+      "displayName": "deliverables",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.deliverables"
+    }
+  }
+}

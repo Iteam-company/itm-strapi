@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_project_deliverables",
+  "info": {
+    "displayName": "deliverables"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

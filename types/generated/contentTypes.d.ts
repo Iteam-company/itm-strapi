@@ -1265,6 +1265,17 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
     CoreFeaturesAccentTitle: Attribute.Text;
     CoreFeaturesDescription: Attribute.Text;
     CoreFeaturesCards: Attribute.Component<'project.core-features-card', true>;
+    OurApproachTitle: Attribute.String;
+    OurApproachAccentTitle: Attribute.Text;
+    OurApproachDescription: Attribute.Text;
+    OurApproachCards: Attribute.Component<'project.our-approach-cards', true>;
+    DevelopmentTimelineTitle: Attribute.String;
+    DevelopmentTimelineAccentTitle: Attribute.String;
+    DevelopmentTimelineDescription: Attribute.Text;
+    DevelopmentTimelineCards: Attribute.Component<
+      'project.development-timeline-cards',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
