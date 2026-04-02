@@ -161,13 +161,10 @@ export interface ProjectTechnicalArchitectureRows extends Schema.Component {
   collectionName: 'components_project_technical_architecture_rows';
   info: {
     displayName: 'TechnicalArchitectureRows';
+    description: '';
   };
   attributes: {
     cards: Attribute.Component<'project.cards', true>;
-    TechnicalArchitectureFeatureCards: Attribute.Component<
-      'project.technical-architecture-feature-cards',
-      true
-    >;
   };
 }
 
@@ -329,6 +326,18 @@ export interface ProjectBottomImages extends Schema.Component {
     laptop: Attribute.String;
     phone: Attribute.String;
     alt: Attribute.String;
+  };
+}
+
+export interface PortfolioTechnicalArchitectureFeatureCards
+  extends Schema.Component {
+  collectionName: 'components_portfolio_technical_architecture_feature_cards';
+  info: {
+    displayName: 'TechnicalArchitectureFeatureCards';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
   };
 }
 
@@ -1006,6 +1015,7 @@ declare module '@strapi/types' {
       'project.core-features-card': ProjectCoreFeaturesCard;
       'project.cards': ProjectCards;
       'project.bottom-images': ProjectBottomImages;
+      'portfolio.technical-architecture-feature-cards': PortfolioTechnicalArchitectureFeatureCards;
       'portfolio.hero': PortfolioHero;
       'portfolio.ceo': PortfolioCeo;
       'header-footer.social-media': HeaderFooterSocialMedia;

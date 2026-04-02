@@ -186,6 +186,12 @@
       "type": "component",
       "repeatable": true,
       "component": "project.team-collaboration-principles"
+    },
+    "TechnicalArchitectureFeatureCards": {
+      "displayName": "TechnicalArchitectureFeatureCards",
+      "type": "component",
+      "repeatable": true,
+      "component": "portfolio.technical-architecture-feature-cards"
     }
   }
 }

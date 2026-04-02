@@ -1293,6 +1293,10 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
       'project.team-collaboration-principles',
       true
     >;
+    TechnicalArchitectureFeatureCards: Attribute.Component<
+      'portfolio.technical-architecture-feature-cards',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
