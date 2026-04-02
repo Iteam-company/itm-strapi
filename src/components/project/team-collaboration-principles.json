@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_project_team_collaboration_principles",
+  "info": {
+    "displayName": "TeamCollaborationPrinciples"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

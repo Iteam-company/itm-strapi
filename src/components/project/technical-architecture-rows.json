@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_project_technical_architecture_rows",
+  "info": {
+    "displayName": "TechnicalArchitectureRows"
+  },
+  "options": {},
+  "attributes": {
+    "cards": {
+      "displayName": "cards",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.cards"
+    },
+    "TechnicalArchitectureFeatureCards": {
+      "displayName": "TechnicalArchitectureFeatureCards",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.technical-architecture-feature-cards"
+    }
+  }
+}

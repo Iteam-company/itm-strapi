@@ -1276,6 +1276,23 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
       'project.development-timeline-cards',
       true
     >;
+    TechnicalArchitectureTitle: Attribute.String;
+    TechnicalArchitectureAccentTitle: Attribute.String;
+    TechnicalArchitectureRows: Attribute.Component<
+      'project.technical-architecture-rows',
+      true
+    >;
+    TeamCollaborationTitle: Attribute.String;
+    TeamCollaborationAccentTitle: Attribute.String;
+    TeamCollaborationDescription: Attribute.Text;
+    TeamCollaborationRoles: Attribute.Component<
+      'project.team-collaboration-roles',
+      true
+    >;
+    TeamCollaborationPrinciples: Attribute.Component<
+      'project.team-collaboration-principles',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

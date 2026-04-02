@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_project_technical_architecture_feature_cards",
+  "info": {
+    "displayName": "TechnicalArchitectureFeatureCards"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

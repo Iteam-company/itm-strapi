@@ -153,6 +153,39 @@
       "type": "component",
       "repeatable": true,
       "component": "project.development-timeline-cards"
+    },
+    "TechnicalArchitectureTitle": {
+      "type": "string"
+    },
+    "TechnicalArchitectureAccentTitle": {
+      "type": "string"
+    },
+    "TechnicalArchitectureRows": {
+      "displayName": "TechnicalArchitectureRows",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.technical-architecture-rows"
+    },
+    "TeamCollaborationTitle": {
+      "type": "string"
+    },
+    "TeamCollaborationAccentTitle": {
+      "type": "string"
+    },
+    "TeamCollaborationDescription": {
+      "type": "text"
+    },
+    "TeamCollaborationRoles": {
+      "displayName": "TeamCollaborationRoles",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.team-collaboration-roles"
+    },
+    "TeamCollaborationPrinciples": {
+      "displayName": "TeamCollaborationPrinciples",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.team-collaboration-principles"
     }
   }
 }

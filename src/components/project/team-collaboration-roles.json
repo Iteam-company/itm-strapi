@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_project_team_collaboration_roles",
+  "info": {
+    "displayName": "TeamCollaborationRoles"
+  },
+  "options": {},
+  "attributes": {
+    "count": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
