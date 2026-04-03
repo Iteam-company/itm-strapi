@@ -213,6 +213,36 @@
       "type": "component",
       "repeatable": true,
       "component": "project.technology-stack-categories"
+    },
+    "ImpactResultsTitle": {
+      "type": "string"
+    },
+    "ImpactResultsAccentTitle": {
+      "type": "string"
+    },
+    "ImpactResultsDescription": {
+      "type": "text"
+    },
+    "ImpactResultsCards": {
+      "displayName": "ImpactResultsCards",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.impact-results-cards"
+    },
+    "ImpactResultsOutcomesTitle": {
+      "type": "string"
+    },
+    "ImpactResultsOutcomes": {
+      "displayName": "ImpactResultsOutcomes",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.impact-results-outcomes"
+    },
+    "CommentBlock": {
+      "displayName": "CommentBlock",
+      "type": "component",
+      "repeatable": false,
+      "component": "project.comment-block"
     }
   }
 }

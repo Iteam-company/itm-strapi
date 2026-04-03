@@ -1305,6 +1305,19 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
       'project.technology-stack-categories',
       true
     >;
+    ImpactResultsTitle: Attribute.String;
+    ImpactResultsAccentTitle: Attribute.String;
+    ImpactResultsDescription: Attribute.Text;
+    ImpactResultsCards: Attribute.Component<
+      'project.impact-results-cards',
+      true
+    >;
+    ImpactResultsOutcomesTitle: Attribute.String;
+    ImpactResultsOutcomes: Attribute.Component<
+      'project.impact-results-outcomes',
+      true
+    >;
+    CommentBlock: Attribute.Component<'project.comment-block'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

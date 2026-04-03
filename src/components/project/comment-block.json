@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_project_comment_blocks",
+  "info": {
+    "displayName": "CommentBlock"
+  },
+  "options": {},
+  "attributes": {
+    "quote": {
+      "type": "text"
+    },
+    "authorInitials": {
+      "type": "string"
+    },
+    "authorName": {
+      "type": "string"
+    },
+    "authorRole": {
+      "type": "string"
+    },
+    "authorCompany": {
+      "type": "string"
+    }
+  }
+}

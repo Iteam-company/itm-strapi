@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_project_impact_results_outcomes",
+  "info": {
+    "displayName": "ImpactResultsOutcomes"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

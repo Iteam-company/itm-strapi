@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_project_impact_results_cards",
+  "info": {
+    "displayName": "ImpactResultsCards"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

@@ -282,6 +282,28 @@ export interface ProjectItems extends Schema.Component {
   };
 }
 
+export interface ProjectImpactResultsOutcomes extends Schema.Component {
+  collectionName: 'components_project_impact_results_outcomes';
+  info: {
+    displayName: 'ImpactResultsOutcomes';
+  };
+  attributes: {
+    name: Attribute.String;
+  };
+}
+
+export interface ProjectImpactResultsCards extends Schema.Component {
+  collectionName: 'components_project_impact_results_cards';
+  info: {
+    displayName: 'ImpactResultsCards';
+  };
+  attributes: {
+    value: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.Text;
+  };
+}
+
 export interface ProjectHeroSecondaryAction extends Schema.Component {
   collectionName: 'components_project_hero_secondary_actions';
   info: {
@@ -339,6 +361,20 @@ export interface ProjectCoreFeaturesCard extends Schema.Component {
   };
 }
 
+export interface ProjectCommentBlock extends Schema.Component {
+  collectionName: 'components_project_comment_blocks';
+  info: {
+    displayName: 'CommentBlock';
+  };
+  attributes: {
+    quote: Attribute.Text;
+    authorInitials: Attribute.String;
+    authorName: Attribute.String;
+    authorRole: Attribute.String;
+    authorCompany: Attribute.String;
+  };
+}
+
 export interface ProjectCards extends Schema.Component {
   collectionName: 'components_project_cards';
   info: {
@@ -359,6 +395,43 @@ export interface ProjectBottomImages extends Schema.Component {
     laptop: Attribute.String;
     phone: Attribute.String;
     alt: Attribute.String;
+  };
+}
+
+export interface PortfolioTechnicalArchitectureFeatureCards
+  extends Schema.Component {
+  collectionName: 'components_portfolio_technical_architecture_feature_cards';
+  info: {
+    displayName: 'TechnicalArchitectureFeatureCards';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+  };
+}
+
+export interface PortfolioHero extends Schema.Component {
+  collectionName: 'components_portfolio_heroes';
+  info: {
+    displayName: 'hero';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface PortfolioCeo extends Schema.Component {
+  collectionName: 'components_portfolio_ceos';
+  info: {
+    displayName: 'ceo';
+    description: '';
+  };
+  attributes: {
+    position: Attribute.String;
+    fullName: Attribute.String;
+    imageUrl: Attribute.Text;
+    quote: Attribute.Text;
   };
 }
 
@@ -627,43 +700,6 @@ export interface HeaderFooterFooterInfoText extends Schema.Component {
   attributes: {
     linkText: Attribute.String;
     href: Attribute.String;
-  };
-}
-
-export interface PortfolioTechnicalArchitectureFeatureCards
-  extends Schema.Component {
-  collectionName: 'components_portfolio_technical_architecture_feature_cards';
-  info: {
-    displayName: 'TechnicalArchitectureFeatureCards';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-  };
-}
-
-export interface PortfolioHero extends Schema.Component {
-  collectionName: 'components_portfolio_heroes';
-  info: {
-    displayName: 'hero';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface PortfolioCeo extends Schema.Component {
-  collectionName: 'components_portfolio_ceos';
-  info: {
-    displayName: 'ceo';
-    description: '';
-  };
-  attributes: {
-    position: Attribute.String;
-    fullName: Attribute.String;
-    imageUrl: Attribute.Text;
-    quote: Attribute.Text;
   };
 }
 
@@ -1044,13 +1080,19 @@ declare module '@strapi/types' {
       'project.our-approach-cards': ProjectOurApproachCards;
       'project.middle-images': ProjectMiddleImages;
       'project.items': ProjectItems;
+      'project.impact-results-outcomes': ProjectImpactResultsOutcomes;
+      'project.impact-results-cards': ProjectImpactResultsCards;
       'project.hero-secondary-action': ProjectHeroSecondaryAction;
       'project.hero-btns': ProjectHeroBtns;
       'project.development-timeline-cards': ProjectDevelopmentTimelineCards;
       'project.deliverables': ProjectDeliverables;
       'project.core-features-card': ProjectCoreFeaturesCard;
+      'project.comment-block': ProjectCommentBlock;
       'project.cards': ProjectCards;
       'project.bottom-images': ProjectBottomImages;
+      'portfolio.technical-architecture-feature-cards': PortfolioTechnicalArchitectureFeatureCards;
+      'portfolio.hero': PortfolioHero;
+      'portfolio.ceo': PortfolioCeo;
       'homepage.tech': HomepageTech;
       'homepage.slider': HomepageSlider;
       'homepage.our-core-values': HomepageOurCoreValues;
@@ -1074,9 +1116,6 @@ declare module '@strapi/types' {
       'header-footer.header-button': HeaderFooterHeaderButton;
       'header-footer.footer-info': HeaderFooterFooterInfo;
       'header-footer.footer-info-text': HeaderFooterFooterInfoText;
-      'portfolio.technical-architecture-feature-cards': PortfolioTechnicalArchitectureFeatureCards;
-      'portfolio.hero': PortfolioHero;
-      'portfolio.ceo': PortfolioCeo;
       'development.tech-stack': DevelopmentTechStack;
       'development.tech-stack-info': DevelopmentTechStackInfo;
       'contact.pros': ContactPros;
