@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_project_the_future_blocks",
+  "info": {
+    "displayName": "TheFutureBlock"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "accentTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "externalUrl": {
+      "type": "text"
+    }
+  }
+}

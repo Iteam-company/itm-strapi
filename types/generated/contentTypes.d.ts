@@ -1318,6 +1318,8 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
       true
     >;
     CommentBlock: Attribute.Component<'project.comment-block'>;
+    MoreProjectsBlock: Attribute.Component<'project.more-projects-block'>;
+    TheFutureBlock: Attribute.Component<'project.the-future-block'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

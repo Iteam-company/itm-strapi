@@ -145,6 +145,19 @@ export interface ServicesAdvantageCircles extends Schema.Component {
   };
 }
 
+export interface ProjectTheFutureBlock extends Schema.Component {
+  collectionName: 'components_project_the_future_blocks';
+  info: {
+    displayName: 'TheFutureBlock';
+  };
+  attributes: {
+    title: Attribute.String;
+    accentTitle: Attribute.String;
+    description: Attribute.Text;
+    externalUrl: Attribute.Text;
+  };
+}
+
 export interface ProjectTheCallengeCards extends Schema.Component {
   collectionName: 'components_project_the_callenge_cards';
   info: {
@@ -255,6 +268,21 @@ export interface ProjectOurApproachCards extends Schema.Component {
     title: Attribute.String;
     description: Attribute.Text;
     deliverables: Attribute.Component<'project.deliverables', true>;
+  };
+}
+
+export interface ProjectMoreProjectsBlock extends Schema.Component {
+  collectionName: 'components_project_more_projects_blocks';
+  info: {
+    displayName: 'MoreProjectsBlock';
+  };
+  attributes: {
+    label: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.Text;
+    projectUid: Attribute.String;
+    projectHref: Attribute.Text;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -395,43 +423,6 @@ export interface ProjectBottomImages extends Schema.Component {
     laptop: Attribute.String;
     phone: Attribute.String;
     alt: Attribute.String;
-  };
-}
-
-export interface PortfolioTechnicalArchitectureFeatureCards
-  extends Schema.Component {
-  collectionName: 'components_portfolio_technical_architecture_feature_cards';
-  info: {
-    displayName: 'TechnicalArchitectureFeatureCards';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-  };
-}
-
-export interface PortfolioHero extends Schema.Component {
-  collectionName: 'components_portfolio_heroes';
-  info: {
-    displayName: 'hero';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface PortfolioCeo extends Schema.Component {
-  collectionName: 'components_portfolio_ceos';
-  info: {
-    displayName: 'ceo';
-    description: '';
-  };
-  attributes: {
-    position: Attribute.String;
-    fullName: Attribute.String;
-    imageUrl: Attribute.Text;
-    quote: Attribute.Text;
   };
 }
 
@@ -636,6 +627,43 @@ export interface HomepageBookForm extends Schema.Component {
   };
 }
 
+export interface PortfolioTechnicalArchitectureFeatureCards
+  extends Schema.Component {
+  collectionName: 'components_portfolio_technical_architecture_feature_cards';
+  info: {
+    displayName: 'TechnicalArchitectureFeatureCards';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+  };
+}
+
+export interface PortfolioHero extends Schema.Component {
+  collectionName: 'components_portfolio_heroes';
+  info: {
+    displayName: 'hero';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface PortfolioCeo extends Schema.Component {
+  collectionName: 'components_portfolio_ceos';
+  info: {
+    displayName: 'ceo';
+    description: '';
+  };
+  attributes: {
+    position: Attribute.String;
+    fullName: Attribute.String;
+    imageUrl: Attribute.Text;
+    quote: Attribute.Text;
+  };
+}
+
 export interface HeaderFooterSocialMedia extends Schema.Component {
   collectionName: 'components_header_footer_social_medias';
   info: {
@@ -760,6 +788,51 @@ export interface ContactContactForm extends Schema.Component {
     inputPhonePlaceholder: Attribute.String;
     inputEmailPlaceholder: Attribute.String;
     inputMessagePlaceholder: Attribute.String;
+  };
+}
+
+export interface AboutUsHero extends Schema.Component {
+  collectionName: 'components_about_us_heroes';
+  info: {
+    displayName: 'hero';
+    description: '';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
+  collectionName: 'components_about_us_development_team_participants';
+  info: {
+    displayName: 'TeamParticipants';
+    icon: '';
+    description: '';
+  };
+  attributes: {
+    experience: Attribute.String;
+    rate: Attribute.String;
+    expertise: Attribute.String;
+    name: Attribute.String;
+    role: Attribute.String;
+    imageUrl: Attribute.Text;
+    upWorkLink: Attribute.Text;
+  };
+}
+
+export interface AboutUsCommentsInfo extends Schema.Component {
+  collectionName: 'components_about_us_comments_infos';
+  info: {
+    displayName: 'Comment-info';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.Text;
+    author: Attribute.String;
+    link: Attribute.String;
+    rate: Attribute.Integer;
+    linkTitle: Attribute.String;
   };
 }
 
@@ -1007,51 +1080,6 @@ export interface CaseComponentsButton extends Schema.Component {
   };
 }
 
-export interface AboutUsHero extends Schema.Component {
-  collectionName: 'components_about_us_heroes';
-  info: {
-    displayName: 'hero';
-    description: '';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
-  collectionName: 'components_about_us_development_team_participants';
-  info: {
-    displayName: 'TeamParticipants';
-    icon: '';
-    description: '';
-  };
-  attributes: {
-    experience: Attribute.String;
-    rate: Attribute.String;
-    expertise: Attribute.String;
-    name: Attribute.String;
-    role: Attribute.String;
-    imageUrl: Attribute.Text;
-    upWorkLink: Attribute.Text;
-  };
-}
-
-export interface AboutUsCommentsInfo extends Schema.Component {
-  collectionName: 'components_about_us_comments_infos';
-  info: {
-    displayName: 'Comment-info';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.Text;
-    author: Attribute.String;
-    link: Attribute.String;
-    rate: Attribute.Integer;
-    linkTitle: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -1068,6 +1096,7 @@ declare module '@strapi/types' {
       'services.first-pros-list': ServicesFirstProsList;
       'services.comment-info': ServicesCommentInfo;
       'services.advantage-circles': ServicesAdvantageCircles;
+      'project.the-future-block': ProjectTheFutureBlock;
       'project.the-callenge-cards': ProjectTheCallengeCards;
       'project.technology-stack-categories': ProjectTechnologyStackCategories;
       'project.technical-architecture-rows': ProjectTechnicalArchitectureRows;
@@ -1078,6 +1107,7 @@ declare module '@strapi/types' {
       'project.project-facts-cards': ProjectProjectFactsCards;
       'project.product-expirience-features': ProjectProductExpirienceFeatures;
       'project.our-approach-cards': ProjectOurApproachCards;
+      'project.more-projects-block': ProjectMoreProjectsBlock;
       'project.middle-images': ProjectMiddleImages;
       'project.items': ProjectItems;
       'project.impact-results-outcomes': ProjectImpactResultsOutcomes;
@@ -1090,9 +1120,6 @@ declare module '@strapi/types' {
       'project.comment-block': ProjectCommentBlock;
       'project.cards': ProjectCards;
       'project.bottom-images': ProjectBottomImages;
-      'portfolio.technical-architecture-feature-cards': PortfolioTechnicalArchitectureFeatureCards;
-      'portfolio.hero': PortfolioHero;
-      'portfolio.ceo': PortfolioCeo;
       'homepage.tech': HomepageTech;
       'homepage.slider': HomepageSlider;
       'homepage.our-core-values': HomepageOurCoreValues;
@@ -1110,6 +1137,9 @@ declare module '@strapi/types' {
       'homepage.card': HomepageCard;
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.book-form': HomepageBookForm;
+      'portfolio.technical-architecture-feature-cards': PortfolioTechnicalArchitectureFeatureCards;
+      'portfolio.hero': PortfolioHero;
+      'portfolio.ceo': PortfolioCeo;
       'header-footer.social-media': HeaderFooterSocialMedia;
       'header-footer.options': HeaderFooterOptions;
       'header-footer.header': HeaderFooterHeader;
@@ -1121,6 +1151,9 @@ declare module '@strapi/types' {
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
+      'about-us.hero': AboutUsHero;
+      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
+      'about-us.comments-info': AboutUsCommentsInfo;
       'case-components.seo': CaseComponentsSeo;
       'case-components.elements': CaseComponentsElements;
       'case-components.case-single-comment': CaseComponentsCaseSingleComment;
@@ -1139,9 +1172,6 @@ declare module '@strapi/types' {
       'case-components.case-case': CaseComponentsCaseCase;
       'case-components.case-case-element': CaseComponentsCaseCaseElement;
       'case-components.button': CaseComponentsButton;
-      'about-us.hero': AboutUsHero;
-      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
-      'about-us.comments-info': AboutUsCommentsInfo;
     }
   }
 }

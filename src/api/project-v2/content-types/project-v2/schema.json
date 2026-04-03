@@ -243,6 +243,18 @@
       "type": "component",
       "repeatable": false,
       "component": "project.comment-block"
+    },
+    "MoreProjectsBlock": {
+      "displayName": "MoreProjectsBlock",
+      "type": "component",
+      "repeatable": false,
+      "component": "project.more-projects-block"
+    },
+    "TheFutureBlock": {
+      "displayName": "TheFutureBlock",
+      "type": "component",
+      "repeatable": false,
+      "component": "project.the-future-block"
     }
   }
 }
