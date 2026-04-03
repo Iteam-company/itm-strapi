@@ -1297,6 +1297,14 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
       'portfolio.technical-architecture-feature-cards',
       true
     >;
+    ProjectFactsCards: Attribute.Component<'project.project-facts-cards', true>;
+    TechnologyStackTitle: Attribute.String;
+    TechnologyStackAccentTitle: Attribute.String;
+    TechnologyStackDescription: Attribute.Text;
+    TechnologyStackCategories: Attribute.Component<
+      'project.technology-stack-categories',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_project_project_facts_cards",
+  "info": {
+    "displayName": "ProjectFactsCards"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}
