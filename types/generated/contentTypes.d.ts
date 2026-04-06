@@ -1241,7 +1241,7 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
     overviewAccentTitle: Attribute.String;
     overviewDescriptionOne: Attribute.Text;
     overviewDescriptionTwo: Attribute.Text;
-    overviewDescriptionThree: Attribute.String;
+    overviewDescriptionThree: Attribute.Text;
     theChallengeTitle: Attribute.String;
     theChallengeAccentTitle: Attribute.String;
     theChallengeDescription: Attribute.Text;
@@ -1256,11 +1256,7 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
       true
     >;
     heroSecondaryAction: Attribute.Component<'project.hero-secondary-action'>;
-    ProductExperienceMedia: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     uid: Attribute.UID;
-    heroMedia: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     CoreFeaturesTitle: Attribute.String;
     CoreFeaturesAccentTitle: Attribute.Text;
     CoreFeaturesDescription: Attribute.Text;
@@ -1320,6 +1316,8 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
     CommentBlock: Attribute.Component<'project.comment-block'>;
     MoreProjectsBlock: Attribute.Component<'project.more-projects-block'>;
     TheFutureBlock: Attribute.Component<'project.the-future-block'>;
+    heroMedia: Attribute.Text;
+    ProductExperienceMedia: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

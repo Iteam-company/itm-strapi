@@ -40,7 +40,7 @@
       "type": "text"
     },
     "overviewDescriptionThree": {
-      "type": "string"
+      "type": "text"
     },
     "theChallengeTitle": {
       "type": "string"
@@ -84,30 +84,8 @@
       "repeatable": false,
       "component": "project.hero-secondary-action"
     },
-    "ProductExperienceMedia": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "uid": {
       "type": "uid"
-    },
-    "heroMedia": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
     },
     "CoreFeaturesTitle": {
       "type": "string"
@@ -255,6 +233,12 @@
       "type": "component",
       "repeatable": false,
       "component": "project.the-future-block"
+    },
+    "heroMedia": {
+      "type": "text"
+    },
+    "ProductExperienceMedia": {
+      "type": "text"
     }
   }
 }

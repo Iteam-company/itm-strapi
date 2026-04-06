@@ -1,7 +1,8 @@
 {
   "collectionName": "components_project_more_projects_blocks",
   "info": {
-    "displayName": "MoreProjectsBlock"
+    "displayName": "MoreProjectsBlock",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -21,14 +22,7 @@
       "type": "text"
     },
     "image": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      "type": "text"
     }
   }
 }
