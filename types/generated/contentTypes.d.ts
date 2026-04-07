@@ -1318,6 +1318,7 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
     TheFutureBlock: Attribute.Component<'project.the-future-block'>;
     heroMedia: Attribute.Text;
     ProductExperienceMedia: Attribute.Text;
+    ProductExperienceSmallMedia: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

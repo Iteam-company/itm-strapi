@@ -239,6 +239,9 @@
     },
     "ProductExperienceMedia": {
       "type": "text"
+    },
+    "ProductExperienceSmallMedia": {
+      "type": "text"
     }
   }
 }
