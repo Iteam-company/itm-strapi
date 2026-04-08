@@ -19,7 +19,7 @@
       "type": "string"
     },
     "heroDescription": {
-      "type": "string"
+      "type": "text"
     },
     "heroPrimaryAction": {
       "displayName": "heroBtns",

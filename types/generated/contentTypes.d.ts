@@ -1235,7 +1235,7 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
   attributes: {
     heroAccentTitle: Attribute.String;
     heroTitle: Attribute.String;
-    heroDescription: Attribute.String;
+    heroDescription: Attribute.Text;
     heroPrimaryAction: Attribute.Component<'project.hero-btns'>;
     overviewTitle: Attribute.String;
     overviewAccentTitle: Attribute.String;
