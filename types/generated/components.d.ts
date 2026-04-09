@@ -680,10 +680,27 @@ export interface HeaderFooterOptions extends Schema.Component {
   collectionName: 'components_header_footer_options';
   info: {
     displayName: 'options';
+    description: '';
   };
   attributes: {
     option: Attribute.String;
-    href: Attribute.Enumeration<['/outstaff', '/outsource']>;
+    href: Attribute.Enumeration<
+      [
+        '/outstaff',
+        '/outsource',
+        '/custom_software_solutions',
+        '/ai_powered_mvp_launch',
+        '/ai_mvp_development',
+        '/dedicated_teams',
+        '/js_optimization',
+        '/localization_services',
+        '/partnership_with_iteam',
+        '/specialized_talent_search',
+        '/it_outsourcing',
+        '/frontend_automation',
+        '/mvp_development'
+      ]
+    >;
   };
 }
 
@@ -789,51 +806,6 @@ export interface ContactContactForm extends Schema.Component {
     inputPhonePlaceholder: Attribute.String;
     inputEmailPlaceholder: Attribute.String;
     inputMessagePlaceholder: Attribute.String;
-  };
-}
-
-export interface AboutUsHero extends Schema.Component {
-  collectionName: 'components_about_us_heroes';
-  info: {
-    displayName: 'hero';
-    description: '';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
-  collectionName: 'components_about_us_development_team_participants';
-  info: {
-    displayName: 'TeamParticipants';
-    icon: '';
-    description: '';
-  };
-  attributes: {
-    experience: Attribute.String;
-    rate: Attribute.String;
-    expertise: Attribute.String;
-    name: Attribute.String;
-    role: Attribute.String;
-    imageUrl: Attribute.Text;
-    upWorkLink: Attribute.Text;
-  };
-}
-
-export interface AboutUsCommentsInfo extends Schema.Component {
-  collectionName: 'components_about_us_comments_infos';
-  info: {
-    displayName: 'Comment-info';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.Text;
-    author: Attribute.String;
-    link: Attribute.String;
-    rate: Attribute.Integer;
-    linkTitle: Attribute.String;
   };
 }
 
@@ -1081,6 +1053,51 @@ export interface CaseComponentsButton extends Schema.Component {
   };
 }
 
+export interface AboutUsHero extends Schema.Component {
+  collectionName: 'components_about_us_heroes';
+  info: {
+    displayName: 'hero';
+    description: '';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
+  collectionName: 'components_about_us_development_team_participants';
+  info: {
+    displayName: 'TeamParticipants';
+    icon: '';
+    description: '';
+  };
+  attributes: {
+    experience: Attribute.String;
+    rate: Attribute.String;
+    expertise: Attribute.String;
+    name: Attribute.String;
+    role: Attribute.String;
+    imageUrl: Attribute.Text;
+    upWorkLink: Attribute.Text;
+  };
+}
+
+export interface AboutUsCommentsInfo extends Schema.Component {
+  collectionName: 'components_about_us_comments_infos';
+  info: {
+    displayName: 'Comment-info';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.Text;
+    author: Attribute.String;
+    link: Attribute.String;
+    rate: Attribute.Integer;
+    linkTitle: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -1152,9 +1169,6 @@ declare module '@strapi/types' {
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
-      'about-us.hero': AboutUsHero;
-      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
-      'about-us.comments-info': AboutUsCommentsInfo;
       'case-components.seo': CaseComponentsSeo;
       'case-components.elements': CaseComponentsElements;
       'case-components.case-single-comment': CaseComponentsCaseSingleComment;
@@ -1173,6 +1187,9 @@ declare module '@strapi/types' {
       'case-components.case-case': CaseComponentsCaseCase;
       'case-components.case-case-element': CaseComponentsCaseCaseElement;
       'case-components.button': CaseComponentsButton;
+      'about-us.hero': AboutUsHero;
+      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
+      'about-us.comments-info': AboutUsCommentsInfo;
     }
   }
 }
