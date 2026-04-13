@@ -688,17 +688,17 @@ export interface HeaderFooterOptions extends Schema.Component {
       [
         '/outstaff',
         '/outsource',
-        '/custom_software_solutions',
-        '/ai_powered_mvp_launch',
-        '/ai_mvp_development',
-        '/dedicated_teams',
-        '/js_optimization',
-        '/localization_services',
-        '/partnership_with_iteam',
-        '/specialized_talent_search',
-        '/it_outsourcing',
-        '/frontend_automation',
-        '/mvp_development'
+        '/case/custom_software_solutions',
+        '/case/ai_powered_mvp_launch',
+        '/case/ai_mvp_development',
+        '/case/dedicated_teams',
+        '/case/js_optimization',
+        '/case/localization_services',
+        '/case/partnership_with_iteam',
+        '/case/specialized_talent_search',
+        '/case/it_outsourcing',
+        '/case/frontend_automation',
+        '/case/mvp_development'
       ]
     >;
   };
