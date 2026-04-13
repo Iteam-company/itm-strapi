@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 DATE=$(date +%F-%H-%M)
 
@@ -14,8 +15,8 @@ curl https://rclone.org/install.sh | bash
 mkdir -p ~/.config/rclone
 echo "$RCLONE_CONFIG" > ~/.config/rclone/rclone.conf
 
-echo "Uploading backup..."
+echo "Uploading backup to Google Drive..."
 
 rclone copy backups gdrive:strapi-backups
 
-echo "Backup uploaded successfully"
+echo "Backup uploaded successfully!"
