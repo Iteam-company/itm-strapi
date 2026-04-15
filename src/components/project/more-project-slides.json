@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_project_more_project_slides",
+  "info": {
+    "displayName": "moreProjectSlides"
+  },
+  "options": {},
+  "attributes": {
+    "projectId": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "text"
+    }
+  }
+}

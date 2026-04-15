@@ -6,11 +6,17 @@
   },
   "options": {},
   "attributes": {
-    "slides": {
-      "displayName": "slides",
-      "type": "component",
-      "repeatable": true,
-      "component": "project.slides"
+    "title": {
+      "type": "string"
+    },
+    "accentTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "externalUrl": {
+      "type": "string"
     }
   }
 }
