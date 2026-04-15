@@ -1,21 +1,16 @@
 {
   "collectionName": "components_project_the_future_blocks",
   "info": {
-    "displayName": "TheFutureBlock"
+    "displayName": "TheFutureBlock",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "accentTitle": {
-      "type": "string"
-    },
-    "description": {
-      "type": "text"
-    },
-    "externalUrl": {
-      "type": "text"
+    "slides": {
+      "displayName": "slides",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.slides"
     }
   }
 }
