@@ -1319,6 +1319,22 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
     heroMedia: Attribute.Text;
     ProductExperienceMedia: Attribute.Text;
     ProductExperienceSmallMedia: Attribute.Text;
+    iconName: Attribute.Enumeration<
+      [
+        'tb TbTrendingUp',
+        'tb TbBolt',
+        'tb TbUsers',
+        'tb TbShieldCheck',
+        'tb TbBrain',
+        'tb TbTargetArrow',
+        'tb TbHierarchy3',
+        'tb TbRouteSquare',
+        'tb TbWaveSine',
+        'tb TbChartHistogram',
+        'tb TbRocket',
+        'tb TbDatabase'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

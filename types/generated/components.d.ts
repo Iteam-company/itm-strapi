@@ -209,11 +209,28 @@ export interface ProjectTeamCollaborationRoles extends Schema.Component {
   collectionName: 'components_project_team_collaboration_roles';
   info: {
     displayName: 'TeamCollaborationRoles';
+    description: '';
   };
   attributes: {
     count: Attribute.Integer;
     title: Attribute.String;
     description: Attribute.Text;
+    iconName: Attribute.Enumeration<
+      [
+        'tb TbUsers',
+        'tb TbUserStar',
+        'tb TbBriefcase2',
+        'tb TbSettings',
+        'tb TbMessages',
+        'tb TbHierarchy3',
+        'tb TbUserCog',
+        'tb TbTargetArrow',
+        'tb TbCode',
+        'tb TbShieldCheck',
+        'tb TbBrain',
+        'tb TbRocket'
+      ]
+    >;
   };
 }
 
@@ -347,11 +364,28 @@ export interface ProjectImpactResultsCards extends Schema.Component {
   collectionName: 'components_project_impact_results_cards';
   info: {
     displayName: 'ImpactResultsCards';
+    description: '';
   };
   attributes: {
     value: Attribute.String;
     title: Attribute.String;
     description: Attribute.Text;
+    iconName: Attribute.Enumeration<
+      [
+        'tb TbTrendingUp',
+        'tb TbBolt',
+        'tb TbUsers',
+        'tb TbShieldCheck',
+        'tb TbBrain',
+        'tb TbTargetArrow',
+        'tb TbHierarchy3',
+        'tb TbRouteSquare',
+        'tb TbWaveSine',
+        'tb TbChartHistogram',
+        'tb TbRocket',
+        'tb TbDatabase'
+      ]
+    >;
   };
 }
 
@@ -404,11 +438,28 @@ export interface ProjectCoreFeaturesCard extends Schema.Component {
   collectionName: 'components_project_core_features_cards';
   info: {
     displayName: 'CoreFeaturesCard';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
     description: Attribute.Text;
     tags: Attribute.Component<'project.tags', true>;
+    iconName: Attribute.Enumeration<
+      [
+        'tb TbBrain',
+        'tb TbRouteSquare',
+        'tb TbWaveSine',
+        'tb TbBolt',
+        'tb TbHierarchy3',
+        'tb TbTargetArrow',
+        'tb TbChartHistogram',
+        'tb TbRocket',
+        'tb TbDatabase',
+        'tb TbShieldCheck',
+        'tb TbUsers',
+        'tb TbSettings'
+      ]
+    >;
   };
 }
 
@@ -483,6 +534,90 @@ export interface PortfolioCeo extends Schema.Component {
     fullName: Attribute.String;
     imageUrl: Attribute.Text;
     quote: Attribute.Text;
+  };
+}
+
+export interface HeaderFooterSocialMedia extends Schema.Component {
+  collectionName: 'components_header_footer_social_medias';
+  info: {
+    displayName: 'social-media';
+  };
+  attributes: {
+    href: Attribute.String;
+    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface HeaderFooterOptions extends Schema.Component {
+  collectionName: 'components_header_footer_options';
+  info: {
+    displayName: 'options';
+    description: '';
+  };
+  attributes: {
+    option: Attribute.String;
+    href: Attribute.Enumeration<
+      [
+        '/outstaff',
+        '/outsource',
+        '/case/custom_software_solutions',
+        '/case/ai_powered_mvp_launch',
+        '/case/ai_mvp_development',
+        '/case/dedicated_teams',
+        '/case/js_optimization',
+        '/case/localization_services',
+        '/case/partnership_with_iteam',
+        '/case/specialized_talent_search',
+        '/case/it_outsourcing',
+        '/case/frontend_automation',
+        '/case/mvp_development'
+      ]
+    >;
+  };
+}
+
+export interface HeaderFooterHeader extends Schema.Component {
+  collectionName: 'components_header_footer_headers';
+  info: {
+    displayName: 'header';
+  };
+  attributes: {
+    title: Attribute.String;
+    options: Attribute.Component<'header-footer.options', true>;
+    href: Attribute.String;
+  };
+}
+
+export interface HeaderFooterHeaderButton extends Schema.Component {
+  collectionName: 'components_header_footer_header_buttons';
+  info: {
+    displayName: 'header-button';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
+export interface HeaderFooterFooterInfo extends Schema.Component {
+  collectionName: 'components_header_footer_footer_infos';
+  info: {
+    displayName: 'footer-info';
+  };
+  attributes: {
+    title: Attribute.String;
+    footerInfoText: Attribute.Component<'header-footer.footer-info-text', true>;
+  };
+}
+
+export interface HeaderFooterFooterInfoText extends Schema.Component {
+  collectionName: 'components_header_footer_footer_info_texts';
+  info: {
+    displayName: 'footer-info-text';
+    description: '';
+  };
+  attributes: {
+    linkText: Attribute.String;
+    href: Attribute.String;
   };
 }
 
@@ -684,90 +819,6 @@ export interface HomepageBookForm extends Schema.Component {
     subTitle: Attribute.String;
     inputPlaceholder: Attribute.String;
     buttonText: Attribute.String;
-  };
-}
-
-export interface HeaderFooterSocialMedia extends Schema.Component {
-  collectionName: 'components_header_footer_social_medias';
-  info: {
-    displayName: 'social-media';
-  };
-  attributes: {
-    href: Attribute.String;
-    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-  };
-}
-
-export interface HeaderFooterOptions extends Schema.Component {
-  collectionName: 'components_header_footer_options';
-  info: {
-    displayName: 'options';
-    description: '';
-  };
-  attributes: {
-    option: Attribute.String;
-    href: Attribute.Enumeration<
-      [
-        '/outstaff',
-        '/outsource',
-        '/case/custom_software_solutions',
-        '/case/ai_powered_mvp_launch',
-        '/case/ai_mvp_development',
-        '/case/dedicated_teams',
-        '/case/js_optimization',
-        '/case/localization_services',
-        '/case/partnership_with_iteam',
-        '/case/specialized_talent_search',
-        '/case/it_outsourcing',
-        '/case/frontend_automation',
-        '/case/mvp_development'
-      ]
-    >;
-  };
-}
-
-export interface HeaderFooterHeader extends Schema.Component {
-  collectionName: 'components_header_footer_headers';
-  info: {
-    displayName: 'header';
-  };
-  attributes: {
-    title: Attribute.String;
-    options: Attribute.Component<'header-footer.options', true>;
-    href: Attribute.String;
-  };
-}
-
-export interface HeaderFooterHeaderButton extends Schema.Component {
-  collectionName: 'components_header_footer_header_buttons';
-  info: {
-    displayName: 'header-button';
-  };
-  attributes: {
-    title: Attribute.String;
-  };
-}
-
-export interface HeaderFooterFooterInfo extends Schema.Component {
-  collectionName: 'components_header_footer_footer_infos';
-  info: {
-    displayName: 'footer-info';
-  };
-  attributes: {
-    title: Attribute.String;
-    footerInfoText: Attribute.Component<'header-footer.footer-info-text', true>;
-  };
-}
-
-export interface HeaderFooterFooterInfoText extends Schema.Component {
-  collectionName: 'components_header_footer_footer_info_texts';
-  info: {
-    displayName: 'footer-info-text';
-    description: '';
-  };
-  attributes: {
-    linkText: Attribute.String;
-    href: Attribute.String;
   };
 }
 
@@ -1165,6 +1216,12 @@ declare module '@strapi/types' {
       'portfolio.technical-architecture-feature-cards': PortfolioTechnicalArchitectureFeatureCards;
       'portfolio.hero': PortfolioHero;
       'portfolio.ceo': PortfolioCeo;
+      'header-footer.social-media': HeaderFooterSocialMedia;
+      'header-footer.options': HeaderFooterOptions;
+      'header-footer.header': HeaderFooterHeader;
+      'header-footer.header-button': HeaderFooterHeaderButton;
+      'header-footer.footer-info': HeaderFooterFooterInfo;
+      'header-footer.footer-info-text': HeaderFooterFooterInfoText;
       'homepage.tech': HomepageTech;
       'homepage.slider': HomepageSlider;
       'homepage.our-core-values': HomepageOurCoreValues;
@@ -1182,12 +1239,6 @@ declare module '@strapi/types' {
       'homepage.card': HomepageCard;
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.book-form': HomepageBookForm;
-      'header-footer.social-media': HeaderFooterSocialMedia;
-      'header-footer.options': HeaderFooterOptions;
-      'header-footer.header': HeaderFooterHeader;
-      'header-footer.header-button': HeaderFooterHeaderButton;
-      'header-footer.footer-info': HeaderFooterFooterInfo;
-      'header-footer.footer-info-text': HeaderFooterFooterInfoText;
       'development.tech-stack': DevelopmentTechStack;
       'development.tech-stack-info': DevelopmentTechStackInfo;
       'contact.pros': ContactPros;

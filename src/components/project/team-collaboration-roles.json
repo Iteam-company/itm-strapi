@@ -1,7 +1,8 @@
 {
   "collectionName": "components_project_team_collaboration_roles",
   "info": {
-    "displayName": "TeamCollaborationRoles"
+    "displayName": "TeamCollaborationRoles",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,6 +14,23 @@
     },
     "description": {
       "type": "text"
+    },
+    "iconName": {
+      "type": "enumeration",
+      "enum": [
+        "tb TbUsers",
+        "tb TbUserStar",
+        "tb TbBriefcase2",
+        "tb TbSettings",
+        "tb TbMessages",
+        "tb TbHierarchy3",
+        "tb TbUserCog",
+        "tb TbTargetArrow",
+        "tb TbCode",
+        "tb TbShieldCheck",
+        "tb TbBrain",
+        "tb TbRocket"
+      ]
     }
   }
 }

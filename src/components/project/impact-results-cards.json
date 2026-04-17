@@ -1,7 +1,8 @@
 {
   "collectionName": "components_project_impact_results_cards",
   "info": {
-    "displayName": "ImpactResultsCards"
+    "displayName": "ImpactResultsCards",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,6 +14,23 @@
     },
     "description": {
       "type": "text"
+    },
+    "iconName": {
+      "type": "enumeration",
+      "enum": [
+        "tb TbTrendingUp",
+        "tb TbBolt",
+        "tb TbUsers",
+        "tb TbShieldCheck",
+        "tb TbBrain",
+        "tb TbTargetArrow",
+        "tb TbHierarchy3",
+        "tb TbRouteSquare",
+        "tb TbWaveSine",
+        "tb TbChartHistogram",
+        "tb TbRocket",
+        "tb TbDatabase"
+      ]
     }
   }
 }
