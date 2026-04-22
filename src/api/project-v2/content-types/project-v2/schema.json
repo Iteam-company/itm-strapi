@@ -265,6 +265,21 @@
       "type": "component",
       "repeatable": true,
       "component": "project.overview-stats"
+    },
+    "heroStats": {
+      "displayName": "heroStats",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.hero-stats"
+    },
+    "heroBadgeText": {
+      "type": "string"
+    },
+    "heroFloatingCards": {
+      "displayName": "heroFloatingCards",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.hero-floating-cards"
     }
   }
 }

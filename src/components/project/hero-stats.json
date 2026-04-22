@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_project_hero_stats",
+  "info": {
+    "displayName": "heroStats"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}

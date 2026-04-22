@@ -1336,6 +1336,9 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
       ]
     >;
     overviewStats: Attribute.Component<'project.overview-stats', true>;
+    heroStats: Attribute.Component<'project.hero-stats', true>;
+    heroBadgeText: Attribute.String;
+    heroFloatingCards: Attribute.Component<'project.hero-floating-cards', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

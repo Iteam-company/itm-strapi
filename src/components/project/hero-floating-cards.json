@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_project_hero_floating_cards",
+  "info": {
+    "displayName": "heroFloatingCards"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}
