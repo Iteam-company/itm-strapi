@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_project_overview_stats",
+  "info": {
+    "displayName": "overviewStats"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}

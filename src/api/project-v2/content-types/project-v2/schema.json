@@ -259,6 +259,12 @@
         "tb TbRocket",
         "tb TbDatabase"
       ]
+    },
+    "overviewStats": {
+      "displayName": "overviewStats",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.overview-stats"
     }
   }
 }

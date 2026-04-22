@@ -1335,6 +1335,7 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
         'tb TbDatabase'
       ]
     >;
+    overviewStats: Attribute.Component<'project.overview-stats', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
