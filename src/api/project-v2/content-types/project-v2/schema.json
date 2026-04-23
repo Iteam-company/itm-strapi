@@ -280,6 +280,12 @@
       "type": "component",
       "repeatable": true,
       "component": "project.hero-floating-cards"
+    },
+    "productExperienceStats": {
+      "displayName": "productExperienceStats",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.product-experience-stats"
     }
   }
 }

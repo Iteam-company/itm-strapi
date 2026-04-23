@@ -1339,6 +1339,10 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
     heroStats: Attribute.Component<'project.hero-stats', true>;
     heroBadgeText: Attribute.String;
     heroFloatingCards: Attribute.Component<'project.hero-floating-cards', true>;
+    productExperienceStats: Attribute.Component<
+      'project.product-experience-stats',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

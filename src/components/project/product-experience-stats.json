@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_project_product_experience_stats",
+  "info": {
+    "displayName": "productExperienceStats"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}

@@ -290,6 +290,17 @@ export interface ProjectProductExpirienceFeatures extends Schema.Component {
   };
 }
 
+export interface ProjectProductExperienceStats extends Schema.Component {
+  collectionName: 'components_project_product_experience_stats';
+  info: {
+    displayName: 'productExperienceStats';
+  };
+  attributes: {
+    label: Attribute.String;
+    value: Attribute.String;
+  };
+}
+
 export interface ProjectOverviewStats extends Schema.Component {
   collectionName: 'components_project_overview_stats';
   info: {
@@ -1231,6 +1242,7 @@ declare module '@strapi/types' {
       'project.slides': ProjectSlides;
       'project.project-facts-cards': ProjectProjectFactsCards;
       'project.product-expirience-features': ProjectProductExpirienceFeatures;
+      'project.product-experience-stats': ProjectProductExperienceStats;
       'project.overview-stats': ProjectOverviewStats;
       'project.our-approach-cards': ProjectOurApproachCards;
       'project.more-projects-block': ProjectMoreProjectsBlock;
