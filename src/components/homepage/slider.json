@@ -35,6 +35,9 @@
     },
     "imageUrl": {
       "type": "string"
+    },
+    "duration": {
+      "type": "string"
     }
   }
 }
