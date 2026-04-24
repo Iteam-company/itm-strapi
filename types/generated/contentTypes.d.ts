@@ -1145,6 +1145,36 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
   };
 }
 
+export interface ApiHomepageV2HomepageV2 extends Schema.SingleType {
+  collectionName: 'homepage_v2s';
+  info: {
+    singularName: 'homepage-v2';
+    pluralName: 'homepage-v2s';
+    displayName: 'HomepageV2';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    workingMvpBlock: Attribute.Component<'homepage.working-mvp-block'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::homepage-v2.homepage-v2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::homepage-v2.homepage-v2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPortfolioPortfolio extends Schema.SingleType {
   collectionName: 'portfolios';
   info: {
@@ -1425,6 +1455,7 @@ declare module '@strapi/types' {
       'api::email-submission.email-submission': ApiEmailSubmissionEmailSubmission;
       'api::header-footer.header-footer': ApiHeaderFooterHeaderFooter;
       'api::homepage.homepage': ApiHomepageHomepage;
+      'api::homepage-v2.homepage-v2': ApiHomepageV2HomepageV2;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::project.project': ApiProjectProject;
       'api::project-v2.project-v2': ApiProjectV2ProjectV2;
