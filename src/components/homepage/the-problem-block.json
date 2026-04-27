@@ -1,7 +1,8 @@
 {
   "collectionName": "components_homepage_the_problem_blocks",
   "info": {
-    "displayName": "TheProblemBlock"
+    "displayName": "TheProblemBlock",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -17,11 +18,11 @@
     "description": {
       "type": "text"
     },
-    "items": {
-      "displayName": "items",
+    "problemCards": {
+      "displayName": "problemCards",
       "type": "component",
       "repeatable": true,
-      "component": "homepage.items"
+      "component": "homepage.problem-cards"
     }
   }
 }
