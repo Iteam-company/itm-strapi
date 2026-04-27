@@ -59,6 +59,24 @@
       "type": "component",
       "repeatable": false,
       "component": "homepage.concerns-block"
+    },
+    "costOfWaitingBlock": {
+      "displayName": "costOfWaitingBlock",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.cost-of-waiting-block"
+    },
+    "realProductBlock": {
+      "displayName": "realProductBlock",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.real-product-block"
+    },
+    "currentAlternativesBlock": {
+      "displayName": "currentAlternativesBlock",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.current-alternatives-block"
     }
   }
 }

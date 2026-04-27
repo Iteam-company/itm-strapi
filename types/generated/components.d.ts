@@ -828,6 +828,20 @@ export interface HomepageSecondaryButton extends Schema.Component {
   };
 }
 
+export interface HomepageRows extends Schema.Component {
+  collectionName: 'components_homepage_rows';
+  info: {
+    displayName: 'rows';
+  };
+  attributes: {
+    criteria: Attribute.String;
+    freelancers: Attribute.String;
+    inHouse: Attribute.String;
+    tools: Attribute.String;
+    iteam: Attribute.String;
+  };
+}
+
 export interface HomepageReasonCards extends Schema.Component {
   collectionName: 'components_homepage_reason_cards';
   info: {
@@ -852,6 +866,18 @@ export interface HomepageReasonCards extends Schema.Component {
     >;
     title: Attribute.String;
     description: Attribute.Text;
+  };
+}
+
+export interface HomepageRealProductBlock extends Schema.Component {
+  collectionName: 'components_homepage_real_product_blocks';
+  info: {
+    displayName: 'realProductBlock';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    buttonLabel: Attribute.String;
   };
 }
 
@@ -1059,6 +1085,30 @@ export interface HomepageExploreWithIteamCard extends Schema.Component {
     country: Attribute.String;
     money: Attribute.Integer;
     buttonText: Attribute.String;
+  };
+}
+
+export interface HomepageCurrentAlternativesBlock extends Schema.Component {
+  collectionName: 'components_homepage_current_alternatives_blocks';
+  info: {
+    displayName: 'currentAlternativesBlock';
+  };
+  attributes: {
+    badge: Attribute.String;
+    title: Attribute.String;
+    accentTitle: Attribute.String;
+    rows: Attribute.Component<'homepage.rows', true>;
+  };
+}
+
+export interface HomepageCostOfWaitingBlock extends Schema.Component {
+  collectionName: 'components_homepage_cost_of_waiting_blocks';
+  info: {
+    displayName: 'costOfWaitingBlock';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
   };
 }
 
@@ -1570,7 +1620,9 @@ declare module '@strapi/types' {
       'homepage.stats': HomepageStats;
       'homepage.slider': HomepageSlider;
       'homepage.secondary-button': HomepageSecondaryButton;
+      'homepage.rows': HomepageRows;
       'homepage.reason-cards': HomepageReasonCards;
+      'homepage.real-product-block': HomepageRealProductBlock;
       'homepage.proof-of-work-block': HomepageProofOfWorkBlock;
       'homepage.problem-cards': HomepageProblemCards;
       'homepage.primary-button': HomepagePrimaryButton;
@@ -1587,6 +1639,8 @@ declare module '@strapi/types' {
       'homepage.faq-items': HomepageFaqItems;
       'homepage.explore-with-iteam': HomepageExploreWithIteam;
       'homepage.explore-with-iteam-card': HomepageExploreWithIteamCard;
+      'homepage.current-alternatives-block': HomepageCurrentAlternativesBlock;
+      'homepage.cost-of-waiting-block': HomepageCostOfWaitingBlock;
       'homepage.core-values': HomepageCoreValues;
       'homepage.core-section': HomepageCoreSection;
       'homepage.concerns-block': HomepageConcernsBlock;

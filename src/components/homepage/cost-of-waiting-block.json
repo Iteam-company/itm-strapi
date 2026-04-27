@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_homepage_cost_of_waiting_blocks",
+  "info": {
+    "displayName": "costOfWaitingBlock"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
