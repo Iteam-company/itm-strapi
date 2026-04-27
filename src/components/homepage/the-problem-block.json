@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_homepage_the_problem_blocks",
+  "info": {
+    "displayName": "TheProblemBlock"
+  },
+  "options": {},
+  "attributes": {
+    "badge": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "accentTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "items": {
+      "displayName": "items",
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.items"
+    }
+  }
+}

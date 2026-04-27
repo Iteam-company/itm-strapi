@@ -598,6 +598,34 @@ export interface HomepageWorkingMvpBlock extends Schema.Component {
   };
 }
 
+export interface HomepageTheSolutionBlock extends Schema.Component {
+  collectionName: 'components_homepage_the_solution_blocks';
+  info: {
+    displayName: 'theSolutionBlock';
+  };
+  attributes: {
+    badge: Attribute.String;
+    title: Attribute.String;
+    accentTitle: Attribute.String;
+    description: Attribute.Text;
+    items: Attribute.Component<'homepage.items', true>;
+  };
+}
+
+export interface HomepageTheProblemBlock extends Schema.Component {
+  collectionName: 'components_homepage_the_problem_blocks';
+  info: {
+    displayName: 'TheProblemBlock';
+  };
+  attributes: {
+    badge: Attribute.String;
+    title: Attribute.String;
+    accentTitle: Attribute.String;
+    description: Attribute.Text;
+    items: Attribute.Component<'homepage.items', true>;
+  };
+}
+
 export interface HomepageTech extends Schema.Component {
   collectionName: 'components_homepage_teches';
   info: {
@@ -693,6 +721,20 @@ export interface HomepageOurCoreValuesCard extends Schema.Component {
   attributes: {
     title: Attribute.String;
     text: Attribute.Text;
+  };
+}
+
+export interface HomepageItems extends Schema.Component {
+  collectionName: 'components_homepage_items';
+  info: {
+    displayName: 'items';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    number: Attribute.BigInteger;
+    result: Attribute.Text;
   };
 }
 
@@ -1326,6 +1368,8 @@ declare module '@strapi/types' {
       'portfolio.hero': PortfolioHero;
       'portfolio.ceo': PortfolioCeo;
       'homepage.working-mvp-block': HomepageWorkingMvpBlock;
+      'homepage.the-solution-block': HomepageTheSolutionBlock;
+      'homepage.the-problem-block': HomepageTheProblemBlock;
       'homepage.tech': HomepageTech;
       'homepage.tags': HomepageTags;
       'homepage.stats': HomepageStats;
@@ -1334,6 +1378,7 @@ declare module '@strapi/types' {
       'homepage.primary-button': HomepagePrimaryButton;
       'homepage.our-core-values': HomepageOurCoreValues;
       'homepage.our-core-values-card': HomepageOurCoreValuesCard;
+      'homepage.items': HomepageItems;
       'homepage.how-we-work': HomepageHowWeWork;
       'homepage.how-we-work-component': HomepageHowWeWorkComponent;
       'homepage.how-we-work-card': HomepageHowWeWorkCard;

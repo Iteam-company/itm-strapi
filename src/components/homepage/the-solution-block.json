@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_homepage_the_solution_blocks",
+  "info": {
+    "displayName": "theSolutionBlock"
+  },
+  "options": {},
+  "attributes": {
+    "badge": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "accentTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.items"
+    }
+  }
+}

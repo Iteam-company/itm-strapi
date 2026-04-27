@@ -1151,12 +1151,15 @@ export interface ApiHomepageV2HomepageV2 extends Schema.SingleType {
     singularName: 'homepage-v2';
     pluralName: 'homepage-v2s';
     displayName: 'HomepageV2';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     workingMvpBlock: Attribute.Component<'homepage.working-mvp-block'>;
+    TheProblemBlock: Attribute.Component<'homepage.the-problem-block'>;
+    theSolutionBlock: Attribute.Component<'homepage.the-solution-block'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_homepage_items",
+  "info": {
+    "displayName": "items",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "number": {
+      "type": "biginteger"
+    },
+    "result": {
+      "type": "text"
+    }
+  }
+}

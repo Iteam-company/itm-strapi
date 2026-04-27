@@ -4,7 +4,8 @@
   "info": {
     "singularName": "homepage-v2",
     "pluralName": "homepage-v2s",
-    "displayName": "HomepageV2"
+    "displayName": "HomepageV2",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,18 @@
       "type": "component",
       "repeatable": false,
       "component": "homepage.working-mvp-block"
+    },
+    "TheProblemBlock": {
+      "displayName": "TheProblemBlock",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.the-problem-block"
+    },
+    "theSolutionBlock": {
+      "displayName": "theSolutionBlock",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.the-solution-block"
     }
   }
 }
