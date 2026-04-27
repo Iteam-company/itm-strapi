@@ -35,6 +35,18 @@
       "type": "component",
       "repeatable": false,
       "component": "homepage.how-it-works-block"
+    },
+    "whatWeBuildBlock": {
+      "displayName": "whatWeBuildBlock",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.what-we-build-block"
+    },
+    "proofOfWorkBlock": {
+      "displayName": "proofOfWorkBlock",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.proof-of-work-block"
     }
   }
 }

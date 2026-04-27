@@ -1161,6 +1161,8 @@ export interface ApiHomepageV2HomepageV2 extends Schema.SingleType {
     theProblemBlock: Attribute.Component<'homepage.the-problem-block'>;
     theSolutionBlock: Attribute.Component<'homepage.the-solution-block'>;
     howItWorksBlock: Attribute.Component<'homepage.how-it-works-block'>;
+    whatWeBuildBlock: Attribute.Component<'homepage.what-we-build-block'>;
+    proofOfWorkBlock: Attribute.Component<'homepage.proof-of-work-block'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

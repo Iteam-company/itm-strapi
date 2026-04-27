@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_homepage_build_cards",
+  "info": {
+    "displayName": "buildCards"
+  },
+  "options": {},
+  "attributes": {
+    "iconName": {
+      "type": "enumeration",
+      "enum": [
+        "tb TbBrain",
+        "tb TbRouteSquare",
+        "tb TbWaveSine ",
+        "tb TbBolt ",
+        "tb TbHierarchy3 ",
+        "tb TbTargetArrow ",
+        "tb TbChartHistogram ",
+        "tb TbRocket ",
+        "tb TbDatabase ",
+        "tb TbShieldCheck ",
+        "tb TbUsers ",
+        "tb TbSettings"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
