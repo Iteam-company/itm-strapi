@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_homepage_concerns_blocks",
+  "info": {
+    "displayName": "concernsBlock"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "faqItems": {
+      "displayName": "faqItems",
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.faq-items"
+    }
+  }
+}
