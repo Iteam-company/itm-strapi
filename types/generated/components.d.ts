@@ -665,6 +665,29 @@ export interface HeaderFooterFooterInfoText extends Schema.Component {
   };
 }
 
+export interface DevelopmentTechStack extends Schema.Component {
+  collectionName: 'components_development_tech_stacks';
+  info: {
+    displayName: 'tech-stack';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface DevelopmentTechStackInfo extends Schema.Component {
+  collectionName: 'components_development_tech_stack_infos';
+  info: {
+    displayName: 'tech-stack-info';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    subTitle: Attribute.Text;
+    techStack: Attribute.Component<'development.tech-stack', true>;
+  };
+}
+
 export interface HomepageWorkingMvpBlock extends Schema.Component {
   collectionName: 'components_homepage_working_mvp_blocks';
   info: {
@@ -729,6 +752,18 @@ export interface HomepageTags extends Schema.Component {
   };
   attributes: {
     label: Attribute.String;
+  };
+}
+
+export interface HomepageSteps extends Schema.Component {
+  collectionName: 'components_homepage_steps';
+  info: {
+    displayName: 'steps';
+  };
+  attributes: {
+    number: Attribute.BigInteger;
+    title: Attribute.String;
+    description: Attribute.Text;
   };
 }
 
@@ -880,6 +915,19 @@ export interface HomepageHowWeWorkCard extends Schema.Component {
   };
 }
 
+export interface HomepageHowItWorksBlock extends Schema.Component {
+  collectionName: 'components_homepage_how_it_works_blocks';
+  info: {
+    displayName: 'howItWorksBlock';
+  };
+  attributes: {
+    badge: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.Text;
+    steps: Attribute.Component<'homepage.steps', true>;
+  };
+}
+
 export interface HomepageHero extends Schema.Component {
   collectionName: 'components_homepage_heroes';
   info: {
@@ -997,29 +1045,6 @@ export interface HomepageBookForm extends Schema.Component {
   };
 }
 
-export interface DevelopmentTechStack extends Schema.Component {
-  collectionName: 'components_development_tech_stacks';
-  info: {
-    displayName: 'tech-stack';
-  };
-  attributes: {
-    text: Attribute.String;
-  };
-}
-
-export interface DevelopmentTechStackInfo extends Schema.Component {
-  collectionName: 'components_development_tech_stack_infos';
-  info: {
-    displayName: 'tech-stack-info';
-    description: '';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    subTitle: Attribute.Text;
-    techStack: Attribute.Component<'development.tech-stack', true>;
-  };
-}
-
 export interface ContactPros extends Schema.Component {
   collectionName: 'components_contact_pros';
   info: {
@@ -1054,6 +1079,51 @@ export interface ContactContactForm extends Schema.Component {
     inputPhonePlaceholder: Attribute.String;
     inputEmailPlaceholder: Attribute.String;
     inputMessagePlaceholder: Attribute.String;
+  };
+}
+
+export interface AboutUsHero extends Schema.Component {
+  collectionName: 'components_about_us_heroes';
+  info: {
+    displayName: 'hero';
+    description: '';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
+  collectionName: 'components_about_us_development_team_participants';
+  info: {
+    displayName: 'TeamParticipants';
+    icon: '';
+    description: '';
+  };
+  attributes: {
+    experience: Attribute.String;
+    rate: Attribute.String;
+    expertise: Attribute.String;
+    name: Attribute.String;
+    role: Attribute.String;
+    imageUrl: Attribute.Text;
+    upWorkLink: Attribute.Text;
+  };
+}
+
+export interface AboutUsCommentsInfo extends Schema.Component {
+  collectionName: 'components_about_us_comments_infos';
+  info: {
+    displayName: 'Comment-info';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.Text;
+    author: Attribute.String;
+    link: Attribute.String;
+    rate: Attribute.Integer;
+    linkTitle: Attribute.String;
   };
 }
 
@@ -1301,51 +1371,6 @@ export interface CaseComponentsButton extends Schema.Component {
   };
 }
 
-export interface AboutUsHero extends Schema.Component {
-  collectionName: 'components_about_us_heroes';
-  info: {
-    displayName: 'hero';
-    description: '';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
-  collectionName: 'components_about_us_development_team_participants';
-  info: {
-    displayName: 'TeamParticipants';
-    icon: '';
-    description: '';
-  };
-  attributes: {
-    experience: Attribute.String;
-    rate: Attribute.String;
-    expertise: Attribute.String;
-    name: Attribute.String;
-    role: Attribute.String;
-    imageUrl: Attribute.Text;
-    upWorkLink: Attribute.Text;
-  };
-}
-
-export interface AboutUsCommentsInfo extends Schema.Component {
-  collectionName: 'components_about_us_comments_infos';
-  info: {
-    displayName: 'Comment-info';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.Text;
-    author: Attribute.String;
-    link: Attribute.String;
-    rate: Attribute.Integer;
-    linkTitle: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -1401,11 +1426,14 @@ declare module '@strapi/types' {
       'header-footer.header-button': HeaderFooterHeaderButton;
       'header-footer.footer-info': HeaderFooterFooterInfo;
       'header-footer.footer-info-text': HeaderFooterFooterInfoText;
+      'development.tech-stack': DevelopmentTechStack;
+      'development.tech-stack-info': DevelopmentTechStackInfo;
       'homepage.working-mvp-block': HomepageWorkingMvpBlock;
       'homepage.the-solution-block': HomepageTheSolutionBlock;
       'homepage.the-problem-block': HomepageTheProblemBlock;
       'homepage.tech': HomepageTech;
       'homepage.tags': HomepageTags;
+      'homepage.steps': HomepageSteps;
       'homepage.stats': HomepageStats;
       'homepage.slider': HomepageSlider;
       'homepage.secondary-button': HomepageSecondaryButton;
@@ -1417,6 +1445,7 @@ declare module '@strapi/types' {
       'homepage.how-we-work': HomepageHowWeWork;
       'homepage.how-we-work-component': HomepageHowWeWorkComponent;
       'homepage.how-we-work-card': HomepageHowWeWorkCard;
+      'homepage.how-it-works-block': HomepageHowItWorksBlock;
       'homepage.hero': HomepageHero;
       'homepage.frequently-asked-question-card': HomepageFrequentlyAskedQuestionCard;
       'homepage.faq': HomepageFaq;
@@ -1427,11 +1456,12 @@ declare module '@strapi/types' {
       'homepage.card': HomepageCard;
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.book-form': HomepageBookForm;
-      'development.tech-stack': DevelopmentTechStack;
-      'development.tech-stack-info': DevelopmentTechStackInfo;
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
+      'about-us.hero': AboutUsHero;
+      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
+      'about-us.comments-info': AboutUsCommentsInfo;
       'case-components.seo': CaseComponentsSeo;
       'case-components.elements': CaseComponentsElements;
       'case-components.case-single-comment': CaseComponentsCaseSingleComment;
@@ -1450,9 +1480,6 @@ declare module '@strapi/types' {
       'case-components.case-case': CaseComponentsCaseCase;
       'case-components.case-case-element': CaseComponentsCaseCaseElement;
       'case-components.button': CaseComponentsButton;
-      'about-us.hero': AboutUsHero;
-      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
-      'about-us.comments-info': AboutUsCommentsInfo;
     }
   }
 }

@@ -18,7 +18,7 @@
       "repeatable": false,
       "component": "homepage.working-mvp-block"
     },
-    "TheProblemBlock": {
+    "theProblemBlock": {
       "displayName": "TheProblemBlock",
       "type": "component",
       "repeatable": false,
@@ -29,6 +29,12 @@
       "type": "component",
       "repeatable": false,
       "component": "homepage.the-solution-block"
+    },
+    "howItWorksBlock": {
+      "displayName": "howItWorksBlock",
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.how-it-works-block"
     }
   }
 }
