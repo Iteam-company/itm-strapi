@@ -817,6 +817,7 @@ export interface HomepageSlider extends Schema.Component {
     projectId: Attribute.String;
     imageUrl: Attribute.String;
     duration: Attribute.String;
+    badge: Attribute.String;
   };
 }
 

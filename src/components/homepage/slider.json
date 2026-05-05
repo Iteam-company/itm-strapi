@@ -38,6 +38,9 @@
     },
     "duration": {
       "type": "string"
+    },
+    "badge": {
+      "type": "string"
     }
   }
 }
