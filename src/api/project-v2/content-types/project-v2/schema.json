@@ -234,9 +234,6 @@
       "repeatable": false,
       "component": "project.the-future-block"
     },
-    "heroMedia": {
-      "type": "text"
-    },
     "ProductExperienceMedia": {
       "type": "text"
     },
@@ -286,6 +283,33 @@
       "type": "component",
       "repeatable": true,
       "component": "project.product-experience-stats"
+    },
+    "heroMedia": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "heroMediaType": {
+      "type": "enumeration",
+      "enum": [
+        "image",
+        "video"
+      ]
+    },
+    "heroVideoPoster": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

@@ -1357,7 +1357,6 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
     CommentBlock: Attribute.Component<'project.comment-block'>;
     MoreProjectsBlock: Attribute.Component<'project.more-projects-block'>;
     TheFutureBlock: Attribute.Component<'project.the-future-block'>;
-    heroMedia: Attribute.Text;
     ProductExperienceMedia: Attribute.Text;
     ProductExperienceSmallMedia: Attribute.Text;
     iconName: Attribute.Enumeration<
@@ -1384,6 +1383,9 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
       'project.product-experience-stats',
       true
     >;
+    heroMedia: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heroMediaType: Attribute.Enumeration<['image', 'video']>;
+    heroVideoPoster: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
