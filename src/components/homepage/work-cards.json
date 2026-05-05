@@ -29,6 +29,15 @@
     },
     "secondHighlightText": {
       "type": "text"
+    },
+    "time": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "budget": {
+      "type": "string"
     }
   }
 }

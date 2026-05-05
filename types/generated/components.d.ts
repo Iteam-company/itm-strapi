@@ -697,6 +697,9 @@ export interface HomepageWorkCards extends Schema.Component {
     firstHighlightText: Attribute.Text;
     secondHighlightAccent: Attribute.String;
     secondHighlightText: Attribute.Text;
+    time: Attribute.String;
+    country: Attribute.String;
+    budget: Attribute.String;
   };
 }
 
