@@ -1440,6 +1440,36 @@ export interface ApiServiceService extends Schema.SingleType {
   };
 }
 
+export interface ApiSolutionSolution extends Schema.CollectionType {
+  collectionName: 'solutions';
+  info: {
+    singularName: 'solution';
+    pluralName: 'solutions';
+    displayName: 'Solution';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    uid: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::solution.solution',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::solution.solution',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1473,6 +1503,7 @@ declare module '@strapi/types' {
       'api::project.project': ApiProjectProject;
       'api::project-v2.project-v2': ApiProjectV2ProjectV2;
       'api::service.service': ApiServiceService;
+      'api::solution.solution': ApiSolutionSolution;
     }
   }
 }
