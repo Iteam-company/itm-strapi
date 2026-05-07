@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_solution_build_cards",
+  "info": {
+    "displayName": "buildCards"
+  },
+  "options": {},
+  "attributes": {
+    "iconName": {
+      "type": "enumeration",
+      "enum": [
+        "tb TbLayersIntersect",
+        "tb TbBrain",
+        "tb TbServer2",
+        "tb TbBolt",
+        "tb TbDatabase",
+        "tb TbHierarchy3"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

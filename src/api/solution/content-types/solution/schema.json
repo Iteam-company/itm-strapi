@@ -39,6 +39,18 @@
       "type": "component",
       "repeatable": false,
       "component": "solution.the-solution"
+    },
+    "howItWorks": {
+      "displayName": "howItWorks",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.how-it-works"
+    },
+    "whatWeBuild": {
+      "displayName": "WhatWeBuild",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.what-we-build"
     }
   }
 }

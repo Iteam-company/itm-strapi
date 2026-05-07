@@ -57,6 +57,19 @@ export interface SolutionWorkingMvp extends Schema.Component {
   };
 }
 
+export interface SolutionWhatWeBuild extends Schema.Component {
+  collectionName: 'components_solution_what_we_builds';
+  info: {
+    displayName: 'WhatWeBuild';
+  };
+  attributes: {
+    badge: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.Text;
+    buildCards: Attribute.Component<'solution.build-cards', true>;
+  };
+}
+
 export interface SolutionTheSolution extends Schema.Component {
   collectionName: 'components_solution_the_solutions';
   info: {
@@ -82,6 +95,18 @@ export interface SolutionTheProblem extends Schema.Component {
     accentTitle: Attribute.String;
     description: Attribute.Text;
     problemCards: Attribute.Component<'solution.problem-cards', true>;
+  };
+}
+
+export interface SolutionSteps extends Schema.Component {
+  collectionName: 'components_solution_steps';
+  info: {
+    displayName: 'steps';
+  };
+  attributes: {
+    number: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.String;
   };
 }
 
@@ -167,6 +192,19 @@ export interface SolutionItems extends Schema.Component {
   };
 }
 
+export interface SolutionHowItWorks extends Schema.Component {
+  collectionName: 'components_solution_how_it_works';
+  info: {
+    displayName: 'howItWorks';
+  };
+  attributes: {
+    badge: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.String;
+    steps: Attribute.Component<'solution.steps', true>;
+  };
+}
+
 export interface SolutionCurrentAlternatives extends Schema.Component {
   collectionName: 'components_solution_current_alternatives';
   info: {
@@ -177,6 +215,27 @@ export interface SolutionCurrentAlternatives extends Schema.Component {
     title: Attribute.String;
     accentTitle: Attribute.String;
     rows: Attribute.Component<'solution.rows', true>;
+  };
+}
+
+export interface SolutionBuildCards extends Schema.Component {
+  collectionName: 'components_solution_build_cards';
+  info: {
+    displayName: 'buildCards';
+  };
+  attributes: {
+    iconName: Attribute.Enumeration<
+      [
+        'tb TbLayersIntersect',
+        'tb TbBrain',
+        'tb TbServer2',
+        'tb TbBolt',
+        'tb TbDatabase',
+        'tb TbHierarchy3'
+      ]
+    >;
+    title: Attribute.String;
+    description: Attribute.Text;
   };
 }
 
@@ -1704,15 +1763,19 @@ declare module '@strapi/types' {
       'test.comment-info': TestCommentInfo;
       'test.banned-category': TestBannedCategory;
       'solution.working-mvp': SolutionWorkingMvp;
+      'solution.what-we-build': SolutionWhatWeBuild;
       'solution.the-solution': SolutionTheSolution;
       'solution.the-problem': SolutionTheProblem;
+      'solution.steps': SolutionSteps;
       'solution.stats': SolutionStats;
       'solution.secondary-button': SolutionSecondaryButton;
       'solution.rows': SolutionRows;
       'solution.problem-cards': SolutionProblemCards;
       'solution.primary-button': SolutionPrimaryButton;
       'solution.items': SolutionItems;
+      'solution.how-it-works': SolutionHowItWorks;
       'solution.current-alternatives': SolutionCurrentAlternatives;
+      'solution.build-cards': SolutionBuildCards;
       'services.quote': ServicesQuote;
       'services.pros-list': ServicesProsList;
       'services.project-cases': ServicesProjectCases;
