@@ -22,6 +22,12 @@
       "type": "component",
       "repeatable": false,
       "component": "solution.working-mvp"
+    },
+    "theProblem": {
+      "displayName": "theProblem",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.the-problem"
     }
   }
 }

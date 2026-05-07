@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_solution_problem_cards",
+  "info": {
+    "displayName": "problemCards"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "iconName": {
+      "type": "enumeration",
+      "enum": [
+        "tb TbLayersIntersect",
+        "tb TbBrain",
+        "tb TbServer2",
+        "tb TbBolt",
+        "tb TbDatabase",
+        "tb TbHierarchy3"
+      ]
+    }
+  }
+}

@@ -57,6 +57,20 @@ export interface SolutionWorkingMvp extends Schema.Component {
   };
 }
 
+export interface SolutionTheProblem extends Schema.Component {
+  collectionName: 'components_solution_the_problems';
+  info: {
+    displayName: 'theProblem';
+  };
+  attributes: {
+    badge: Attribute.String;
+    title: Attribute.String;
+    accentTitle: Attribute.String;
+    description: Attribute.Text;
+    problemCards: Attribute.Component<'solution.problem-cards', true>;
+  };
+}
+
 export interface SolutionStats extends Schema.Component {
   collectionName: 'components_solution_stats';
   info: {
@@ -76,6 +90,27 @@ export interface SolutionSecondaryButton extends Schema.Component {
   attributes: {
     label: Attribute.String;
     href: Attribute.String;
+  };
+}
+
+export interface SolutionProblemCards extends Schema.Component {
+  collectionName: 'components_solution_problem_cards';
+  info: {
+    displayName: 'problemCards';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    iconName: Attribute.Enumeration<
+      [
+        'tb TbLayersIntersect',
+        'tb TbBrain',
+        'tb TbServer2',
+        'tb TbBolt',
+        'tb TbDatabase',
+        'tb TbHierarchy3'
+      ]
+    >;
   };
 }
 
@@ -191,43 +226,6 @@ export interface ServicesAdvantageCircles extends Schema.Component {
   attributes: {
     title: Attribute.String;
     hiddenText: Attribute.String;
-  };
-}
-
-export interface PortfolioTechnicalArchitectureFeatureCards
-  extends Schema.Component {
-  collectionName: 'components_portfolio_technical_architecture_feature_cards';
-  info: {
-    displayName: 'TechnicalArchitectureFeatureCards';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-  };
-}
-
-export interface PortfolioHero extends Schema.Component {
-  collectionName: 'components_portfolio_heroes';
-  info: {
-    displayName: 'hero';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface PortfolioCeo extends Schema.Component {
-  collectionName: 'components_portfolio_ceos';
-  info: {
-    displayName: 'ceo';
-    description: '';
-  };
-  attributes: {
-    position: Attribute.String;
-    fullName: Attribute.String;
-    imageUrl: Attribute.Text;
-    quote: Attribute.Text;
   };
 }
 
@@ -627,6 +625,43 @@ export interface ProjectBottomImages extends Schema.Component {
     laptop: Attribute.String;
     phone: Attribute.String;
     alt: Attribute.String;
+  };
+}
+
+export interface PortfolioTechnicalArchitectureFeatureCards
+  extends Schema.Component {
+  collectionName: 'components_portfolio_technical_architecture_feature_cards';
+  info: {
+    displayName: 'TechnicalArchitectureFeatureCards';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+  };
+}
+
+export interface PortfolioHero extends Schema.Component {
+  collectionName: 'components_portfolio_heroes';
+  info: {
+    displayName: 'hero';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface PortfolioCeo extends Schema.Component {
+  collectionName: 'components_portfolio_ceos';
+  info: {
+    displayName: 'ceo';
+    description: '';
+  };
+  attributes: {
+    position: Attribute.String;
+    fullName: Attribute.String;
+    imageUrl: Attribute.Text;
+    quote: Attribute.Text;
   };
 }
 
@@ -1614,8 +1649,10 @@ declare module '@strapi/types' {
       'test.comment-info': TestCommentInfo;
       'test.banned-category': TestBannedCategory;
       'solution.working-mvp': SolutionWorkingMvp;
+      'solution.the-problem': SolutionTheProblem;
       'solution.stats': SolutionStats;
       'solution.secondary-button': SolutionSecondaryButton;
+      'solution.problem-cards': SolutionProblemCards;
       'solution.primary-button': SolutionPrimaryButton;
       'services.quote': ServicesQuote;
       'services.pros-list': ServicesProsList;
@@ -1626,9 +1663,6 @@ declare module '@strapi/types' {
       'services.first-pros-list': ServicesFirstProsList;
       'services.comment-info': ServicesCommentInfo;
       'services.advantage-circles': ServicesAdvantageCircles;
-      'portfolio.technical-architecture-feature-cards': PortfolioTechnicalArchitectureFeatureCards;
-      'portfolio.hero': PortfolioHero;
-      'portfolio.ceo': PortfolioCeo;
       'project.the-future-block': ProjectTheFutureBlock;
       'project.the-callenge-cards': ProjectTheCallengeCards;
       'project.technology-stack-categories': ProjectTechnologyStackCategories;
@@ -1659,6 +1693,9 @@ declare module '@strapi/types' {
       'project.comment-block': ProjectCommentBlock;
       'project.cards': ProjectCards;
       'project.bottom-images': ProjectBottomImages;
+      'portfolio.technical-architecture-feature-cards': PortfolioTechnicalArchitectureFeatureCards;
+      'portfolio.hero': PortfolioHero;
+      'portfolio.ceo': PortfolioCeo;
       'homepage.working-mvp-block': HomepageWorkingMvpBlock;
       'homepage.work-cards': HomepageWorkCards;
       'homepage.why-iteam-block': HomepageWhyIteamBlock;
