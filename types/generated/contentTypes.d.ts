@@ -816,7 +816,6 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
     developmentTitle: Attribute.String;
     commentInfo: Attribute.Component<'about-us.comments-info', true>;
     commentInfo2: Attribute.Component<'about-us.comments-info', true>;
-    currentAlternatives: Attribute.Component<'solution.current-alternatives'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1456,6 +1455,7 @@ export interface ApiSolutionSolution extends Schema.CollectionType {
     uid: Attribute.String & Attribute.Required & Attribute.Unique;
     workingMvp: Attribute.Component<'solution.working-mvp'>;
     theProblem: Attribute.Component<'solution.the-problem'>;
+    CurrentAlternatives: Attribute.Component<'solution.current-alternatives'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

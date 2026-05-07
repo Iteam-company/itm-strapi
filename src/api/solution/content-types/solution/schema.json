@@ -28,6 +28,11 @@
       "type": "component",
       "repeatable": false,
       "component": "solution.the-problem"
+    },
+    "CurrentAlternatives": {
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.current-alternatives"
     }
   }
 }
