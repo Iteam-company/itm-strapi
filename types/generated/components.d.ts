@@ -41,6 +41,55 @@ export interface TestBannedCategory extends Schema.Component {
   };
 }
 
+export interface SolutionWorkingMvp extends Schema.Component {
+  collectionName: 'components_solution_working_mvps';
+  info: {
+    displayName: 'workingMvp';
+  };
+  attributes: {
+    badge: Attribute.String;
+    title: Attribute.String;
+    accentTitle: Attribute.String;
+    description: Attribute.Text;
+    primaryButton: Attribute.Component<'solution.primary-button'>;
+    secondaryButton: Attribute.Component<'solution.secondary-button'>;
+    stats: Attribute.Component<'solution.stats', true>;
+  };
+}
+
+export interface SolutionStats extends Schema.Component {
+  collectionName: 'components_solution_stats';
+  info: {
+    displayName: 'stats';
+  };
+  attributes: {
+    value: Attribute.String;
+    label: Attribute.String;
+  };
+}
+
+export interface SolutionSecondaryButton extends Schema.Component {
+  collectionName: 'components_solution_secondary_buttons';
+  info: {
+    displayName: 'secondaryButton';
+  };
+  attributes: {
+    label: Attribute.String;
+    href: Attribute.String;
+  };
+}
+
+export interface SolutionPrimaryButton extends Schema.Component {
+  collectionName: 'components_solution_primary_buttons';
+  info: {
+    displayName: 'primaryButton';
+  };
+  attributes: {
+    label: Attribute.String;
+    href: Attribute.String;
+  };
+}
+
 export interface ServicesQuote extends Schema.Component {
   collectionName: 'components_services_quotes';
   info: {
@@ -578,90 +627,6 @@ export interface ProjectBottomImages extends Schema.Component {
     laptop: Attribute.String;
     phone: Attribute.String;
     alt: Attribute.String;
-  };
-}
-
-export interface HeaderFooterSocialMedia extends Schema.Component {
-  collectionName: 'components_header_footer_social_medias';
-  info: {
-    displayName: 'social-media';
-  };
-  attributes: {
-    href: Attribute.String;
-    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-  };
-}
-
-export interface HeaderFooterOptions extends Schema.Component {
-  collectionName: 'components_header_footer_options';
-  info: {
-    displayName: 'options';
-    description: '';
-  };
-  attributes: {
-    option: Attribute.String;
-    href: Attribute.Enumeration<
-      [
-        '/outstaff',
-        '/outsource',
-        '/case/custom_software_solutions',
-        '/case/ai_powered_mvp_launch',
-        '/case/ai_mvp_development',
-        '/case/dedicated_teams',
-        '/case/js_optimization',
-        '/case/localization_services',
-        '/case/partnership_with_iteam',
-        '/case/specialized_talent_search',
-        '/case/it_outsourcing',
-        '/case/frontend_automation',
-        '/case/mvp_development'
-      ]
-    >;
-  };
-}
-
-export interface HeaderFooterHeader extends Schema.Component {
-  collectionName: 'components_header_footer_headers';
-  info: {
-    displayName: 'header';
-  };
-  attributes: {
-    title: Attribute.String;
-    options: Attribute.Component<'header-footer.options', true>;
-    href: Attribute.String;
-  };
-}
-
-export interface HeaderFooterHeaderButton extends Schema.Component {
-  collectionName: 'components_header_footer_header_buttons';
-  info: {
-    displayName: 'header-button';
-  };
-  attributes: {
-    title: Attribute.String;
-  };
-}
-
-export interface HeaderFooterFooterInfo extends Schema.Component {
-  collectionName: 'components_header_footer_footer_infos';
-  info: {
-    displayName: 'footer-info';
-  };
-  attributes: {
-    title: Attribute.String;
-    footerInfoText: Attribute.Component<'header-footer.footer-info-text', true>;
-  };
-}
-
-export interface HeaderFooterFooterInfoText extends Schema.Component {
-  collectionName: 'components_header_footer_footer_info_texts';
-  info: {
-    displayName: 'footer-info-text';
-    description: '';
-  };
-  attributes: {
-    linkText: Attribute.String;
-    href: Attribute.String;
   };
 }
 
@@ -1208,6 +1173,90 @@ export interface HomepageBookForm extends Schema.Component {
   };
 }
 
+export interface HeaderFooterSocialMedia extends Schema.Component {
+  collectionName: 'components_header_footer_social_medias';
+  info: {
+    displayName: 'social-media';
+  };
+  attributes: {
+    href: Attribute.String;
+    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface HeaderFooterOptions extends Schema.Component {
+  collectionName: 'components_header_footer_options';
+  info: {
+    displayName: 'options';
+    description: '';
+  };
+  attributes: {
+    option: Attribute.String;
+    href: Attribute.Enumeration<
+      [
+        '/outstaff',
+        '/outsource',
+        '/case/custom_software_solutions',
+        '/case/ai_powered_mvp_launch',
+        '/case/ai_mvp_development',
+        '/case/dedicated_teams',
+        '/case/js_optimization',
+        '/case/localization_services',
+        '/case/partnership_with_iteam',
+        '/case/specialized_talent_search',
+        '/case/it_outsourcing',
+        '/case/frontend_automation',
+        '/case/mvp_development'
+      ]
+    >;
+  };
+}
+
+export interface HeaderFooterHeader extends Schema.Component {
+  collectionName: 'components_header_footer_headers';
+  info: {
+    displayName: 'header';
+  };
+  attributes: {
+    title: Attribute.String;
+    options: Attribute.Component<'header-footer.options', true>;
+    href: Attribute.String;
+  };
+}
+
+export interface HeaderFooterHeaderButton extends Schema.Component {
+  collectionName: 'components_header_footer_header_buttons';
+  info: {
+    displayName: 'header-button';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
+export interface HeaderFooterFooterInfo extends Schema.Component {
+  collectionName: 'components_header_footer_footer_infos';
+  info: {
+    displayName: 'footer-info';
+  };
+  attributes: {
+    title: Attribute.String;
+    footerInfoText: Attribute.Component<'header-footer.footer-info-text', true>;
+  };
+}
+
+export interface HeaderFooterFooterInfoText extends Schema.Component {
+  collectionName: 'components_header_footer_footer_info_texts';
+  info: {
+    displayName: 'footer-info-text';
+    description: '';
+  };
+  attributes: {
+    linkText: Attribute.String;
+    href: Attribute.String;
+  };
+}
+
 export interface DevelopmentTechStack extends Schema.Component {
   collectionName: 'components_development_tech_stacks';
   info: {
@@ -1265,6 +1314,51 @@ export interface ContactContactForm extends Schema.Component {
     inputPhonePlaceholder: Attribute.String;
     inputEmailPlaceholder: Attribute.String;
     inputMessagePlaceholder: Attribute.String;
+  };
+}
+
+export interface AboutUsHero extends Schema.Component {
+  collectionName: 'components_about_us_heroes';
+  info: {
+    displayName: 'hero';
+    description: '';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
+  collectionName: 'components_about_us_development_team_participants';
+  info: {
+    displayName: 'TeamParticipants';
+    icon: '';
+    description: '';
+  };
+  attributes: {
+    experience: Attribute.String;
+    rate: Attribute.String;
+    expertise: Attribute.String;
+    name: Attribute.String;
+    role: Attribute.String;
+    imageUrl: Attribute.Text;
+    upWorkLink: Attribute.Text;
+  };
+}
+
+export interface AboutUsCommentsInfo extends Schema.Component {
+  collectionName: 'components_about_us_comments_infos';
+  info: {
+    displayName: 'Comment-info';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.Text;
+    author: Attribute.String;
+    link: Attribute.String;
+    rate: Attribute.Integer;
+    linkTitle: Attribute.String;
   };
 }
 
@@ -1512,51 +1606,6 @@ export interface CaseComponentsButton extends Schema.Component {
   };
 }
 
-export interface AboutUsHero extends Schema.Component {
-  collectionName: 'components_about_us_heroes';
-  info: {
-    displayName: 'hero';
-    description: '';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
-  collectionName: 'components_about_us_development_team_participants';
-  info: {
-    displayName: 'TeamParticipants';
-    icon: '';
-    description: '';
-  };
-  attributes: {
-    experience: Attribute.String;
-    rate: Attribute.String;
-    expertise: Attribute.String;
-    name: Attribute.String;
-    role: Attribute.String;
-    imageUrl: Attribute.Text;
-    upWorkLink: Attribute.Text;
-  };
-}
-
-export interface AboutUsCommentsInfo extends Schema.Component {
-  collectionName: 'components_about_us_comments_infos';
-  info: {
-    displayName: 'Comment-info';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.Text;
-    author: Attribute.String;
-    link: Attribute.String;
-    rate: Attribute.Integer;
-    linkTitle: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -1564,6 +1613,10 @@ declare module '@strapi/types' {
       'test.exisitng-titles': TestExisitngTitles;
       'test.comment-info': TestCommentInfo;
       'test.banned-category': TestBannedCategory;
+      'solution.working-mvp': SolutionWorkingMvp;
+      'solution.stats': SolutionStats;
+      'solution.secondary-button': SolutionSecondaryButton;
+      'solution.primary-button': SolutionPrimaryButton;
       'services.quote': ServicesQuote;
       'services.pros-list': ServicesProsList;
       'services.project-cases': ServicesProjectCases;
@@ -1606,12 +1659,6 @@ declare module '@strapi/types' {
       'project.comment-block': ProjectCommentBlock;
       'project.cards': ProjectCards;
       'project.bottom-images': ProjectBottomImages;
-      'header-footer.social-media': HeaderFooterSocialMedia;
-      'header-footer.options': HeaderFooterOptions;
-      'header-footer.header': HeaderFooterHeader;
-      'header-footer.header-button': HeaderFooterHeaderButton;
-      'header-footer.footer-info': HeaderFooterFooterInfo;
-      'header-footer.footer-info-text': HeaderFooterFooterInfoText;
       'homepage.working-mvp-block': HomepageWorkingMvpBlock;
       'homepage.work-cards': HomepageWorkCards;
       'homepage.why-iteam-block': HomepageWhyIteamBlock;
@@ -1652,11 +1699,20 @@ declare module '@strapi/types' {
       'homepage.card-text-list': HomepageCardTextList;
       'homepage.build-cards': HomepageBuildCards;
       'homepage.book-form': HomepageBookForm;
+      'header-footer.social-media': HeaderFooterSocialMedia;
+      'header-footer.options': HeaderFooterOptions;
+      'header-footer.header': HeaderFooterHeader;
+      'header-footer.header-button': HeaderFooterHeaderButton;
+      'header-footer.footer-info': HeaderFooterFooterInfo;
+      'header-footer.footer-info-text': HeaderFooterFooterInfoText;
       'development.tech-stack': DevelopmentTechStack;
       'development.tech-stack-info': DevelopmentTechStackInfo;
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
+      'about-us.hero': AboutUsHero;
+      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
+      'about-us.comments-info': AboutUsCommentsInfo;
       'case-components.seo': CaseComponentsSeo;
       'case-components.elements': CaseComponentsElements;
       'case-components.case-single-comment': CaseComponentsCaseSingleComment;
@@ -1675,9 +1731,6 @@ declare module '@strapi/types' {
       'case-components.case-case': CaseComponentsCaseCase;
       'case-components.case-case-element': CaseComponentsCaseCaseElement;
       'case-components.button': CaseComponentsButton;
-      'about-us.hero': AboutUsHero;
-      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
-      'about-us.comments-info': AboutUsCommentsInfo;
     }
   }
 }

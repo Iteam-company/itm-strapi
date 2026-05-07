@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_solution_working_mvps",
+  "info": {
+    "displayName": "workingMvp"
+  },
+  "options": {},
+  "attributes": {
+    "badge": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "accentTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "primaryButton": {
+      "displayName": "primaryButton",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.primary-button"
+    },
+    "secondaryButton": {
+      "displayName": "secondaryButton",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.secondary-button"
+    },
+    "stats": {
+      "displayName": "stats",
+      "type": "component",
+      "repeatable": true,
+      "component": "solution.stats"
+    }
+  }
+}

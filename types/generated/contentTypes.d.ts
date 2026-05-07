@@ -1446,12 +1446,14 @@ export interface ApiSolutionSolution extends Schema.CollectionType {
     singularName: 'solution';
     pluralName: 'solutions';
     displayName: 'Solution';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     uid: Attribute.String & Attribute.Required & Attribute.Unique;
+    workingMvp: Attribute.Component<'solution.working-mvp'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

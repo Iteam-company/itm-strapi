@@ -4,7 +4,8 @@
   "info": {
     "singularName": "solution",
     "pluralName": "solutions",
-    "displayName": "Solution"
+    "displayName": "Solution",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,12 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "workingMvp": {
+      "displayName": "workingMvp",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.working-mvp"
     }
   }
 }
