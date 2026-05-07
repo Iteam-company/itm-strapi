@@ -1383,9 +1383,9 @@ export interface ApiProjectV2ProjectV2 extends Schema.CollectionType {
       'project.product-experience-stats',
       true
     >;
-    heroMedia: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     heroMediaType: Attribute.Enumeration<['image', 'video']>;
-    heroVideoPoster: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heroMedia: Attribute.Text;
+    heroVideoPoster: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -284,16 +284,6 @@
       "repeatable": true,
       "component": "project.product-experience-stats"
     },
-    "heroMedia": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
-    },
     "heroMediaType": {
       "type": "enumeration",
       "enum": [
@@ -301,15 +291,11 @@
         "video"
       ]
     },
+    "heroMedia": {
+      "type": "text"
+    },
     "heroVideoPoster": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      "type": "text"
     }
   }
 }
