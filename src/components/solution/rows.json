@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_solution_rows",
+  "info": {
+    "displayName": "rows"
+  },
+  "options": {},
+  "attributes": {
+    "criteria": {
+      "type": "string"
+    },
+    "freelancers": {
+      "type": "text"
+    },
+    "inHouse": {
+      "type": "text"
+    },
+    "docketwise": {
+      "type": "text"
+    },
+    "chatgptWord": {
+      "type": "text"
+    },
+    "iteam": {
+      "type": "text"
+    }
+  }
+}

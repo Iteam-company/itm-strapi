@@ -93,6 +93,21 @@ export interface SolutionSecondaryButton extends Schema.Component {
   };
 }
 
+export interface SolutionRows extends Schema.Component {
+  collectionName: 'components_solution_rows';
+  info: {
+    displayName: 'rows';
+  };
+  attributes: {
+    criteria: Attribute.String;
+    freelancers: Attribute.Text;
+    inHouse: Attribute.Text;
+    docketwise: Attribute.Text;
+    chatgptWord: Attribute.Text;
+    iteam: Attribute.Text;
+  };
+}
+
 export interface SolutionProblemCards extends Schema.Component {
   collectionName: 'components_solution_problem_cards';
   info: {
@@ -122,6 +137,19 @@ export interface SolutionPrimaryButton extends Schema.Component {
   attributes: {
     label: Attribute.String;
     href: Attribute.String;
+  };
+}
+
+export interface SolutionCurrentAlternatives extends Schema.Component {
+  collectionName: 'components_solution_current_alternatives';
+  info: {
+    displayName: 'currentAlternatives';
+  };
+  attributes: {
+    badge: Attribute.String;
+    title: Attribute.String;
+    accentTitle: Attribute.String;
+    rows: Attribute.Component<'solution.rows', true>;
   };
 }
 
@@ -1652,8 +1680,10 @@ declare module '@strapi/types' {
       'solution.the-problem': SolutionTheProblem;
       'solution.stats': SolutionStats;
       'solution.secondary-button': SolutionSecondaryButton;
+      'solution.rows': SolutionRows;
       'solution.problem-cards': SolutionProblemCards;
       'solution.primary-button': SolutionPrimaryButton;
+      'solution.current-alternatives': SolutionCurrentAlternatives;
       'services.quote': ServicesQuote;
       'services.pros-list': ServicesProsList;
       'services.project-cases': ServicesProjectCases;
