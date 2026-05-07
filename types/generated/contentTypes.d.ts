@@ -1456,6 +1456,7 @@ export interface ApiSolutionSolution extends Schema.CollectionType {
     workingMvp: Attribute.Component<'solution.working-mvp'>;
     theProblem: Attribute.Component<'solution.the-problem'>;
     CurrentAlternatives: Attribute.Component<'solution.current-alternatives'>;
+    theSolution: Attribute.Component<'solution.the-solution'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

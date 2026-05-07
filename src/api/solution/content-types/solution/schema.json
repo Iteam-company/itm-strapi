@@ -33,6 +33,12 @@
       "type": "component",
       "repeatable": false,
       "component": "solution.current-alternatives"
+    },
+    "theSolution": {
+      "displayName": "theSolution",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.the-solution"
     }
   }
 }

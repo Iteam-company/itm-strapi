@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_solution_items",
+  "info": {
+    "displayName": "items"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "result": {
+      "type": "string"
+    }
+  }
+}
