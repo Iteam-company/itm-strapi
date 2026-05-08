@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_solution_solution_proof_of_works",
+  "info": {
+    "displayName": "solutionProofOfWork"
+  },
+  "options": {},
+  "attributes": {
+    "badge": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "project": {
+      "displayName": "project",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.project"
+    },
+    "cards": {
+      "displayName": "cards",
+      "type": "component",
+      "repeatable": true,
+      "component": "solution.cards"
+    }
+  }
+}

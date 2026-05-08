@@ -121,6 +121,20 @@ export interface SolutionStats extends Schema.Component {
   };
 }
 
+export interface SolutionSolutionProofOfWork extends Schema.Component {
+  collectionName: 'components_solution_solution_proof_of_works';
+  info: {
+    displayName: 'solutionProofOfWork';
+  };
+  attributes: {
+    badge: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.Text;
+    project: Attribute.Component<'solution.project'>;
+    cards: Attribute.Component<'solution.cards', true>;
+  };
+}
+
 export interface SolutionSecondaryButton extends Schema.Component {
   collectionName: 'components_solution_secondary_buttons';
   info: {
@@ -144,6 +158,21 @@ export interface SolutionRows extends Schema.Component {
     docketwise: Attribute.Text;
     chatgptWord: Attribute.Text;
     iteam: Attribute.Text;
+  };
+}
+
+export interface SolutionProject extends Schema.Component {
+  collectionName: 'components_solution_projects';
+  info: {
+    displayName: 'project';
+  };
+  attributes: {
+    uid: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.Text;
+    imageUrl: Attribute.Text;
+    imageAlt: Attribute.String;
+    ctaLabel: Attribute.String;
   };
 }
 
@@ -215,6 +244,17 @@ export interface SolutionCurrentAlternatives extends Schema.Component {
     title: Attribute.String;
     accentTitle: Attribute.String;
     rows: Attribute.Component<'solution.rows', true>;
+  };
+}
+
+export interface SolutionCards extends Schema.Component {
+  collectionName: 'components_solution_cards';
+  info: {
+    displayName: 'cards';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.String;
   };
 }
 
@@ -1466,6 +1506,51 @@ export interface ContactContactForm extends Schema.Component {
   };
 }
 
+export interface AboutUsHero extends Schema.Component {
+  collectionName: 'components_about_us_heroes';
+  info: {
+    displayName: 'hero';
+    description: '';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
+  collectionName: 'components_about_us_development_team_participants';
+  info: {
+    displayName: 'TeamParticipants';
+    icon: '';
+    description: '';
+  };
+  attributes: {
+    experience: Attribute.String;
+    rate: Attribute.String;
+    expertise: Attribute.String;
+    name: Attribute.String;
+    role: Attribute.String;
+    imageUrl: Attribute.Text;
+    upWorkLink: Attribute.Text;
+  };
+}
+
+export interface AboutUsCommentsInfo extends Schema.Component {
+  collectionName: 'components_about_us_comments_infos';
+  info: {
+    displayName: 'Comment-info';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.Text;
+    author: Attribute.String;
+    link: Attribute.String;
+    rate: Attribute.Integer;
+    linkTitle: Attribute.String;
+  };
+}
+
 export interface CaseComponentsSeo extends Schema.Component {
   collectionName: 'components_case_components_seos';
   info: {
@@ -1710,51 +1795,6 @@ export interface CaseComponentsButton extends Schema.Component {
   };
 }
 
-export interface AboutUsHero extends Schema.Component {
-  collectionName: 'components_about_us_heroes';
-  info: {
-    displayName: 'hero';
-    description: '';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
-  collectionName: 'components_about_us_development_team_participants';
-  info: {
-    displayName: 'TeamParticipants';
-    icon: '';
-    description: '';
-  };
-  attributes: {
-    experience: Attribute.String;
-    rate: Attribute.String;
-    expertise: Attribute.String;
-    name: Attribute.String;
-    role: Attribute.String;
-    imageUrl: Attribute.Text;
-    upWorkLink: Attribute.Text;
-  };
-}
-
-export interface AboutUsCommentsInfo extends Schema.Component {
-  collectionName: 'components_about_us_comments_infos';
-  info: {
-    displayName: 'Comment-info';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.Text;
-    author: Attribute.String;
-    link: Attribute.String;
-    rate: Attribute.Integer;
-    linkTitle: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -1768,13 +1808,16 @@ declare module '@strapi/types' {
       'solution.the-problem': SolutionTheProblem;
       'solution.steps': SolutionSteps;
       'solution.stats': SolutionStats;
+      'solution.solution-proof-of-work': SolutionSolutionProofOfWork;
       'solution.secondary-button': SolutionSecondaryButton;
       'solution.rows': SolutionRows;
+      'solution.project': SolutionProject;
       'solution.problem-cards': SolutionProblemCards;
       'solution.primary-button': SolutionPrimaryButton;
       'solution.items': SolutionItems;
       'solution.how-it-works': SolutionHowItWorks;
       'solution.current-alternatives': SolutionCurrentAlternatives;
+      'solution.cards': SolutionCards;
       'solution.build-cards': SolutionBuildCards;
       'services.quote': ServicesQuote;
       'services.pros-list': ServicesProsList;
@@ -1869,6 +1912,9 @@ declare module '@strapi/types' {
       'contact.pros': ContactPros;
       'contact.contact-info': ContactContactInfo;
       'contact.contact-form': ContactContactForm;
+      'about-us.hero': AboutUsHero;
+      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
+      'about-us.comments-info': AboutUsCommentsInfo;
       'case-components.seo': CaseComponentsSeo;
       'case-components.elements': CaseComponentsElements;
       'case-components.case-single-comment': CaseComponentsCaseSingleComment;
@@ -1887,9 +1933,6 @@ declare module '@strapi/types' {
       'case-components.case-case': CaseComponentsCaseCase;
       'case-components.case-case-element': CaseComponentsCaseCaseElement;
       'case-components.button': CaseComponentsButton;
-      'about-us.hero': AboutUsHero;
-      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
-      'about-us.comments-info': AboutUsCommentsInfo;
     }
   }
 }

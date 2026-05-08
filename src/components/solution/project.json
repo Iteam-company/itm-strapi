@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_solution_projects",
+  "info": {
+    "displayName": "project"
+  },
+  "options": {},
+  "attributes": {
+    "uid": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "imageUrl": {
+      "type": "text"
+    },
+    "imageAlt": {
+      "type": "string"
+    },
+    "ctaLabel": {
+      "type": "string"
+    }
+  }
+}

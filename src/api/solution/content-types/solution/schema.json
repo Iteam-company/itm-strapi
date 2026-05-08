@@ -51,6 +51,12 @@
       "type": "component",
       "repeatable": false,
       "component": "solution.what-we-build"
+    },
+    "solutionProofOfWork": {
+      "displayName": "solutionProofOfWork",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.solution-proof-of-work"
     }
   }
 }
