@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_solution_why_iteams",
+  "info": {
+    "displayName": "whyIteam"
+  },
+  "options": {},
+  "attributes": {
+    "badge": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "reasonCards": {
+      "displayName": "reasonCards",
+      "type": "component",
+      "repeatable": true,
+      "component": "solution.reason-cards"
+    }
+  }
+}

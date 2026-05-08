@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_solution_concerns",
+  "info": {
+    "displayName": "concerns"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "faqItems": {
+      "displayName": "faqItems",
+      "type": "component",
+      "repeatable": true,
+      "component": "solution.faq-items"
+    }
+  }
+}

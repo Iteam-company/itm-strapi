@@ -57,6 +57,18 @@ export interface SolutionWorkingMvp extends Schema.Component {
   };
 }
 
+export interface SolutionWhyIteam extends Schema.Component {
+  collectionName: 'components_solution_why_iteams';
+  info: {
+    displayName: 'whyIteam';
+  };
+  attributes: {
+    badge: Attribute.String;
+    title: Attribute.String;
+    reasonCards: Attribute.Component<'solution.reason-cards', true>;
+  };
+}
+
 export interface SolutionWhatWeBuild extends Schema.Component {
   collectionName: 'components_solution_what_we_builds';
   info: {
@@ -158,6 +170,20 @@ export interface SolutionRows extends Schema.Component {
     docketwise: Attribute.Text;
     chatgptWord: Attribute.Text;
     iteam: Attribute.Text;
+  };
+}
+
+export interface SolutionReasonCards extends Schema.Component {
+  collectionName: 'components_solution_reason_cards';
+  info: {
+    displayName: 'reasonCards';
+  };
+  attributes: {
+    iconName: Attribute.Enumeration<
+      ['tb TbSitemap', 'tb TbBrain', 'tb TbArrowRight', 'tb TbBolt']
+    >;
+    title: Attribute.String;
+    description: Attribute.Text;
   };
 }
 
@@ -1469,88 +1495,6 @@ export interface DevelopmentTechStackInfo extends Schema.Component {
   };
 }
 
-export interface ContactPros extends Schema.Component {
-  collectionName: 'components_contact_pros';
-  info: {
-    displayName: 'pros';
-  };
-  attributes: {
-    text: Attribute.String;
-  };
-}
-
-export interface ContactContactInfo extends Schema.Component {
-  collectionName: 'components_contact_contact_infos';
-  info: {
-    displayName: 'contact-info';
-  };
-  attributes: {
-    phoneNumber: Attribute.String;
-    email: Attribute.Email;
-    address: Attribute.String;
-  };
-}
-
-export interface ContactContactForm extends Schema.Component {
-  collectionName: 'components_contact_contact_forms';
-  info: {
-    displayName: 'contact-form';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    subTitle: Attribute.Text;
-    inputNamePlaceholder: Attribute.String;
-    inputPhonePlaceholder: Attribute.String;
-    inputEmailPlaceholder: Attribute.String;
-    inputMessagePlaceholder: Attribute.String;
-  };
-}
-
-export interface AboutUsHero extends Schema.Component {
-  collectionName: 'components_about_us_heroes';
-  info: {
-    displayName: 'hero';
-    description: '';
-  };
-  attributes: {
-    subTitle: Attribute.Text;
-    buttonText: Attribute.String;
-  };
-}
-
-export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
-  collectionName: 'components_about_us_development_team_participants';
-  info: {
-    displayName: 'TeamParticipants';
-    icon: '';
-    description: '';
-  };
-  attributes: {
-    experience: Attribute.String;
-    rate: Attribute.String;
-    expertise: Attribute.String;
-    name: Attribute.String;
-    role: Attribute.String;
-    imageUrl: Attribute.Text;
-    upWorkLink: Attribute.Text;
-  };
-}
-
-export interface AboutUsCommentsInfo extends Schema.Component {
-  collectionName: 'components_about_us_comments_infos';
-  info: {
-    displayName: 'Comment-info';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.Text;
-    author: Attribute.String;
-    link: Attribute.String;
-    rate: Attribute.Integer;
-    linkTitle: Attribute.String;
-  };
-}
-
 export interface CaseComponentsSeo extends Schema.Component {
   collectionName: 'components_case_components_seos';
   info: {
@@ -1795,6 +1739,88 @@ export interface CaseComponentsButton extends Schema.Component {
   };
 }
 
+export interface AboutUsHero extends Schema.Component {
+  collectionName: 'components_about_us_heroes';
+  info: {
+    displayName: 'hero';
+    description: '';
+  };
+  attributes: {
+    subTitle: Attribute.Text;
+    buttonText: Attribute.String;
+  };
+}
+
+export interface AboutUsDevelopmentTeamParticipants extends Schema.Component {
+  collectionName: 'components_about_us_development_team_participants';
+  info: {
+    displayName: 'TeamParticipants';
+    icon: '';
+    description: '';
+  };
+  attributes: {
+    experience: Attribute.String;
+    rate: Attribute.String;
+    expertise: Attribute.String;
+    name: Attribute.String;
+    role: Attribute.String;
+    imageUrl: Attribute.Text;
+    upWorkLink: Attribute.Text;
+  };
+}
+
+export interface AboutUsCommentsInfo extends Schema.Component {
+  collectionName: 'components_about_us_comments_infos';
+  info: {
+    displayName: 'Comment-info';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.Text;
+    author: Attribute.String;
+    link: Attribute.String;
+    rate: Attribute.Integer;
+    linkTitle: Attribute.String;
+  };
+}
+
+export interface ContactPros extends Schema.Component {
+  collectionName: 'components_contact_pros';
+  info: {
+    displayName: 'pros';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface ContactContactInfo extends Schema.Component {
+  collectionName: 'components_contact_contact_infos';
+  info: {
+    displayName: 'contact-info';
+  };
+  attributes: {
+    phoneNumber: Attribute.String;
+    email: Attribute.Email;
+    address: Attribute.String;
+  };
+}
+
+export interface ContactContactForm extends Schema.Component {
+  collectionName: 'components_contact_contact_forms';
+  info: {
+    displayName: 'contact-form';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    subTitle: Attribute.Text;
+    inputNamePlaceholder: Attribute.String;
+    inputPhonePlaceholder: Attribute.String;
+    inputEmailPlaceholder: Attribute.String;
+    inputMessagePlaceholder: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -1803,6 +1829,7 @@ declare module '@strapi/types' {
       'test.comment-info': TestCommentInfo;
       'test.banned-category': TestBannedCategory;
       'solution.working-mvp': SolutionWorkingMvp;
+      'solution.why-iteam': SolutionWhyIteam;
       'solution.what-we-build': SolutionWhatWeBuild;
       'solution.the-solution': SolutionTheSolution;
       'solution.the-problem': SolutionTheProblem;
@@ -1811,6 +1838,7 @@ declare module '@strapi/types' {
       'solution.solution-proof-of-work': SolutionSolutionProofOfWork;
       'solution.secondary-button': SolutionSecondaryButton;
       'solution.rows': SolutionRows;
+      'solution.reason-cards': SolutionReasonCards;
       'solution.project': SolutionProject;
       'solution.problem-cards': SolutionProblemCards;
       'solution.primary-button': SolutionPrimaryButton;
@@ -1909,12 +1937,6 @@ declare module '@strapi/types' {
       'header-footer.footer-info-text': HeaderFooterFooterInfoText;
       'development.tech-stack': DevelopmentTechStack;
       'development.tech-stack-info': DevelopmentTechStackInfo;
-      'contact.pros': ContactPros;
-      'contact.contact-info': ContactContactInfo;
-      'contact.contact-form': ContactContactForm;
-      'about-us.hero': AboutUsHero;
-      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
-      'about-us.comments-info': AboutUsCommentsInfo;
       'case-components.seo': CaseComponentsSeo;
       'case-components.elements': CaseComponentsElements;
       'case-components.case-single-comment': CaseComponentsCaseSingleComment;
@@ -1933,6 +1955,12 @@ declare module '@strapi/types' {
       'case-components.case-case': CaseComponentsCaseCase;
       'case-components.case-case-element': CaseComponentsCaseCaseElement;
       'case-components.button': CaseComponentsButton;
+      'about-us.hero': AboutUsHero;
+      'about-us.development-team-participants': AboutUsDevelopmentTeamParticipants;
+      'about-us.comments-info': AboutUsCommentsInfo;
+      'contact.pros': ContactPros;
+      'contact.contact-info': ContactContactInfo;
+      'contact.contact-form': ContactContactForm;
     }
   }
 }

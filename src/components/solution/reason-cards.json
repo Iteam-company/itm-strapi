@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_solution_reason_cards",
+  "info": {
+    "displayName": "reasonCards"
+  },
+  "options": {},
+  "attributes": {
+    "iconName": {
+      "type": "enumeration",
+      "enum": [
+        "tb TbSitemap",
+        "tb TbBrain",
+        "tb TbArrowRight",
+        "tb TbBolt"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

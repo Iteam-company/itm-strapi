@@ -57,6 +57,18 @@
       "type": "component",
       "repeatable": false,
       "component": "solution.solution-proof-of-work"
+    },
+    "whyIteam": {
+      "displayName": "whyIteam",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.why-iteam"
+    },
+    "concerns": {
+      "displayName": "concerns",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.concerns"
     }
   }
 }
