@@ -1461,6 +1461,9 @@ export interface ApiSolutionSolution extends Schema.CollectionType {
     whatWeBuild: Attribute.Component<'solution.what-we-build'>;
     solutionProofOfWork: Attribute.Component<'solution.solution-proof-of-work'>;
     whyIteam: Attribute.Component<'solution.why-iteam'>;
+    concerns: Attribute.Component<'solution.concerns'>;
+    costOfWaiting: Attribute.Component<'solution.cost-of-waiting'>;
+    realProduct: Attribute.Component<'solution.real-product'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -69,6 +69,17 @@
       "type": "component",
       "repeatable": false,
       "component": "solution.concerns"
+    },
+    "costOfWaiting": {
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.cost-of-waiting"
+    },
+    "realProduct": {
+      "displayName": "realProduct",
+      "type": "component",
+      "repeatable": false,
+      "component": "solution.real-product"
     }
   }
 }
