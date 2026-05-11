@@ -885,6 +885,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     previewDescription: Attribute.Text;
     category: Attribute.String;
     previewImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    blogType: Attribute.Enumeration<['ai', 'manual']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
