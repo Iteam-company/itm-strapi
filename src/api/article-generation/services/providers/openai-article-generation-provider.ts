@@ -20,6 +20,7 @@ type OpenAIResponse = {
 
 const OPENAI_API_URL = 'https://api.openai.com/v1/responses';
 const DEFAULT_OPENAI_MODEL = process.env.OPENAI_ARTICLE_MODEL || 'gpt-4o-mini';
+const MAX_GENERATION_ATTEMPTS = 3;
 
 const ARTICLE_DRAFT_SCHEMA = {
   type: 'object',
@@ -139,12 +140,40 @@ The post must be useful, specific, and avoid vague filler.
 The previewDescription should read like a concise, polished summary, not a generic teaser.
 Use at least 5 content blocks and at least 2 heading blocks.`;
 
-const buildUserPrompt = (context: ArticleGenerationContext) => {
+const buildUserPrompt = (
+  context: ArticleGenerationContext,
+  options?: {
+    attempt?: number;
+    rejectionReason?: string;
+  },
+) => {
+  const attempt = options?.attempt || 1;
+
   if (context.requestedTopic?.trim()) {
-    return `Create a blog post draft about this topic: ${context.requestedTopic.trim()}`;
+    return [
+      `Create a blog post draft about this topic: ${context.requestedTopic.trim()}`,
+      attempt > 1
+        ? `Previous attempt was rejected. Make the angle and title clearly more distinct from existing titles. Rejection reason: ${options?.rejectionReason || 'validation failed'}.`
+        : null,
+      context.recentAiTitles.length
+        ? `Recent AI blog titles to avoid overlapping with: ${context.recentAiTitles.join(' | ')}.`
+        : null,
+    ]
+      .filter(Boolean)
+      .join(' ');
   }
 
-  return `Create a blog post draft in the preferred category "${context.preferredCategory}".`;
+  return [
+    `Create a blog post draft in the preferred category "${context.preferredCategory}".`,
+    attempt > 1
+      ? `Previous attempt was rejected. Make the angle and title clearly more distinct from existing titles. Rejection reason: ${options?.rejectionReason || 'validation failed'}.`
+      : null,
+    context.recentAiTitles.length
+      ? `Recent AI blog titles to avoid overlapping with: ${context.recentAiTitles.join(' | ')}.`
+      : null,
+  ]
+    .filter(Boolean)
+    .join(' ');
 };
 
 const normalizeText = (value: string) =>
@@ -285,44 +314,57 @@ export const openaiArticleGenerationProvider: ArticleGenerationProvider = {
       throw new Error('OPENAI_API_KEY is not configured.');
     }
 
-    const response = await fetch(OPENAI_API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: DEFAULT_OPENAI_MODEL,
-        temperature: 0.7,
-        input: [
-          {
-            role: 'system',
-            content: buildSystemPrompt(context),
-          },
-          {
-            role: 'user',
-            content: buildUserPrompt(context),
-          },
-        ],
-        text: {
-          format: {
-            type: 'json_schema',
-            name: 'ai_blog_draft',
-            strict: true,
-            schema: ARTICLE_DRAFT_SCHEMA,
-          },
+    let lastError: Error | null = null;
+
+    for (let attempt = 1; attempt <= MAX_GENERATION_ATTEMPTS; attempt += 1) {
+      const response = await fetch(OPENAI_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
         },
-      }),
-    });
+        body: JSON.stringify({
+          model: DEFAULT_OPENAI_MODEL,
+          temperature: 0.7,
+          input: [
+            {
+              role: 'system',
+              content: buildSystemPrompt(context),
+            },
+            {
+              role: 'user',
+              content: buildUserPrompt(context, {
+                attempt,
+                rejectionReason: lastError?.message,
+              }),
+            },
+          ],
+          text: {
+            format: {
+              type: 'json_schema',
+              name: 'ai_blog_draft',
+              strict: true,
+              schema: ARTICLE_DRAFT_SCHEMA,
+            },
+          },
+        }),
+      });
 
-    const payload = (await response.json()) as OpenAIResponse;
+      const payload = (await response.json()) as OpenAIResponse;
 
-    if (!response.ok) {
-      throw new Error(payload.error?.message || 'OpenAI request failed.');
+      if (!response.ok) {
+        throw new Error(payload.error?.message || 'OpenAI request failed.');
+      }
+
+      try {
+        const draft = JSON.parse(extractTextOutput(payload)) as GeneratedAiDraft;
+
+        return validateDraft(draft, context);
+      } catch (error) {
+        lastError = error instanceof Error ? error : new Error('Draft validation failed.');
+      }
     }
 
-    const draft = JSON.parse(extractTextOutput(payload)) as GeneratedAiDraft;
-
-    return validateDraft(draft, context);
+    throw lastError || new Error('Draft generation failed after multiple attempts.');
   },
 };
