@@ -116,6 +116,8 @@ const buildSystemPrompt = (context: ArticleGenerationContext) => `You generate A
 Return only structured data that matches the schema.
 Write in clear, practical English for a software services company audience.
 Do not include markdown fences.
+Target audience: ${context.targetAudience}.
+Tone of voice: ${context.toneOfVoice}.
 Do not use categories from this banned list: ${
   context.bannedCategories.length ? context.bannedCategories.join(', ') : 'none'
 }.
@@ -124,7 +126,18 @@ Prefer these categories when relevant: ${
 }.
 Avoid duplicating or closely paraphrasing these existing titles: ${
   context.existingTitles.length ? context.existingTitles.join(' | ') : 'none'
-}.`;
+}.
+Content goals: ${context.contentGoals.length ? context.contentGoals.join(' | ') : 'provide practical value and concrete insights'}.
+Required sections to cover with heading blocks when relevant: ${
+  context.requiredSections.length ? context.requiredSections.join(' | ') : 'Introduction | Practical insights | Conclusion'
+}.
+Forbidden phrases or claims: ${
+  context.forbiddenPhrases.length ? context.forbiddenPhrases.join(' | ') : 'none'
+}.
+Editorial notes: ${context.editorialNotes || 'none'}.
+The post must be useful, specific, and avoid vague filler.
+The previewDescription should read like a concise, polished summary, not a generic teaser.
+Use at least 5 content blocks and at least 2 heading blocks.`;
 
 const buildUserPrompt = (context: ArticleGenerationContext) => {
   if (context.requestedTopic?.trim()) {
@@ -133,6 +146,16 @@ const buildUserPrompt = (context: ArticleGenerationContext) => {
 
   return `Create a blog post draft in the preferred category "${context.preferredCategory}".`;
 };
+
+const normalizeText = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const collectArticleText = (draft: GeneratedAiDraft) =>
+  draft.Article.flatMap((block) => block.children.map((child) => child.text || '')).join(' ');
 
 const extractTextOutput = (response: OpenAIResponse) => {
   const contentItems =
@@ -156,17 +179,36 @@ const extractTextOutput = (response: OpenAIResponse) => {
   return text;
 };
 
-const validateDraft = (draft: GeneratedAiDraft) => {
+const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContext) => {
   if (!draft.title?.trim()) {
     throw new Error('Generated draft has an empty title.');
+  }
+
+  if (draft.title.trim().length < 20 || draft.title.trim().length > 100) {
+    throw new Error('Generated draft title length is outside the allowed range.');
   }
 
   if (!draft.previewDescription?.trim()) {
     throw new Error('Generated draft has an empty previewDescription.');
   }
 
+  if (
+    draft.previewDescription.trim().length < 80 ||
+    draft.previewDescription.trim().length > 260
+  ) {
+    throw new Error('Generated draft previewDescription length is outside the allowed range.');
+  }
+
   if (!draft.category?.trim()) {
     throw new Error('Generated draft has an empty category.');
+  }
+
+  if (
+    context.bannedCategories.some(
+      (category) => normalizeText(category) === normalizeText(draft.category.trim()),
+    )
+  ) {
+    throw new Error('Generated draft category is in the banned categories list.');
   }
 
   if (draft.blogType !== 'ai') {
@@ -175,6 +217,60 @@ const validateDraft = (draft: GeneratedAiDraft) => {
 
   if (!Array.isArray(draft.Article) || draft.Article.length === 0) {
     throw new Error('Generated draft has an empty Article blocks array.');
+  }
+
+  if (draft.Article.length < 5) {
+    throw new Error('Generated draft must include at least 5 content blocks.');
+  }
+
+  const headingBlocks = draft.Article.filter((block) => block.type === 'heading');
+
+  if (headingBlocks.length < 2) {
+    throw new Error('Generated draft must include at least 2 heading blocks.');
+  }
+
+  const normalizedTitle = normalizeText(draft.title);
+
+  if (
+    context.existingTitles.some((title) => {
+      const normalizedExistingTitle = normalizeText(title);
+      return (
+        normalizedExistingTitle === normalizedTitle ||
+        normalizedExistingTitle.includes(normalizedTitle) ||
+        normalizedTitle.includes(normalizedExistingTitle)
+      );
+    })
+  ) {
+    throw new Error('Generated draft title is too close to an existing title.');
+  }
+
+  if (context.forbiddenPhrases.length) {
+    const searchableDraftText = normalizeText(
+      `${draft.title} ${draft.previewDescription} ${collectArticleText(draft)}`,
+    );
+    const matchedForbiddenPhrase = context.forbiddenPhrases.find((phrase) =>
+      searchableDraftText.includes(normalizeText(phrase)),
+    );
+
+    if (matchedForbiddenPhrase) {
+      throw new Error(`Generated draft contains a forbidden phrase: "${matchedForbiddenPhrase}".`);
+    }
+  }
+
+  if (context.requiredSections.length) {
+    const normalizedHeadings = headingBlocks.map((block) =>
+      normalizeText(block.children.map((child) => child.text || '').join(' ')),
+    );
+    const missingRequiredSection = context.requiredSections.find((section) => {
+      const normalizedSection = normalizeText(section);
+      return normalizedSection && !normalizedHeadings.some((heading) => heading.includes(normalizedSection));
+    });
+
+    if (missingRequiredSection) {
+      throw new Error(
+        `Generated draft is missing a required section heading related to "${missingRequiredSection}".`,
+      );
+    }
   }
 
   return draft;
@@ -227,6 +323,6 @@ export const openaiArticleGenerationProvider: ArticleGenerationProvider = {
 
     const draft = JSON.parse(extractTextOutput(payload)) as GeneratedAiDraft;
 
-    return validateDraft(draft);
+    return validateDraft(draft, context);
   },
 };

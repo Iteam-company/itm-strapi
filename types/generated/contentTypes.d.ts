@@ -850,6 +850,12 @@ export interface ApiArticleGenerationArticleGeneration
     referenceCategory: Attribute.Component<'test.reference-category', true>;
     bannedCetagory: Attribute.Component<'test.banned-category', true>;
     exisitigTitles: Attribute.Component<'test.exisitng-titles', true>;
+    targetAudience: Attribute.Text;
+    toneOfVoice: Attribute.String;
+    contentGoals: Attribute.Text;
+    requiredSections: Attribute.Text;
+    forbiddenPhrases: Attribute.Text;
+    editorialNotes: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

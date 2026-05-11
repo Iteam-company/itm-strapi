@@ -6,6 +6,12 @@ export type ArticleGenerationConfig = {
   referenceCategory?: NamedComponent[];
   bannedCetagory?: NamedComponent[];
   exisitigTitles?: NamedComponent[];
+  targetAudience?: string | null;
+  toneOfVoice?: string | null;
+  contentGoals?: string | null;
+  requiredSections?: string | null;
+  forbiddenPhrases?: string | null;
+  editorialNotes?: string | null;
 };
 
 export type TextNode = {
@@ -40,6 +46,13 @@ export type ArticleGenerationContext = {
   referenceCategories: string[];
   bannedCategories: string[];
   existingTitles: string[];
+  recentAiTitles: string[];
+  targetAudience: string;
+  toneOfVoice: string;
+  contentGoals: string[];
+  requiredSections: string[];
+  forbiddenPhrases: string[];
+  editorialNotes: string;
 };
 
 export type ArticleGenerationProvider = {

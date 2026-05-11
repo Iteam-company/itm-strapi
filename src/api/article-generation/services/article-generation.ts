@@ -19,6 +19,14 @@ const ARTICLE_GENERATION_UID = 'api::article-generation.article-generation';
 const extractNames = (items: NamedComponent[] = []) =>
   items.map(({ name }) => name?.trim()).filter(Boolean) as string[];
 
+const extractListItems = (value?: string | null) =>
+  (value || '')
+    .split(/\r?\n|,/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+const dedupeStrings = (items: string[]) => [...new Set(items.map((item) => item.trim()).filter(Boolean))];
+
 export default factories.createCoreService(
   'api::article-generation.article-generation',
   ({ strapi }) => ({
@@ -26,6 +34,23 @@ export default factories.createCoreService(
       return strapi.db.query(ARTICLE_GENERATION_UID).findOne({
         populate: ['referenceCategory', 'bannedCetagory', 'exisitigTitles'],
       });
+    },
+
+    async getRecentAiTitles(limit = 20): Promise<string[]> {
+      const recentAiPosts = await strapi.db.query(BLOG_UID).findMany({
+        where: {
+          blogType: 'ai',
+        },
+        select: ['title'],
+        orderBy: {
+          publishedAt: 'desc',
+        },
+        limit,
+      });
+
+      return dedupeStrings(
+        recentAiPosts.map((post) => post.title).filter((title): title is string => Boolean(title)),
+      );
     },
 
     getProvider(): ArticleGenerationProvider {
@@ -48,14 +73,30 @@ export default factories.createCoreService(
       const referenceCategories = extractNames(config?.referenceCategory);
       const bannedCategories = extractNames(config?.bannedCetagory);
       const existingTitles = extractNames(config?.exisitigTitles);
+      const recentAiTitles = await this.getRecentAiTitles();
       const preferredCategory = referenceCategories[0] || 'AI, MVP';
+      const targetAudience =
+        config?.targetAudience?.trim() || 'Founders, product owners, and software decision-makers';
+      const toneOfVoice =
+        config?.toneOfVoice?.trim() || 'Practical, expert, clear, and non-hype';
+      const contentGoals = extractListItems(config?.contentGoals);
+      const requiredSections = extractListItems(config?.requiredSections);
+      const forbiddenPhrases = extractListItems(config?.forbiddenPhrases);
+      const editorialNotes = config?.editorialNotes?.trim() || '';
 
       return {
         requestedTopic,
         preferredCategory,
         referenceCategories,
         bannedCategories,
-        existingTitles,
+        existingTitles: dedupeStrings([...existingTitles, ...recentAiTitles]),
+        recentAiTitles,
+        targetAudience,
+        toneOfVoice,
+        contentGoals,
+        requiredSections,
+        forbiddenPhrases,
+        editorialNotes,
       };
     },
 

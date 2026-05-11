@@ -29,6 +29,24 @@
       "type": "component",
       "repeatable": true,
       "component": "test.exisitng-titles"
+    },
+    "targetAudience": {
+      "type": "text"
+    },
+    "toneOfVoice": {
+      "type": "string"
+    },
+    "contentGoals": {
+      "type": "text"
+    },
+    "requiredSections": {
+      "type": "text"
+    },
+    "forbiddenPhrases": {
+      "type": "text"
+    },
+    "editorialNotes": {
+      "type": "text"
     }
   }
 }
