@@ -100,11 +100,35 @@ export const mockArticleGenerationProvider: ArticleGenerationProvider = {
           children: [{ type: 'text', text: 'Checklist' }],
         },
         {
-          type: 'paragraph',
+          type: 'list',
+          format: 'unordered',
           children: [
             {
-              type: 'text',
-              text: 'Mock checklist section enabled. In production, this should become a richer implementation checklist.',
+              type: 'list-item',
+              children: [
+                {
+                  type: 'text',
+                  text: 'Review the product goal and identify where AI can add practical value.',
+                },
+              ],
+            },
+            {
+              type: 'list-item',
+              children: [
+                {
+                  type: 'text',
+                  text: 'Validate privacy, cost, and implementation constraints before committing to delivery.',
+                },
+              ],
+            },
+            {
+              type: 'list-item',
+              children: [
+                {
+                  type: 'text',
+                  text: 'Document a phased rollout plan instead of trying to automate everything at once.',
+                },
+              ],
             },
           ],
         },

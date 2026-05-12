@@ -108,6 +108,54 @@ const ARTICLE_DRAFT_SCHEMA = {
               },
             },
           },
+          {
+            type: 'object',
+            additionalProperties: false,
+            required: ['type', 'format', 'children'],
+            properties: {
+              type: {
+                type: 'string',
+                enum: ['list'],
+              },
+              format: {
+                type: 'string',
+                enum: ['ordered', 'unordered'],
+              },
+              children: {
+                type: 'array',
+                minItems: 2,
+                items: {
+                  type: 'object',
+                  additionalProperties: false,
+                  required: ['type', 'children'],
+                  properties: {
+                    type: {
+                      type: 'string',
+                      enum: ['list-item'],
+                    },
+                    children: {
+                      type: 'array',
+                      minItems: 1,
+                      items: {
+                        type: 'object',
+                        additionalProperties: false,
+                        required: ['type', 'text'],
+                        properties: {
+                          type: {
+                            type: 'string',
+                            enum: ['text'],
+                          },
+                          text: {
+                            type: 'string',
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
         ],
       },
     },
@@ -143,20 +191,21 @@ Target SEO keywords to weave in naturally: ${
 }.
 The post must be useful, specific, and avoid vague filler.
 The previewDescription should read like a concise, polished summary, not a generic teaser.
+Do not use markdown syntax inside text nodes. Do not use **bold**, bullet markers like "-" inside paragraphs, or numbered markdown inside paragraphs.
 Use at least ${DEFAULT_MIN_BLOCKS} content blocks and at least 3 heading blocks.
 ${
   context.includeFaqSection
-    ? `Include an FAQ section with a heading that contains the word "FAQ" and cover around ${context.faqQuestionsCount} questions in compact Q&A-style subsections.`
+    ? `Include an FAQ section with a heading that contains the word "FAQ". For each FAQ item, use a level 3 heading for the question and a paragraph for the answer. Cover around ${context.faqQuestionsCount} questions.`
     : ''
 }
 ${
   context.includeChecklist
-    ? 'Include a checklist section with a heading that contains the word "Checklist" and provide a practical implementation or evaluation checklist.'
+    ? 'Include a checklist section with a heading that contains the word "Checklist" and provide the checklist as an unordered list block, not as dash-prefixed text paragraphs.'
     : ''
 }
 ${
   context.includeGlossary
-    ? 'Include a glossary section with a heading that contains the word "Glossary" and define important terms in short plain-language paragraphs.'
+    ? 'Include a glossary section with a heading that contains the word "Glossary" and define important terms in short plain-language paragraphs without markdown emphasis.'
     : ''
 }`;
 
@@ -204,7 +253,15 @@ const normalizeText = (value: string) =>
     .trim();
 
 const collectArticleText = (draft: GeneratedAiDraft) =>
-  draft.Article.flatMap((block) => block.children.map((child) => child.text || '')).join(' ');
+  draft.Article
+    .flatMap((block) =>
+      block.children.flatMap((child) =>
+        'text' in child
+          ? [child.text || '']
+          : child.children.map((grandChild) => grandChild.text || ''),
+      ),
+    )
+    .join(' ');
 
 const getHeadingTexts = (draft: GeneratedAiDraft) =>
   draft.Article
@@ -215,6 +272,44 @@ const hasHeadingContaining = (headings: string[], term: string) => {
   const normalizedTerm = normalizeText(term);
   return headings.some((heading) => heading.includes(normalizedTerm));
 };
+
+const sanitizeInlineText = (value: string) =>
+  value
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/__(.*?)__/g, '$1')
+    .replace(/^\s*[-*]\s+/gm, '')
+    .replace(/^\s*\d+\.\s+/gm, '')
+    .replace(/\s+\n/g, '\n')
+    .trim();
+
+const sanitizeDraft = (draft: GeneratedAiDraft): GeneratedAiDraft => ({
+  ...draft,
+  title: sanitizeInlineText(draft.title),
+  previewDescription: sanitizeInlineText(draft.previewDescription),
+  category: sanitizeInlineText(draft.category),
+  Article: draft.Article.map((block) => {
+    if (block.type === 'list') {
+      return {
+        ...block,
+        children: block.children.map((item) => ({
+          ...item,
+          children: item.children.map((child) => ({
+            ...child,
+            text: sanitizeInlineText(child.text),
+          })),
+        })),
+      };
+    }
+
+    return {
+      ...block,
+      children: block.children.map((child) => ({
+        ...child,
+        text: sanitizeInlineText(child.text),
+      })),
+    };
+  }),
+});
 
 const extractTextOutput = (response: OpenAIResponse) => {
   const contentItems =
@@ -283,6 +378,7 @@ const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContex
   }
 
   const headingBlocks = draft.Article.filter((block) => block.type === 'heading');
+  const listBlocks = draft.Article.filter((block) => block.type === 'list');
 
   if (headingBlocks.length < 3) {
     throw new Error('Generated draft must include at least 3 heading blocks.');
@@ -336,6 +432,10 @@ const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContex
 
   if (context.includeChecklist && !hasHeadingContaining(normalizedHeadings, 'checklist')) {
     throw new Error('Generated draft is missing a checklist section.');
+  }
+
+  if (context.includeChecklist && listBlocks.length === 0) {
+    throw new Error('Generated draft is missing a checklist list block.');
   }
 
   if (context.includeGlossary && !hasHeadingContaining(normalizedHeadings, 'glossary')) {
@@ -410,7 +510,7 @@ export const openaiArticleGenerationProvider: ArticleGenerationProvider = {
       }
 
       try {
-        const draft = JSON.parse(extractTextOutput(payload)) as GeneratedAiDraft;
+        const draft = sanitizeDraft(JSON.parse(extractTextOutput(payload)) as GeneratedAiDraft);
 
         return validateDraft(draft, context);
       } catch (error) {

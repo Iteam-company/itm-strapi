@@ -25,6 +25,11 @@ export type TextNode = {
   text: string;
 };
 
+export type ListItemNode = {
+  type: 'list-item';
+  children: TextNode[];
+};
+
 export type ParagraphBlock = {
   type: 'paragraph';
   children: TextNode[];
@@ -36,7 +41,13 @@ export type HeadingBlock = {
   children: TextNode[];
 };
 
-export type BlogBlock = ParagraphBlock | HeadingBlock;
+export type ListBlock = {
+  type: 'list';
+  format: 'ordered' | 'unordered';
+  children: ListItemNode[];
+};
+
+export type BlogBlock = ParagraphBlock | HeadingBlock | ListBlock;
 
 export type GeneratedAiDraft = {
   title: string;
