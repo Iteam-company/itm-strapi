@@ -856,6 +856,12 @@ export interface ApiArticleGenerationArticleGeneration
     requiredSections: Attribute.Text;
     forbiddenPhrases: Attribute.Text;
     editorialNotes: Attribute.Text;
+    targetWordCount: Attribute.Integer;
+    includeFaqSection: Attribute.Boolean;
+    faqQuestionsCount: Attribute.Integer;
+    includeChecklist: Attribute.Boolean;
+    includeGlossary: Attribute.Boolean;
+    seoKeywords: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

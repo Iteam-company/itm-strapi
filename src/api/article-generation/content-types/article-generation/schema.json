@@ -47,6 +47,24 @@
     },
     "editorialNotes": {
       "type": "text"
+    },
+    "targetWordCount": {
+      "type": "integer"
+    },
+    "includeFaqSection": {
+      "type": "boolean"
+    },
+    "faqQuestionsCount": {
+      "type": "integer"
+    },
+    "includeChecklist": {
+      "type": "boolean"
+    },
+    "includeGlossary": {
+      "type": "boolean"
+    },
+    "seoKeywords": {
+      "type": "text"
     }
   }
 }

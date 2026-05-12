@@ -12,6 +12,12 @@ export type ArticleGenerationConfig = {
   requiredSections?: string | null;
   forbiddenPhrases?: string | null;
   editorialNotes?: string | null;
+  targetWordCount?: number | null;
+  includeFaqSection?: boolean | null;
+  faqQuestionsCount?: number | null;
+  includeChecklist?: boolean | null;
+  includeGlossary?: boolean | null;
+  seoKeywords?: string | null;
 };
 
 export type TextNode = {
@@ -53,6 +59,12 @@ export type ArticleGenerationContext = {
   requiredSections: string[];
   forbiddenPhrases: string[];
   editorialNotes: string;
+  targetWordCount: number;
+  includeFaqSection: boolean;
+  faqQuestionsCount: number;
+  includeChecklist: boolean;
+  includeGlossary: boolean;
+  seoKeywords: string[];
 };
 
 export type ArticleGenerationProvider = {

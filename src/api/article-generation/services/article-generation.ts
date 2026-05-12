@@ -26,6 +26,15 @@ const extractListItems = (value?: string | null) =>
     .filter(Boolean);
 
 const dedupeStrings = (items: string[]) => [...new Set(items.map((item) => item.trim()).filter(Boolean))];
+const toPositiveInteger = (value: unknown, fallback: number, min: number) => {
+  const parsedValue = Number(value);
+
+  if (!Number.isFinite(parsedValue)) {
+    return fallback;
+  }
+
+  return Math.max(min, Math.round(parsedValue));
+};
 
 export default factories.createCoreService(
   'api::article-generation.article-generation',
@@ -83,6 +92,14 @@ export default factories.createCoreService(
       const requiredSections = extractListItems(config?.requiredSections);
       const forbiddenPhrases = extractListItems(config?.forbiddenPhrases);
       const editorialNotes = config?.editorialNotes?.trim() || '';
+      const targetWordCount = toPositiveInteger(config?.targetWordCount, 1200, 600);
+      const includeFaqSection = Boolean(config?.includeFaqSection);
+      const faqQuestionsCount = includeFaqSection
+        ? toPositiveInteger(config?.faqQuestionsCount, 3, 2)
+        : 0;
+      const includeChecklist = Boolean(config?.includeChecklist);
+      const includeGlossary = Boolean(config?.includeGlossary);
+      const seoKeywords = extractListItems(config?.seoKeywords);
 
       return {
         requestedTopic,
@@ -97,6 +114,12 @@ export default factories.createCoreService(
         requiredSections,
         forbiddenPhrases,
         editorialNotes,
+        targetWordCount,
+        includeFaqSection,
+        faqQuestionsCount,
+        includeChecklist,
+        includeGlossary,
+        seoKeywords,
       };
     },
 

@@ -21,6 +21,7 @@ type OpenAIResponse = {
 const OPENAI_API_URL = 'https://api.openai.com/v1/responses';
 const DEFAULT_OPENAI_MODEL = process.env.OPENAI_ARTICLE_MODEL || 'gpt-4o-mini';
 const MAX_GENERATION_ATTEMPTS = 3;
+const DEFAULT_MIN_BLOCKS = 7;
 
 const ARTICLE_DRAFT_SCHEMA = {
   type: 'object',
@@ -119,6 +120,7 @@ Write in clear, practical English for a software services company audience.
 Do not include markdown fences.
 Target audience: ${context.targetAudience}.
 Tone of voice: ${context.toneOfVoice}.
+Aim for approximately ${context.targetWordCount} words of total content across the article.
 Do not use categories from this banned list: ${
   context.bannedCategories.length ? context.bannedCategories.join(', ') : 'none'
 }.
@@ -136,9 +138,27 @@ Forbidden phrases or claims: ${
   context.forbiddenPhrases.length ? context.forbiddenPhrases.join(' | ') : 'none'
 }.
 Editorial notes: ${context.editorialNotes || 'none'}.
+Target SEO keywords to weave in naturally: ${
+  context.seoKeywords.length ? context.seoKeywords.join(' | ') : 'none'
+}.
 The post must be useful, specific, and avoid vague filler.
 The previewDescription should read like a concise, polished summary, not a generic teaser.
-Use at least 5 content blocks and at least 2 heading blocks.`;
+Use at least ${DEFAULT_MIN_BLOCKS} content blocks and at least 3 heading blocks.
+${
+  context.includeFaqSection
+    ? `Include an FAQ section with a heading that contains the word "FAQ" and cover around ${context.faqQuestionsCount} questions in compact Q&A-style subsections.`
+    : ''
+}
+${
+  context.includeChecklist
+    ? 'Include a checklist section with a heading that contains the word "Checklist" and provide a practical implementation or evaluation checklist.'
+    : ''
+}
+${
+  context.includeGlossary
+    ? 'Include a glossary section with a heading that contains the word "Glossary" and define important terms in short plain-language paragraphs.'
+    : ''
+}`;
 
 const buildUserPrompt = (
   context: ArticleGenerationContext,
@@ -185,6 +205,16 @@ const normalizeText = (value: string) =>
 
 const collectArticleText = (draft: GeneratedAiDraft) =>
   draft.Article.flatMap((block) => block.children.map((child) => child.text || '')).join(' ');
+
+const getHeadingTexts = (draft: GeneratedAiDraft) =>
+  draft.Article
+    .filter((block) => block.type === 'heading')
+    .map((block) => normalizeText(block.children.map((child) => child.text || '').join(' ')));
+
+const hasHeadingContaining = (headings: string[], term: string) => {
+  const normalizedTerm = normalizeText(term);
+  return headings.some((heading) => heading.includes(normalizedTerm));
+};
 
 const extractTextOutput = (response: OpenAIResponse) => {
   const contentItems =
@@ -248,17 +278,18 @@ const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContex
     throw new Error('Generated draft has an empty Article blocks array.');
   }
 
-  if (draft.Article.length < 5) {
-    throw new Error('Generated draft must include at least 5 content blocks.');
+  if (draft.Article.length < DEFAULT_MIN_BLOCKS) {
+    throw new Error(`Generated draft must include at least ${DEFAULT_MIN_BLOCKS} content blocks.`);
   }
 
   const headingBlocks = draft.Article.filter((block) => block.type === 'heading');
 
-  if (headingBlocks.length < 2) {
-    throw new Error('Generated draft must include at least 2 heading blocks.');
+  if (headingBlocks.length < 3) {
+    throw new Error('Generated draft must include at least 3 heading blocks.');
   }
 
   const normalizedTitle = normalizeText(draft.title);
+  const normalizedHeadings = getHeadingTexts(draft);
 
   if (
     context.existingTitles.some((title) => {
@@ -287,9 +318,6 @@ const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContex
   }
 
   if (context.requiredSections.length) {
-    const normalizedHeadings = headingBlocks.map((block) =>
-      normalizeText(block.children.map((child) => child.text || '').join(' ')),
-    );
     const missingRequiredSection = context.requiredSections.find((section) => {
       const normalizedSection = normalizeText(section);
       return normalizedSection && !normalizedHeadings.some((heading) => heading.includes(normalizedSection));
@@ -299,6 +327,31 @@ const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContex
       throw new Error(
         `Generated draft is missing a required section heading related to "${missingRequiredSection}".`,
       );
+    }
+  }
+
+  if (context.includeFaqSection && !hasHeadingContaining(normalizedHeadings, 'faq')) {
+    throw new Error('Generated draft is missing an FAQ section.');
+  }
+
+  if (context.includeChecklist && !hasHeadingContaining(normalizedHeadings, 'checklist')) {
+    throw new Error('Generated draft is missing a checklist section.');
+  }
+
+  if (context.includeGlossary && !hasHeadingContaining(normalizedHeadings, 'glossary')) {
+    throw new Error('Generated draft is missing a glossary section.');
+  }
+
+  if (context.seoKeywords.length) {
+    const searchableDraftText = normalizeText(
+      `${draft.title} ${draft.previewDescription} ${collectArticleText(draft)}`,
+    );
+    const matchedKeywordsCount = context.seoKeywords.filter((keyword) =>
+      searchableDraftText.includes(normalizeText(keyword)),
+    ).length;
+
+    if (matchedKeywordsCount < Math.min(2, context.seoKeywords.length)) {
+      throw new Error('Generated draft does not naturally include enough SEO keywords.');
     }
   }
 
