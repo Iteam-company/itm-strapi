@@ -314,6 +314,128 @@ const sanitizeDraft = (draft: GeneratedAiDraft): GeneratedAiDraft => ({
   }),
 });
 
+const createTextNode = (text: string) => ({
+  type: 'text' as const,
+  text: sanitizeInlineText(text),
+});
+
+const createParagraphBlock = (text: string) => ({
+  type: 'paragraph' as const,
+  children: [createTextNode(text)],
+});
+
+const createHeadingBlock = (text: string, level: 2 | 3 = 2) => ({
+  type: 'heading' as const,
+  level,
+  children: [createTextNode(text)],
+});
+
+const createUnorderedListBlock = (items: string[]) => ({
+  type: 'list' as const,
+  format: 'unordered' as const,
+  children: items.map((item) => ({
+    type: 'list-item' as const,
+    children: [createTextNode(item)],
+  })),
+});
+
+const appendMissingOptionalSections = (
+  draft: GeneratedAiDraft,
+  context: ArticleGenerationContext,
+): GeneratedAiDraft => {
+  const normalizedHeadings = getHeadingTexts(draft);
+  const nextArticle = [...draft.Article];
+
+  if (
+    context.includeFaqSection &&
+    !hasHeadingMatchingAny(normalizedHeadings, [
+      'faq',
+      'frequently asked questions',
+      'common questions',
+    ])
+  ) {
+    nextArticle.push(
+      createHeadingBlock('FAQ'),
+      createHeadingBlock('What should teams validate before adding AI to a frontend roadmap?', 3),
+      createParagraphBlock(
+        'Teams should validate the business goal, data readiness, implementation effort, privacy constraints, and how AI features support measurable user outcomes.',
+      ),
+      createHeadingBlock('How can AI support MVP delivery without slowing the team down?', 3),
+      createParagraphBlock(
+        'AI is most effective when it is introduced in narrow, testable use cases such as research summarization, content assistance, personalization experiments, or support automation.',
+      ),
+    );
+  }
+
+  const draftWithFaq = {
+    ...draft,
+    Article: nextArticle,
+  };
+
+  const headingsAfterFaq = getHeadingTexts(draftWithFaq);
+  const listBlocksAfterFaq = draftWithFaq.Article.filter((block) => block.type === 'list');
+
+  if (
+    context.includeChecklist &&
+    listBlocksAfterFaq.length === 0 &&
+    !hasHeadingMatchingAny(headingsAfterFaq, [
+      'checklist',
+      'implementation checklist',
+      'evaluation checklist',
+      'next steps',
+      'action plan',
+      'practical steps',
+      'what to do next',
+    ])
+  ) {
+    draftWithFaq.Article.push(
+      createHeadingBlock('Checklist'),
+      createUnorderedListBlock([
+        'Define a narrow AI use case tied to a measurable frontend or product goal.',
+        'Review privacy, compliance, and data quality risks before implementation starts.',
+        'Estimate integration effort, maintenance cost, and required team capabilities.',
+        'Test the feature with real users and compare outcomes against a non-AI baseline.',
+      ]),
+    );
+  } else if (context.includeChecklist && listBlocksAfterFaq.length === 0) {
+    draftWithFaq.Article.push(
+      createUnorderedListBlock([
+        'Confirm the project goal and expected user value.',
+        'Validate technical feasibility and data constraints.',
+        'Plan rollout, testing, and measurement before launch.',
+      ]),
+    );
+  }
+
+  const headingsAfterChecklist = getHeadingTexts(draftWithFaq);
+
+  if (
+    context.includeGlossary &&
+    !hasHeadingMatchingAny(headingsAfterChecklist, [
+      'glossary',
+      'glossary of terms',
+      'key terms',
+      'definitions',
+      'terms to know',
+    ])
+  ) {
+    draftWithFaq.Article.push(
+      createHeadingBlock('Glossary'),
+      createParagraphBlock(
+        'MVP: The smallest product version that can be released to validate demand, collect feedback, and support informed product decisions.',
+      ),
+      createParagraphBlock(
+        'Product discovery: The process of validating user problems, solution assumptions, and business priorities before scaling delivery.',
+      ),
+      createParagraphBlock(
+        'Frontend architecture: The structural approach used to organize UI code, state, rendering, and integration patterns in a maintainable way.',
+      ),
+    );
+  }
+
+  return draftWithFaq;
+};
+
 const extractTextOutput = (response: OpenAIResponse) => {
   const contentItems =
     response.output?.flatMap((item) => item.content || []).filter(Boolean) || [];
@@ -539,7 +661,10 @@ export const openaiArticleGenerationProvider: ArticleGenerationProvider = {
       }
 
       try {
-        const draft = sanitizeDraft(JSON.parse(extractTextOutput(payload)) as GeneratedAiDraft);
+        const draft = appendMissingOptionalSections(
+          sanitizeDraft(JSON.parse(extractTextOutput(payload)) as GeneratedAiDraft),
+          context,
+        );
 
         return validateDraft(draft, context);
       } catch (error) {
