@@ -22,6 +22,7 @@ const OPENAI_API_URL = 'https://api.openai.com/v1/responses';
 const DEFAULT_OPENAI_MODEL = process.env.OPENAI_ARTICLE_MODEL || 'gpt-4o-mini';
 const MAX_GENERATION_ATTEMPTS = 3;
 const DEFAULT_MIN_BLOCKS = 7;
+const MAX_CATEGORY_TAGS = 4;
 
 const ARTICLE_DRAFT_SCHEMA = {
   type: 'object',
@@ -169,11 +170,12 @@ Do not include markdown fences.
 Target audience: ${context.targetAudience}.
 Tone of voice: ${context.toneOfVoice}.
 Aim for approximately ${context.targetWordCount} words of total content across the article.
-The category field must contain 3 to 5 specialized tags separated by commas, not one generic label.
+The category field must contain 1 to ${MAX_CATEGORY_TAGS} specialized tags separated by commas, not one generic label.
 Build the category field from this allowed tag pool whenever relevant: ${
   context.allowedTagPool.length ? context.allowedTagPool.join(' | ') : context.preferredCategory
 }.
-Avoid overly broad one-word category outputs like "Frontend" or "Technology" unless combined with more specific tags.
+Use only the tags that are genuinely relevant to the article. Do not always fill the maximum number of tags.
+Avoid overly broad one-word category outputs like "Technology". A single focused tag is acceptable when the topic is narrow.
 Do not use categories from this banned list: ${
   context.bannedCategories.length ? context.bannedCategories.join(', ') : 'none'
 }.
@@ -285,34 +287,45 @@ const sanitizeInlineText = (value: string) =>
     .replace(/\s+\n/g, '\n')
     .trim();
 
-const sanitizeDraft = (draft: GeneratedAiDraft): GeneratedAiDraft => ({
-  ...draft,
-  title: sanitizeInlineText(draft.title),
-  previewDescription: sanitizeInlineText(draft.previewDescription),
-  category: sanitizeInlineText(draft.category),
-  Article: draft.Article.map((block) => {
-    if (block.type === 'list') {
+const sanitizeDraft = (draft: GeneratedAiDraft): GeneratedAiDraft => {
+  const sanitizedCategoryTags = [
+    ...new Set(
+      draft.category
+        .split(',')
+        .map((tag) => sanitizeInlineText(tag))
+        .filter(Boolean),
+    ),
+  ];
+
+  return {
+    ...draft,
+    title: sanitizeInlineText(draft.title),
+    previewDescription: sanitizeInlineText(draft.previewDescription),
+    category: sanitizedCategoryTags.join(', '),
+    Article: draft.Article.map((block) => {
+      if (block.type === 'list') {
+        return {
+          ...block,
+          children: block.children.map((item) => ({
+            ...item,
+            children: item.children.map((child) => ({
+              ...child,
+              text: sanitizeInlineText(child.text),
+            })),
+          })),
+        };
+      }
+
       return {
         ...block,
-        children: block.children.map((item) => ({
-          ...item,
-          children: item.children.map((child) => ({
-            ...child,
-            text: sanitizeInlineText(child.text),
-          })),
+        children: block.children.map((child) => ({
+          ...child,
+          text: sanitizeInlineText(child.text),
         })),
       };
-    }
-
-    return {
-      ...block,
-      children: block.children.map((child) => ({
-        ...child,
-        text: sanitizeInlineText(child.text),
-      })),
-    };
-  }),
-});
+    }),
+  };
+};
 
 const createTextNode = (text: string) => ({
   type: 'text' as const,
@@ -522,12 +535,12 @@ const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContex
     .map((tag) => sanitizeInlineText(tag))
     .filter(Boolean);
 
-  if (categoryTags.length < 3) {
-    throw new Error('Generated draft category must include at least 3 tags.');
+  if (categoryTags.length < 1) {
+    throw new Error('Generated draft category must include at least 1 tag.');
   }
 
-  if (categoryTags.length > 5) {
-    throw new Error('Generated draft category must include at most 5 tags.');
+  if (categoryTags.length > MAX_CATEGORY_TAGS) {
+    throw new Error(`Generated draft category must include at most ${MAX_CATEGORY_TAGS} tags.`);
   }
 
   if (
