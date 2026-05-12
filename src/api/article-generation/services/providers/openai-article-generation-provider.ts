@@ -273,6 +273,9 @@ const hasHeadingContaining = (headings: string[], term: string) => {
   return headings.some((heading) => heading.includes(normalizedTerm));
 };
 
+const hasHeadingMatchingAny = (headings: string[], terms: string[]) =>
+  terms.some((term) => hasHeadingContaining(headings, term));
+
 const sanitizeInlineText = (value: string) =>
   value
     .replace(/\*\*(.*?)\*\*/g, '$1')
@@ -426,19 +429,45 @@ const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContex
     }
   }
 
-  if (context.includeFaqSection && !hasHeadingContaining(normalizedHeadings, 'faq')) {
+  if (
+    context.includeFaqSection &&
+    !hasHeadingMatchingAny(normalizedHeadings, [
+      'faq',
+      'frequently asked questions',
+      'common questions',
+    ])
+  ) {
     throw new Error('Generated draft is missing an FAQ section.');
   }
 
-  if (context.includeChecklist && !hasHeadingContaining(normalizedHeadings, 'checklist')) {
-    throw new Error('Generated draft is missing a checklist section.');
-  }
+  const hasChecklistHeading = hasHeadingMatchingAny(normalizedHeadings, [
+    'checklist',
+    'implementation checklist',
+    'evaluation checklist',
+    'next steps',
+    'action plan',
+    'practical steps',
+    'what to do next',
+  ]);
 
   if (context.includeChecklist && listBlocks.length === 0) {
     throw new Error('Generated draft is missing a checklist list block.');
   }
 
-  if (context.includeGlossary && !hasHeadingContaining(normalizedHeadings, 'glossary')) {
+  if (context.includeChecklist && !hasChecklistHeading && listBlocks.length === 0) {
+    throw new Error('Generated draft is missing a checklist section.');
+  }
+
+  if (
+    context.includeGlossary &&
+    !hasHeadingMatchingAny(normalizedHeadings, [
+      'glossary',
+      'glossary of terms',
+      'key terms',
+      'definitions',
+      'terms to know',
+    ])
+  ) {
     throw new Error('Generated draft is missing a glossary section.');
   }
 
