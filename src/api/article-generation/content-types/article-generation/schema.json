@@ -51,12 +51,6 @@
     "targetWordCount": {
       "type": "integer"
     },
-    "includeFaqSection": {
-      "type": "boolean"
-    },
-    "faqQuestionsCount": {
-      "type": "integer"
-    },
     "includeChecklist": {
       "type": "boolean"
     },

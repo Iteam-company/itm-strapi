@@ -93,10 +93,6 @@ export default factories.createCoreService(
       const forbiddenPhrases = extractListItems(config?.forbiddenPhrases);
       const editorialNotes = config?.editorialNotes?.trim() || '';
       const targetWordCount = toPositiveInteger(config?.targetWordCount, 1200, 600);
-      const includeFaqSection = Boolean(config?.includeFaqSection);
-      const faqQuestionsCount = includeFaqSection
-        ? toPositiveInteger(config?.faqQuestionsCount, 3, 2)
-        : 0;
       const includeChecklist = Boolean(config?.includeChecklist);
       const includeGlossary = Boolean(config?.includeGlossary);
       const seoKeywords = extractListItems(config?.seoKeywords);
@@ -115,8 +111,6 @@ export default factories.createCoreService(
         forbiddenPhrases,
         editorialNotes,
         targetWordCount,
-        includeFaqSection,
-        faqQuestionsCount,
         includeChecklist,
         includeGlossary,
         seoKeywords,

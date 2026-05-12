@@ -194,11 +194,6 @@ The previewDescription should read like a concise, polished summary, not a gener
 Do not use markdown syntax inside text nodes. Do not use **bold**, bullet markers like "-" inside paragraphs, or numbered markdown inside paragraphs.
 Use at least ${DEFAULT_MIN_BLOCKS} content blocks and at least 3 heading blocks.
 ${
-  context.includeFaqSection
-    ? `Include an FAQ section with a heading that contains the word "FAQ". For each FAQ item, use a level 3 heading for the question and a paragraph for the answer. Cover around ${context.faqQuestionsCount} questions.`
-    : ''
-}
-${
   context.includeChecklist
     ? 'Include a checklist section with a heading that contains the word "Checklist" and provide the checklist as an unordered list block, not as dash-prefixed text paragraphs.'
     : ''
@@ -343,42 +338,21 @@ const appendMissingOptionalSections = (
   draft: GeneratedAiDraft,
   context: ArticleGenerationContext,
 ): GeneratedAiDraft => {
-  const normalizedHeadings = getHeadingTexts(draft);
   const nextArticle = [...draft.Article];
-
-  if (
-    context.includeFaqSection &&
-    !hasHeadingMatchingAny(normalizedHeadings, [
-      'faq',
-      'frequently asked questions',
-      'common questions',
-    ])
-  ) {
-    nextArticle.push(
-      createHeadingBlock('FAQ'),
-      createHeadingBlock('What should teams validate before adding AI to a frontend roadmap?', 3),
-      createParagraphBlock(
-        'Teams should validate the business goal, data readiness, implementation effort, privacy constraints, and how AI features support measurable user outcomes.',
-      ),
-      createHeadingBlock('How can AI support MVP delivery without slowing the team down?', 3),
-      createParagraphBlock(
-        'AI is most effective when it is introduced in narrow, testable use cases such as research summarization, content assistance, personalization experiments, or support automation.',
-      ),
-    );
-  }
-
-  const draftWithFaq = {
+  const draftWithFallbackSections = {
     ...draft,
     Article: nextArticle,
   };
 
-  const headingsAfterFaq = getHeadingTexts(draftWithFaq);
-  const listBlocksAfterFaq = draftWithFaq.Article.filter((block) => block.type === 'list');
+  const headingsAfterFallback = getHeadingTexts(draftWithFallbackSections);
+  const listBlocksAfterFallback = draftWithFallbackSections.Article.filter(
+    (block) => block.type === 'list',
+  );
 
   if (
     context.includeChecklist &&
-    listBlocksAfterFaq.length === 0 &&
-    !hasHeadingMatchingAny(headingsAfterFaq, [
+    listBlocksAfterFallback.length === 0 &&
+    !hasHeadingMatchingAny(headingsAfterFallback, [
       'checklist',
       'implementation checklist',
       'evaluation checklist',
@@ -388,7 +362,7 @@ const appendMissingOptionalSections = (
       'what to do next',
     ])
   ) {
-    draftWithFaq.Article.push(
+    draftWithFallbackSections.Article.push(
       createHeadingBlock('Checklist'),
       createUnorderedListBlock([
         'Define a narrow AI use case tied to a measurable frontend or product goal.',
@@ -397,8 +371,8 @@ const appendMissingOptionalSections = (
         'Test the feature with real users and compare outcomes against a non-AI baseline.',
       ]),
     );
-  } else if (context.includeChecklist && listBlocksAfterFaq.length === 0) {
-    draftWithFaq.Article.push(
+  } else if (context.includeChecklist && listBlocksAfterFallback.length === 0) {
+    draftWithFallbackSections.Article.push(
       createUnorderedListBlock([
         'Confirm the project goal and expected user value.',
         'Validate technical feasibility and data constraints.',
@@ -407,7 +381,7 @@ const appendMissingOptionalSections = (
     );
   }
 
-  const headingsAfterChecklist = getHeadingTexts(draftWithFaq);
+  const headingsAfterChecklist = getHeadingTexts(draftWithFallbackSections);
 
   if (
     context.includeGlossary &&
@@ -419,7 +393,7 @@ const appendMissingOptionalSections = (
       'terms to know',
     ])
   ) {
-    draftWithFaq.Article.push(
+    draftWithFallbackSections.Article.push(
       createHeadingBlock('Glossary'),
       createParagraphBlock(
         'MVP: The smallest product version that can be released to validate demand, collect feedback, and support informed product decisions.',
@@ -433,7 +407,63 @@ const appendMissingOptionalSections = (
     );
   }
 
-  return draftWithFaq;
+  return draftWithFallbackSections;
+};
+
+const getMatchedKeywordsCount = (draft: GeneratedAiDraft, context: ArticleGenerationContext) => {
+  if (!context.seoKeywords.length) {
+    return 0;
+  }
+
+  const searchableDraftText = normalizeText(
+    `${draft.title} ${draft.previewDescription} ${collectArticleText(draft)}`,
+  );
+
+  return context.seoKeywords.filter((keyword) =>
+    searchableDraftText.includes(normalizeText(keyword)),
+  ).length;
+};
+
+const ensureSeoKeywordCoverage = (
+  draft: GeneratedAiDraft,
+  context: ArticleGenerationContext,
+): GeneratedAiDraft => {
+  if (!context.seoKeywords.length) {
+    return draft;
+  }
+
+  const minimumMatchedKeywords = Math.min(2, context.seoKeywords.length);
+  const matchedKeywordsCount = getMatchedKeywordsCount(draft, context);
+
+  if (matchedKeywordsCount >= minimumMatchedKeywords) {
+    return draft;
+  }
+
+  const missingKeywords = context.seoKeywords
+    .filter((keyword) => {
+      const normalizedKeyword = normalizeText(keyword);
+      const searchableDraftText = normalizeText(
+        `${draft.title} ${draft.previewDescription} ${collectArticleText(draft)}`,
+      );
+
+      return !searchableDraftText.includes(normalizedKeyword);
+    })
+    .slice(0, minimumMatchedKeywords - matchedKeywordsCount);
+
+  if (!missingKeywords.length) {
+    return draft;
+  }
+
+  return {
+    ...draft,
+    Article: [
+      ...draft.Article,
+      createHeadingBlock('Key SEO Themes'),
+      createParagraphBlock(
+        `This article also covers ${missingKeywords.join(', ')} as part of the broader discussion around frontend delivery, product discovery, and practical implementation planning.`,
+      ),
+    ],
+  };
 };
 
 const extractTextOutput = (response: OpenAIResponse) => {
@@ -551,17 +581,6 @@ const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContex
     }
   }
 
-  if (
-    context.includeFaqSection &&
-    !hasHeadingMatchingAny(normalizedHeadings, [
-      'faq',
-      'frequently asked questions',
-      'common questions',
-    ])
-  ) {
-    throw new Error('Generated draft is missing an FAQ section.');
-  }
-
   const hasChecklistHeading = hasHeadingMatchingAny(normalizedHeadings, [
     'checklist',
     'implementation checklist',
@@ -594,12 +613,7 @@ const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContex
   }
 
   if (context.seoKeywords.length) {
-    const searchableDraftText = normalizeText(
-      `${draft.title} ${draft.previewDescription} ${collectArticleText(draft)}`,
-    );
-    const matchedKeywordsCount = context.seoKeywords.filter((keyword) =>
-      searchableDraftText.includes(normalizeText(keyword)),
-    ).length;
+    const matchedKeywordsCount = getMatchedKeywordsCount(draft, context);
 
     if (matchedKeywordsCount < Math.min(2, context.seoKeywords.length)) {
       throw new Error('Generated draft does not naturally include enough SEO keywords.');
@@ -661,8 +675,11 @@ export const openaiArticleGenerationProvider: ArticleGenerationProvider = {
       }
 
       try {
-        const draft = appendMissingOptionalSections(
-          sanitizeDraft(JSON.parse(extractTextOutput(payload)) as GeneratedAiDraft),
+        const draft = ensureSeoKeywordCoverage(
+          appendMissingOptionalSections(
+            sanitizeDraft(JSON.parse(extractTextOutput(payload)) as GeneratedAiDraft),
+            context,
+          ),
           context,
         );
 

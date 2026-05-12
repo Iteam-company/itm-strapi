@@ -73,25 +73,6 @@ export const mockArticleGenerationProvider: ArticleGenerationProvider = {
       },
     ];
 
-    if (context.includeFaqSection) {
-      articleBlocks.push(
-        {
-          type: 'heading',
-          level: 2,
-          children: [{ type: 'text', text: 'FAQ' }],
-        },
-        {
-          type: 'paragraph',
-          children: [
-            {
-              type: 'text',
-              text: `Mock FAQ section enabled. Target question count: ${context.faqQuestionsCount}.`,
-            },
-          ],
-        },
-      );
-    }
-
     if (context.includeChecklist) {
       articleBlocks.push(
         {
