@@ -60,6 +60,7 @@ export type ArticleGenerationContext = {
   preferredCategory: string;
   referenceCategories: string[];
   bannedCategories: string[];
+  allowedTagPool: string[];
   existingTitles: string[];
   recentAiTitles: string[];
   targetAudience: string;

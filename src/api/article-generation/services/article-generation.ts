@@ -83,7 +83,19 @@ export default factories.createCoreService(
       const bannedCategories = extractNames(config?.bannedCetagory);
       const existingTitles = extractNames(config?.exisitigTitles);
       const recentAiTitles = await this.getRecentAiTitles();
+      const seoKeywords = extractListItems(config?.seoKeywords);
       const preferredCategory = referenceCategories[0] || 'AI, MVP';
+      const allowedTagPool = dedupeStrings([
+        ...referenceCategories,
+        ...seoKeywords,
+        preferredCategory,
+        'AI',
+        'MVP',
+        'Product Discovery',
+        'Startup Strategy',
+        'Frontend Architecture',
+        'Software Delivery',
+      ]).filter((tag) => !bannedCategories.some((bannedTag) => bannedTag === tag));
       const targetAudience =
         config?.targetAudience?.trim() || 'Founders, product owners, and software decision-makers';
       const toneOfVoice =
@@ -95,13 +107,13 @@ export default factories.createCoreService(
       const targetWordCount = toPositiveInteger(config?.targetWordCount, 1200, 600);
       const includeChecklist = Boolean(config?.includeChecklist);
       const includeGlossary = Boolean(config?.includeGlossary);
-      const seoKeywords = extractListItems(config?.seoKeywords);
 
       return {
         requestedTopic,
         preferredCategory,
         referenceCategories,
         bannedCategories,
+        allowedTagPool,
         existingTitles: dedupeStrings([...existingTitles, ...recentAiTitles]),
         recentAiTitles,
         targetAudience,

@@ -18,6 +18,7 @@ export const mockArticleGenerationProvider: ArticleGenerationProvider = {
   name: 'mock',
   async generateDraft(context: ArticleGenerationContext): Promise<GeneratedAiDraft> {
     const title = buildTitle(context);
+    const categoryTags = context.allowedTagPool.slice(0, 4);
     const articleBlocks: GeneratedAiDraft['Article'] = [
       {
         type: 'paragraph',
@@ -139,7 +140,7 @@ export const mockArticleGenerationProvider: ArticleGenerationProvider = {
       title: context.existingTitles.includes(title) ? `${title} Copy` : title,
       previewDescription:
         'This is a first end-to-end AI blog draft created from Strapi to verify the generation and publishing pipeline.',
-      category: context.preferredCategory,
+      category: categoryTags.join(', '),
       blogType: 'ai',
       Article: articleBlocks,
     };

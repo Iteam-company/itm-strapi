@@ -169,6 +169,11 @@ Do not include markdown fences.
 Target audience: ${context.targetAudience}.
 Tone of voice: ${context.toneOfVoice}.
 Aim for approximately ${context.targetWordCount} words of total content across the article.
+The category field must contain 3 to 5 specialized tags separated by commas, not one generic label.
+Build the category field from this allowed tag pool whenever relevant: ${
+  context.allowedTagPool.length ? context.allowedTagPool.join(' | ') : context.preferredCategory
+}.
+Avoid overly broad one-word category outputs like "Frontend" or "Technology" unless combined with more specific tags.
 Do not use categories from this banned list: ${
   context.bannedCategories.length ? context.bannedCategories.join(', ') : 'none'
 }.
@@ -512,12 +517,39 @@ const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContex
     throw new Error('Generated draft has an empty category.');
   }
 
+  const categoryTags = draft.category
+    .split(',')
+    .map((tag) => sanitizeInlineText(tag))
+    .filter(Boolean);
+
+  if (categoryTags.length < 3) {
+    throw new Error('Generated draft category must include at least 3 tags.');
+  }
+
+  if (categoryTags.length > 5) {
+    throw new Error('Generated draft category must include at most 5 tags.');
+  }
+
   if (
-    context.bannedCategories.some(
-      (category) => normalizeText(category) === normalizeText(draft.category.trim()),
+    categoryTags.some((tag) =>
+      context.bannedCategories.some(
+        (category) => normalizeText(category) === normalizeText(tag),
+      ),
     )
   ) {
     throw new Error('Generated draft category is in the banned categories list.');
+  }
+
+  if (
+    context.allowedTagPool.length &&
+    categoryTags.some(
+      (tag) =>
+        !context.allowedTagPool.some(
+          (allowedTag) => normalizeText(allowedTag) === normalizeText(tag),
+        ),
+    )
+  ) {
+    throw new Error('Generated draft contains category tags outside the allowed tag pool.');
   }
 
   if (draft.blogType !== 'ai') {
