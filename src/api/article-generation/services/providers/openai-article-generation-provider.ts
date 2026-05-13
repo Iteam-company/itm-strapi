@@ -23,6 +23,13 @@ const DEFAULT_OPENAI_MODEL = process.env.OPENAI_ARTICLE_MODEL || 'gpt-4o-mini';
 const MAX_GENERATION_ATTEMPTS = 3;
 const DEFAULT_MIN_BLOCKS = 7;
 const MAX_CATEGORY_TAGS = 4;
+const DEFAULT_REFERENCE_ANGLES = [
+  'AI MVP development',
+  'Product discovery',
+  'Startup validation',
+  'Software delivery',
+  'SEO content strategy',
+] as const;
 
 const ARTICLE_DRAFT_SCHEMA = {
   type: 'object',
@@ -163,6 +170,30 @@ const ARTICLE_DRAFT_SCHEMA = {
   },
 } as const;
 
+const extractRelevantAngles = (context: ArticleGenerationContext) =>
+  [
+    ...context.referenceCategories,
+    ...context.seoKeywords,
+    ...DEFAULT_REFERENCE_ANGLES,
+  ].filter((value, index, items) => value && items.indexOf(value) === index);
+
+const shouldAllowVitaliyMention = (context: ArticleGenerationContext) => {
+  const normalizedSignals = normalizeText(
+    [
+      context.targetAudience,
+      context.editorialNotes,
+      context.preferredCategory,
+      ...context.referenceCategories,
+      ...context.seoKeywords,
+      ...context.contentGoals,
+    ].join(' '),
+  );
+
+  return ['seo', 'content strategy', 'content', 'organic traffic', 'search', 'discovery'].some((signal) =>
+    normalizedSignals.includes(signal),
+  );
+};
+
 const buildSystemPrompt = (context: ArticleGenerationContext) => `You generate AI blog drafts for iTeam.
 Return only structured data that matches the schema.
 Write in clear, practical English for a software services company audience.
@@ -170,6 +201,9 @@ Do not include markdown fences.
 Target audience: ${context.targetAudience}.
 Tone of voice: ${context.toneOfVoice}.
 Aim for approximately ${context.targetWordCount} words of total content across the article.
+When no explicit topic is provided, choose the strongest angle from the available strategy signals instead of defaulting to frontend by habit.
+Prefer commercially relevant topics around AI adoption, MVP delivery, product discovery, startup validation, software delivery, and SEO/content strategy when they are supported by the context.
+Do not force every article into frontend framing. Frontend is only one possible angle, not the default.
 The category field must contain 1 to ${MAX_CATEGORY_TAGS} specialized tags separated by commas, not one generic label.
 Build the category field from this allowed tag pool whenever relevant: ${
   context.allowedTagPool.length ? context.allowedTagPool.join(' | ') : context.preferredCategory
@@ -200,6 +234,8 @@ The post must be useful, specific, and avoid vague filler.
 The previewDescription should read like a concise, polished summary, not a generic teaser.
 Do not use markdown syntax inside text nodes. Do not use **bold**, bullet markers like "-" inside paragraphs, or numbered markdown inside paragraphs.
 Use at least ${DEFAULT_MIN_BLOCKS} content blocks and at least 3 heading blocks.
+When writing about SEO, organic growth, content operations, or content strategy, you may naturally mention Vitaliy as iTeam's SEO specialist or internal SEO lead when it adds context.
+Do not fabricate direct quotes, interviews, or personal opinions from Vitaliy. Only mention him as part of the company's practical point of view when relevant to the article angle.
 ${
   context.includeChecklist
     ? 'Include a checklist section with a heading that contains the word "Checklist" and provide the checklist as an unordered list block, not as dash-prefixed text paragraphs.'
@@ -219,6 +255,10 @@ const buildUserPrompt = (
   },
 ) => {
   const attempt = options?.attempt || 1;
+  const candidateAngles = extractRelevantAngles(context);
+  const vitaliyGuidance = shouldAllowVitaliyMention(context)
+    ? 'If the selected angle is about SEO, content strategy, or organic growth, you may briefly reference Vitaliy as iTeam\'s SEO specialist, but only when it feels natural and useful.'
+    : null;
 
   if (context.requestedTopic?.trim()) {
     return [
@@ -229,19 +269,23 @@ const buildUserPrompt = (
       context.recentAiTitles.length
         ? `Recent AI blog titles to avoid overlapping with: ${context.recentAiTitles.join(' | ')}.`
         : null,
+      vitaliyGuidance,
     ]
       .filter(Boolean)
       .join(' ');
   }
 
   return [
-    `Create a blog post draft in the preferred category "${context.preferredCategory}".`,
+    `Choose one strong, specific article angle from these signals: ${candidateAngles.join(' | ')}.`,
+    `Do not default to "${context.preferredCategory}" unless it is genuinely the best fit for this article.`,
+    'Prioritize the most commercially meaningful angle for iTeam, such as AI MVP delivery, product discovery, startup validation, software delivery, or SEO/content strategy, depending on relevance.',
     attempt > 1
       ? `Previous attempt was rejected. Make the angle and title clearly more distinct from existing titles. Rejection reason: ${options?.rejectionReason || 'validation failed'}.`
       : null,
     context.recentAiTitles.length
       ? `Recent AI blog titles to avoid overlapping with: ${context.recentAiTitles.join(' | ')}.`
       : null,
+    vitaliyGuidance,
   ]
     .filter(Boolean)
     .join(' ');
