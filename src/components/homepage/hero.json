@@ -11,6 +11,12 @@
     },
     "buttonText": {
       "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "accentTitle": {
+      "type": "string"
     }
   }
 }
