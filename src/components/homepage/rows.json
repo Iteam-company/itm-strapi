@@ -17,6 +17,12 @@
     "tools": {
       "type": "string"
     },
+    "genericOffshoreShop": {
+      "type": "text"
+    },
+    "offshoreShop": {
+      "type": "text"
+    },
     "iteam": {
       "type": "string"
     }
