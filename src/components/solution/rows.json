@@ -20,6 +20,12 @@
     "chatgptWord": {
       "type": "text"
     },
+    "genericOffshoreShop": {
+      "type": "text"
+    },
+    "offshoreShop": {
+      "type": "text"
+    },
     "iteam": {
       "type": "text"
     }
