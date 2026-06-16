@@ -892,6 +892,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   attributes: {
     Article: Attribute.Blocks;
     title: Attribute.String;
+    slug: Attribute.UID<'api::blog.blog', 'title'>;
     previewDescription: Attribute.Text;
     category: Attribute.String;
     previewImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;

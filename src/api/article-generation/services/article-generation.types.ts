@@ -21,6 +21,11 @@ export type ArticleGenerationConfig = {
 export type TextNode = {
   type: 'text';
   text: string;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
+  strikethrough?: boolean;
+  code?: boolean;
 };
 
 export type ListItemNode = {
@@ -45,7 +50,17 @@ export type ListBlock = {
   children: ListItemNode[];
 };
 
-export type BlogBlock = ParagraphBlock | HeadingBlock | ListBlock;
+export type CodeBlock = {
+  type: 'code';
+  children: TextNode[];
+};
+
+export type QuoteBlock = {
+  type: 'quote';
+  children: TextNode[];
+};
+
+export type BlogBlock = ParagraphBlock | HeadingBlock | ListBlock | CodeBlock | QuoteBlock;
 
 export type GeneratedAiDraft = {
   title: string;
@@ -58,11 +73,16 @@ export type GeneratedAiDraft = {
 export type ArticleGenerationContext = {
   requestedTopic?: string | null;
   preferredCategory: string;
+  primaryCategoryFocus: string;
+  secondaryCategoryFocus?: string | null;
   referenceCategories: string[];
   bannedCategories: string[];
   allowedTagPool: string[];
   existingTitles: string[];
   recentAiTitles: string[];
+  recentAiCategories: string[];
+  primarySeoKeyword?: string | null;
+  secondarySeoKeywords: string[];
   targetAudience: string;
   toneOfVoice: string;
   contentGoals: string[];
