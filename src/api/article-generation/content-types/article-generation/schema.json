@@ -59,6 +59,21 @@
     },
     "seoKeywords": {
       "type": "text"
+    },
+    "searchIntent": {
+      "type": "text"
+    },
+    "seoTitleGuidelines": {
+      "type": "text"
+    },
+    "seoDescriptionGuidelines": {
+      "type": "text"
+    },
+    "slugGuidelines": {
+      "type": "text"
+    },
+    "internalLinkStrategy": {
+      "type": "text"
     }
   }
 }

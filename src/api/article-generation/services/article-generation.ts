@@ -260,6 +260,11 @@ export default factories.createCoreService(
       const targetWordCount = toPositiveInteger(config?.targetWordCount, 1200, 600);
       const includeChecklist = Boolean(config?.includeChecklist);
       const includeGlossary = Boolean(config?.includeGlossary);
+      const searchIntent = config?.searchIntent?.trim() || '';
+      const seoTitleGuidelines = config?.seoTitleGuidelines?.trim() || '';
+      const seoDescriptionGuidelines = config?.seoDescriptionGuidelines?.trim() || '';
+      const slugGuidelines = config?.slugGuidelines?.trim() || '';
+      const internalLinkStrategy = config?.internalLinkStrategy?.trim() || '';
 
       return {
         requestedTopic,
@@ -284,6 +289,11 @@ export default factories.createCoreService(
         includeChecklist,
         includeGlossary,
         seoKeywords,
+        searchIntent,
+        seoTitleGuidelines,
+        seoDescriptionGuidelines,
+        slugGuidelines,
+        internalLinkStrategy,
       };
     },
 
