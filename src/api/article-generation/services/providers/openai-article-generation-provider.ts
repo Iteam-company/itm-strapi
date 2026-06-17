@@ -2,6 +2,7 @@ import {
   ArticleGenerationContext,
   ArticleGenerationProvider,
   GeneratedAiDraft,
+  InlineNode,
 } from '../article-generation.types';
 
 type OpenAIResponse = {
@@ -27,8 +28,8 @@ const MAX_GENERATION_ATTEMPTS = Math.max(
 );
 const MIN_PREVIEW_DESCRIPTION_LENGTH = 80;
 const MAX_PREVIEW_DESCRIPTION_LENGTH = 260;
-const DEFAULT_MIN_BLOCKS = 8;
-const DEFAULT_MIN_HEADINGS = 4;
+const DEFAULT_MIN_BLOCKS = 7;
+const DEFAULT_MIN_HEADINGS = 3;
 const MAX_CATEGORY_TAGS = 2;
 const GENERIC_HEADING_TITLES = [
   'startup context',
@@ -44,6 +45,92 @@ const DEFAULT_REFERENCE_ANGLES = [
   'Software delivery',
   'SEO content strategy',
 ] as const;
+const INTERNAL_LINK_TARGETS = [
+  {
+    label: 'AI MVP development services',
+    url: '/services',
+    signals: ['ai mvp', 'mvp development', 'software partner', 'delivery', 'startup validation'],
+  },
+  {
+    label: 'frontend and software development expertise',
+    url: '/development',
+    signals: ['angular', 'react', 'frontend', 'software development', 'implementation'],
+  },
+  {
+    label: 'iTeam project portfolio',
+    url: '/portfolio',
+    signals: ['case study', 'proof', 'examples', 'portfolio', 'delivery partner'],
+  },
+  {
+    label: 'AI-powered MVP launch case study',
+    url: '/case/ai_powered_mvp_launch',
+    signals: ['ai mvp', 'pilot', 'launch', 'validation', 'startup'],
+  },
+  {
+    label: 'AI MVP development case study',
+    url: '/case/ai_mvp_development',
+    signals: ['ai mvp development', 'prototype', 'product discovery', 'mvp scope'],
+  },
+  {
+    label: 'contact iTeam',
+    url: '/contact_us',
+    signals: ['partner selection', 'contact', 'estimate', 'scope review', 'next step'],
+  },
+] as const;
+
+const TEXT_NODE_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['type', 'text', 'bold', 'italic', 'underline', 'strikethrough', 'code'],
+  properties: {
+    type: {
+      type: 'string',
+      enum: ['text'],
+    },
+    text: {
+      type: 'string',
+    },
+    bold: {
+      type: 'boolean',
+    },
+    italic: {
+      type: 'boolean',
+    },
+    underline: {
+      type: 'boolean',
+    },
+    strikethrough: {
+      type: 'boolean',
+    },
+    code: {
+      type: 'boolean',
+    },
+  },
+} as const;
+
+const LINK_NODE_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['type', 'url', 'children'],
+  properties: {
+    type: {
+      type: 'string',
+      enum: ['link'],
+    },
+    url: {
+      type: 'string',
+    },
+    children: {
+      type: 'array',
+      minItems: 1,
+      items: TEXT_NODE_SCHEMA,
+    },
+  },
+} as const;
+
+const INLINE_NODE_SCHEMA = {
+  anyOf: [TEXT_NODE_SCHEMA, LINK_NODE_SCHEMA],
+} as const;
 
 const ARTICLE_DRAFT_SCHEMA = {
   type: 'object',
@@ -80,35 +167,7 @@ const ARTICLE_DRAFT_SCHEMA = {
               children: {
                 type: 'array',
                 minItems: 1,
-                items: {
-                  type: 'object',
-                  additionalProperties: false,
-                  required: ['type', 'text', 'bold', 'italic', 'underline', 'strikethrough', 'code'],
-                  properties: {
-                    type: {
-                      type: 'string',
-                      enum: ['text'],
-                    },
-                    text: {
-                      type: 'string',
-                    },
-                    bold: {
-                      type: 'boolean',
-                    },
-                    italic: {
-                      type: 'boolean',
-                    },
-                    underline: {
-                      type: 'boolean',
-                    },
-                    strikethrough: {
-                      type: 'boolean',
-                    },
-                    code: {
-                      type: 'boolean',
-                    },
-                  },
-                },
+                items: INLINE_NODE_SCHEMA,
               },
             },
           },
@@ -128,35 +187,7 @@ const ARTICLE_DRAFT_SCHEMA = {
               children: {
                 type: 'array',
                 minItems: 1,
-                items: {
-                  type: 'object',
-                  additionalProperties: false,
-                  required: ['type', 'text', 'bold', 'italic', 'underline', 'strikethrough', 'code'],
-                  properties: {
-                    type: {
-                      type: 'string',
-                      enum: ['text'],
-                    },
-                    text: {
-                      type: 'string',
-                    },
-                    bold: {
-                      type: 'boolean',
-                    },
-                    italic: {
-                      type: 'boolean',
-                    },
-                    underline: {
-                      type: 'boolean',
-                    },
-                    strikethrough: {
-                      type: 'boolean',
-                    },
-                    code: {
-                      type: 'boolean',
-                    },
-                  },
-                },
+                items: INLINE_NODE_SCHEMA,
               },
             },
           },
@@ -172,35 +203,7 @@ const ARTICLE_DRAFT_SCHEMA = {
               children: {
                 type: 'array',
                 minItems: 1,
-                items: {
-                  type: 'object',
-                  additionalProperties: false,
-                  required: ['type', 'text', 'bold', 'italic', 'underline', 'strikethrough', 'code'],
-                  properties: {
-                    type: {
-                      type: 'string',
-                      enum: ['text'],
-                    },
-                    text: {
-                      type: 'string',
-                    },
-                    bold: {
-                      type: 'boolean',
-                    },
-                    italic: {
-                      type: 'boolean',
-                    },
-                    underline: {
-                      type: 'boolean',
-                    },
-                    strikethrough: {
-                      type: 'boolean',
-                    },
-                    code: {
-                      type: 'boolean',
-                    },
-                  },
-                },
+                items: TEXT_NODE_SCHEMA,
               },
             },
           },
@@ -216,35 +219,7 @@ const ARTICLE_DRAFT_SCHEMA = {
               children: {
                 type: 'array',
                 minItems: 1,
-                items: {
-                  type: 'object',
-                  additionalProperties: false,
-                  required: ['type', 'text', 'bold', 'italic', 'underline', 'strikethrough', 'code'],
-                  properties: {
-                    type: {
-                      type: 'string',
-                      enum: ['text'],
-                    },
-                    text: {
-                      type: 'string',
-                    },
-                    bold: {
-                      type: 'boolean',
-                    },
-                    italic: {
-                      type: 'boolean',
-                    },
-                    underline: {
-                      type: 'boolean',
-                    },
-                    strikethrough: {
-                      type: 'boolean',
-                    },
-                    code: {
-                      type: 'boolean',
-                    },
-                  },
-                },
+                items: INLINE_NODE_SCHEMA,
               },
             },
           },
@@ -276,35 +251,7 @@ const ARTICLE_DRAFT_SCHEMA = {
                     children: {
                       type: 'array',
                       minItems: 1,
-                      items: {
-                        type: 'object',
-                        additionalProperties: false,
-                        required: ['type', 'text', 'bold', 'italic', 'underline', 'strikethrough', 'code'],
-                        properties: {
-                          type: {
-                            type: 'string',
-                            enum: ['text'],
-                          },
-                          text: {
-                            type: 'string',
-                          },
-                          bold: {
-                            type: 'boolean',
-                          },
-                          italic: {
-                            type: 'boolean',
-                          },
-                          underline: {
-                            type: 'boolean',
-                          },
-                          strikethrough: {
-                            type: 'boolean',
-                          },
-                          code: {
-                            type: 'boolean',
-                          },
-                        },
-                      },
+                      items: INLINE_NODE_SCHEMA,
                     },
                   },
                 },
@@ -321,11 +268,42 @@ const extractRelevantAngles = (context: ArticleGenerationContext) =>
   [
     ...context.referenceCategories,
     ...context.seoKeywords,
+    context.searchIntent,
     ...DEFAULT_REFERENCE_ANGLES,
   ].filter((value, index, items) => value && items.indexOf(value) === index);
 
 const getEffectiveTargetWordCount = (targetWordCount: number) =>
-  Math.min(Math.max(targetWordCount, 900), 1300);
+  Math.min(Math.max(targetWordCount, 700), 1050);
+
+const getRelevantInternalLinkTargets = (context: ArticleGenerationContext) => {
+  const searchableContext = normalizeText(
+    [
+      context.requestedTopic || '',
+      context.primarySeoKeyword || '',
+      context.primaryCategoryFocus,
+      context.secondaryCategoryFocus || '',
+      context.editorialNotes,
+      context.searchIntent,
+      context.internalLinkStrategy,
+      ...context.seoKeywords,
+      ...context.contentGoals,
+    ].join(' '),
+  );
+
+  return [...INTERNAL_LINK_TARGETS]
+    .sort((a, b) => {
+      const scoreTarget = (target: (typeof INTERNAL_LINK_TARGETS)[number]) =>
+        target.signals.filter((signal) => searchableContext.includes(normalizeText(signal))).length;
+      const scoreDelta = scoreTarget(b) - scoreTarget(a);
+
+      if (scoreDelta !== 0) {
+        return scoreDelta;
+      }
+
+      return INTERNAL_LINK_TARGETS.indexOf(a) - INTERNAL_LINK_TARGETS.indexOf(b);
+    })
+    .slice(0, 4);
+};
 
 const supportsReasoningEffort = (model: string) =>
   model.startsWith('gpt-5') || /^o\d/.test(model);
@@ -335,6 +313,8 @@ const shouldAllowVitaliyMention = (context: ArticleGenerationContext) => {
     [
       context.targetAudience,
       context.editorialNotes,
+      context.searchIntent,
+      context.internalLinkStrategy,
       context.preferredCategory,
       ...context.referenceCategories,
       ...context.seoKeywords,
@@ -398,11 +378,26 @@ Primary SEO query for this draft: ${context.primarySeoKeyword || 'none'}.
 Secondary SEO query variants: ${
   context.secondarySeoKeywords.length ? context.secondarySeoKeywords.join(' | ') : 'none'
 }.
+Search intent guidance from Strapi: ${context.searchIntent || 'none'}.
+SEO title guidelines from Strapi: ${context.seoTitleGuidelines || 'none'}.
+SEO description guidelines from Strapi: ${context.seoDescriptionGuidelines || 'none'}.
+Slug guidelines from Strapi: ${context.slugGuidelines || 'none'}.
+Internal linking strategy from Strapi: ${context.internalLinkStrategy || 'none'}.
 If a primary SEO query is provided, build the article around the search intent behind that exact query.
 Use the primary SEO query naturally in the title when it fits, in the previewDescription, in the opening paragraph, and in one heading or list lead phrase.
 Use secondary SEO query variants only when they fit the article. Do not keyword-stuff, repeat awkward phrases, or add irrelevant sections only for SEO.
-Prefer search-intent titles such as "AI Angular MVP: ..." or "How to Build an AI-Assisted Angular MVP ..." when the primary query is about a technology.
+Prefer search-intent titles such as "AI-Assisted [Technology] MVP: ..." or "How to Validate an AI [Technology] MVP ..." when the primary query is about a specific technology.
 The article must answer what a buyer or founder likely wants to know after searching the primary query: use cases, cost/scope tradeoffs, implementation risk, validation plan, and partner selection.
+Treat the generated title as the page SEO title. Keep it clear, search-intent aligned, and useful in search results without clickbait.
+Treat previewDescription as the page meta description. Make it specific enough to earn a search click, with the primary query or a close natural variant when possible.
+Because the blog slug is generated from the title, prefer title wording that creates a readable, focused slug without filler words.
+Allowed internal link targets for this draft: ${
+  getRelevantInternalLinkTargets(context)
+    .map((target) => `${target.label}: ${target.url}`)
+    .join(' | ')
+}.
+Include 2 internal links using Strapi link nodes, not raw URLs. Use descriptive anchor text and only use URLs from the allowed internal link targets.
+Place links where they help the reader take the next step, such as services, implementation expertise, relevant case studies, or contact. Do not put links in headings or code blocks.
 The post must be useful, specific, and avoid vague filler.
 The first Article block must be a paragraph that introduces the practical situation. Do not start the article with a heading.
 Before writing, silently define a sharp editorial brief with one target reader, one business problem, one practical situation, one core argument, and one useful takeaway. Do not output the brief as a separate section.
@@ -411,12 +406,12 @@ Each major section must add a distinct practical idea. Prefer decisions, tradeof
 Include at least one realistic example scenario, one risk or failure mode, and one decision framework or checklist-style set of next steps.
 Include 2 to 3 concrete operating details such as a timeline range, pilot metric, acceptance threshold, review rate, cost driver, or delivery phase.
 Avoid repeating the same core thesis across multiple sections. If a point has already been made, add a new practical implication instead of restating it.
-Prefer 5 to 7 heading blocks. Do not create extra sections just to increase length.
+Prefer 4 to 6 heading blocks. Do not create extra sections just to increase length.
 Make headings specific and useful. Avoid generic headings such as "Startup context", "AI MVP use cases", "Delivery risks", "Partner selection criteria", or "Conclusion".
 Avoid generic AI-benefit paragraphs. Do not write sections that could fit any software company without changes.
-Keep paragraph blocks short. Most paragraph blocks should be 45 to 90 words, and no paragraph should exceed 120 words.
+Keep paragraph blocks short. Most paragraph blocks should be 35 to 75 words, and no paragraph should exceed 100 words.
 Avoid long uninterrupted text. After every 1 or 2 paragraph blocks, use a list, quote, or visual decision aid when it would improve scanning.
-Use 2 to 3 list blocks across the article. At least one list should use bold lead phrases in list-item text nodes, such as a bold decision factor followed by a normal explanation.
+Use 1 to 2 list blocks across the article. At least one list should use bold lead phrases in list-item text nodes, such as a bold decision factor followed by a normal explanation.
 Use rich text marks sparingly and deliberately: bold for key terms or decision factors, italic for one caution or takeaway. Do not over-style whole paragraphs.
 Include one short quote block that works as a visual callout card. It should be a practical takeaway, risk, rule, or KPI note, not a fabricated person quote.
 Keep the quote block under 35 words and make it useful even when skimmed on its own.
@@ -500,6 +495,11 @@ const normalizeText = (value: string) =>
     .replace(/\s+/g, ' ')
     .trim();
 
+const getInlineNodeText = (node: InlineNode) =>
+  node.type === 'link'
+    ? node.children.map((child) => child.text || '').join(' ')
+    : node.text || '';
+
 const collectArticleText = (draft: GeneratedAiDraft) =>
   draft.Article
     .flatMap((block) =>
@@ -513,8 +513,13 @@ const collectArticleText = (draft: GeneratedAiDraft) =>
 
 const getHeadingTexts = (draft: GeneratedAiDraft) =>
   draft.Article
-    .filter((block) => block.type === 'heading')
-    .map((block) => normalizeText(block.children.map((child) => child.text || '').join(' ')));
+    .flatMap((block) => {
+      if (block.type !== 'heading') {
+        return [];
+      }
+
+      return [normalizeText(block.children.map((child) => getInlineNodeText(child)).join(' '))];
+    });
 
 const hasHeadingContaining = (headings: string[], term: string) => {
   const normalizedTerm = normalizeText(term);
@@ -533,6 +538,38 @@ const sanitizeInlineText = (value: string) =>
     .replace(/\s+\n/g, '\n')
     .trim();
 
+const getAllowedInternalUrls = () => INTERNAL_LINK_TARGETS.map((target) => target.url);
+
+const sanitizeInternalUrl = (value: string) => {
+  const trimmedValue = value.trim();
+  const siteUrl = 'https://iteam-company.com';
+  const internalUrl = trimmedValue.startsWith(siteUrl)
+    ? trimmedValue.slice(siteUrl.length) || '/'
+    : trimmedValue;
+
+  return getAllowedInternalUrls().some((url) => url === internalUrl) ? internalUrl : null;
+};
+
+const sanitizeInlineNode = (node: InlineNode): InlineNode => {
+  if (node.type === 'link') {
+    const sanitizedUrl = sanitizeInternalUrl(node.url);
+
+    return {
+      type: 'link',
+      url: sanitizedUrl || '/services',
+      children: node.children.map((child) => ({
+        ...child,
+        text: sanitizeInlineText(child.text),
+      })),
+    };
+  }
+
+  return {
+    ...node,
+    text: sanitizeInlineText(node.text),
+  };
+};
+
 const trimToMaxLength = (value: string, maxLength: number) => {
   const normalizedValue = value.replace(/\s+/g, ' ').trim();
 
@@ -546,7 +583,14 @@ const trimToMaxLength = (value: string, maxLength: number) => {
 const getFirstParagraphText = (draft: GeneratedAiDraft) => {
   const firstParagraph = draft.Article.find((block) => block.type === 'paragraph');
 
-  return firstParagraph?.children.map((child) => child.text || '').join(' ').trim() || '';
+  if (!firstParagraph || firstParagraph.type !== 'paragraph') {
+    return '';
+  }
+
+  return firstParagraph.children
+    .map((child) => getInlineNodeText(child))
+    .join(' ')
+    .trim() || '';
 };
 
 const normalizePreviewDescription = (draft: GeneratedAiDraft) => {
@@ -579,20 +623,24 @@ const sanitizeDraft = (draft: GeneratedAiDraft): GeneratedAiDraft => {
         ...block,
         children: block.children.map((item) => ({
           ...item,
-          children: item.children.map((child) => ({
-            ...child,
-            text: sanitizeInlineText(child.text),
-          })),
+          children: item.children.map(sanitizeInlineNode),
+        })),
+      };
+    }
+
+    if (block.type === 'code') {
+      return {
+        ...block,
+        children: block.children.map((child) => ({
+          ...child,
+          text: sanitizeInlineText(child.text),
         })),
       };
     }
 
     return {
       ...block,
-      children: block.children.map((child) => ({
-        ...child,
-        text: sanitizeInlineText(child.text),
-      })),
+      children: block.children.map(sanitizeInlineNode),
     };
   });
   const sanitizedDraft = {
@@ -621,6 +669,12 @@ const createMarkedTextNode = (
   ...marks,
 });
 
+const createLinkNode = (text: string, url: string) => ({
+  type: 'link' as const,
+  url,
+  children: [createTextNode(text)],
+});
+
 const createParagraphBlock = (text: string) => ({
   type: 'paragraph' as const,
   children: [createTextNode(text)],
@@ -641,6 +695,18 @@ const createUnorderedListBlock = (items: string[]) => ({
   })),
 });
 
+const createInternalLinksListBlock = (targets: ReturnType<typeof getRelevantInternalLinkTargets>) => ({
+  type: 'list' as const,
+  format: 'unordered' as const,
+  children: targets.slice(0, 2).map((target) => ({
+    type: 'list-item' as const,
+    children: [
+      createLinkNode(target.label, target.url),
+      createTextNode(' is a useful next step for readers who want to turn this decision into a scoped project.'),
+    ],
+  })),
+});
+
 const createCodeBlock = (text: string) => ({
   type: 'code' as const,
   children: [createTextNode(text)],
@@ -650,6 +716,23 @@ const createQuoteBlock = (text: string) => ({
   type: 'quote' as const,
   children: [createMarkedTextNode(text, { italic: true })],
 });
+
+const getInternalLinks = (draft: GeneratedAiDraft) =>
+  draft.Article.flatMap((block) =>
+    block.children.flatMap((child) => {
+      if (child.type === 'link') {
+        return [child.url];
+      }
+
+      if ('children' in child) {
+        return child.children
+          .filter((grandChild): grandChild is Extract<InlineNode, { type: 'link' }> => grandChild.type === 'link')
+          .map((grandChild) => grandChild.url);
+      }
+
+      return [];
+    }),
+  );
 
 const appendMissingOptionalSections = (
   draft: GeneratedAiDraft,
@@ -671,6 +754,7 @@ const appendMissingOptionalSections = (
   const quoteBlocksAfterFallback = draftWithFallbackSections.Article.filter(
     (block) => block.type === 'quote',
   );
+  const internalLinksAfterFallback = getInternalLinks(draftWithFallbackSections);
 
   if (codeBlocksAfterFallback.length === 0) {
     const insertIndex = Math.min(4, draftWithFallbackSections.Article.length);
@@ -731,6 +815,13 @@ const appendMissingOptionalSections = (
         'Validate technical feasibility and data constraints.',
         'Plan rollout, testing, and measurement before launch.',
       ]),
+    );
+  }
+
+  if (internalLinksAfterFallback.length === 0) {
+    draftWithFallbackSections.Article.push(
+      createHeadingBlock('Related next steps'),
+      createInternalLinksListBlock(getRelevantInternalLinkTargets(context)),
     );
   }
 
@@ -941,6 +1032,14 @@ const validateDraft = (draft: GeneratedAiDraft, context: ArticleGenerationContex
 
   if (context.includeChecklist && !hasChecklistHeading && listBlocks.length === 0) {
     throw new Error('Generated draft is missing a checklist section.');
+  }
+
+  const invalidInternalLink = getInternalLinks(draft).find(
+    (url) => !getAllowedInternalUrls().includes(url),
+  );
+
+  if (invalidInternalLink) {
+    throw new Error(`Generated draft contains an unsupported internal link: "${invalidInternalLink}".`);
   }
 
   if (context.seoKeywords.length) {

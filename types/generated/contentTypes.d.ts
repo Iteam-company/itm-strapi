@@ -860,6 +860,11 @@ export interface ApiArticleGenerationArticleGeneration
     includeChecklist: Attribute.Boolean;
     includeGlossary: Attribute.Boolean;
     seoKeywords: Attribute.Text;
+    searchIntent: Attribute.Text;
+    seoTitleGuidelines: Attribute.Text;
+    seoDescriptionGuidelines: Attribute.Text;
+    slugGuidelines: Attribute.Text;
+    internalLinkStrategy: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

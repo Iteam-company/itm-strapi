@@ -16,6 +16,11 @@ export type ArticleGenerationConfig = {
   includeChecklist?: boolean | null;
   includeGlossary?: boolean | null;
   seoKeywords?: string | null;
+  searchIntent?: string | null;
+  seoTitleGuidelines?: string | null;
+  seoDescriptionGuidelines?: string | null;
+  slugGuidelines?: string | null;
+  internalLinkStrategy?: string | null;
 };
 
 export type TextNode = {
@@ -28,20 +33,28 @@ export type TextNode = {
   code?: boolean;
 };
 
+export type LinkNode = {
+  type: 'link';
+  url: string;
+  children: TextNode[];
+};
+
+export type InlineNode = TextNode | LinkNode;
+
 export type ListItemNode = {
   type: 'list-item';
-  children: TextNode[];
+  children: InlineNode[];
 };
 
 export type ParagraphBlock = {
   type: 'paragraph';
-  children: TextNode[];
+  children: InlineNode[];
 };
 
 export type HeadingBlock = {
   type: 'heading';
   level: 2 | 3 | 4 | 5 | 6;
-  children: TextNode[];
+  children: InlineNode[];
 };
 
 export type ListBlock = {
@@ -57,7 +70,7 @@ export type CodeBlock = {
 
 export type QuoteBlock = {
   type: 'quote';
-  children: TextNode[];
+  children: InlineNode[];
 };
 
 export type BlogBlock = ParagraphBlock | HeadingBlock | ListBlock | CodeBlock | QuoteBlock;
@@ -93,6 +106,11 @@ export type ArticleGenerationContext = {
   includeChecklist: boolean;
   includeGlossary: boolean;
   seoKeywords: string[];
+  searchIntent: string;
+  seoTitleGuidelines: string;
+  seoDescriptionGuidelines: string;
+  slugGuidelines: string;
+  internalLinkStrategy: string;
 };
 
 export type ArticleGenerationProvider = {
